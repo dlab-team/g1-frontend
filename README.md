@@ -1,5 +1,6 @@
-Jose Quintero
-<br>
-Cristián Pozo Labbé
-<br>
-Marklim Gonzalez
+# G1 - Frontend
+### Jose Quintero
+### Cristián Pozo Labbé
+### Marklim Gonzalez
+
+Anotarse el resto, por favor 
