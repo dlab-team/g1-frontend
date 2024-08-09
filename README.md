@@ -2,5 +2,5 @@
 ### Jose Quintero
 ### Cristián Pozo Labbé
 ### Marklim Gonzalez
-
-Anotarse el resto, por favor 
+Manuel Millán
+Anotarse el resto, por favor
