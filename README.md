@@ -2,7 +2,7 @@
 ### Jose Quintero
 ### Cristián Pozo Labbé
 ### Marklim Gonzalez
-Fernando Sepúlveda Benavides
+### Fernando Sepúlveda Benavides
 
-Manuel Millán
-Anotarse el resto, por favor
+### Manuel Millán
+### Anotarse el resto, por favor
