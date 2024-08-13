@@ -7,4 +7,5 @@
 ### Manuel Millán
 ### Matias Farfán
 ### Jennifer Castillo
+### Gerardo Santana
 ### Anotarse el resto, por favor
