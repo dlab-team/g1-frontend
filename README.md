@@ -8,10 +8,10 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 # Herramientas a utilizar en FE:
-JS
-Vite 5.4.0
-React 18.3.1
-Tailwind 3.4.10
-React 18.3.1
-React-dom 18.3.1
-Node 20.13.1
+- JS
+- Vite 5.4.0
+- React 18.3.1
+- Tailwind 3.4.10
+- React 18.3.1
+- React-dom 18.3.1
+- Node 20.13.1
