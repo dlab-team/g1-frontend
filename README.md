@@ -15,3 +15,6 @@ Currently, two official plugins are available:
 - React 18.3.1
 - React-dom 18.3.1
 - Node 20.13.1
+- React-router-dom": "6.26.0"
+- React-icons": "5.3.0"
+- Tailwindcss": "3.4.10"
