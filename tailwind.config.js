@@ -20,7 +20,7 @@ export default {
 					800: "#3f5719",
 					900: "#304213",
 				},
-				secundary: {
+				secondary: {
 					/*paleta amarilla*/
 					50: "#fcf6e7",
 					100: "#f6e2b3",
@@ -33,7 +33,7 @@ export default {
 					800: "#7c5a06",
 					900: "#5f4405",
 				},
-				tittle: {
+				title: {
 					/*paleta negra para los textos */ 
 					50: "#e8e8e8",
 					100: "#b9b9b8",
