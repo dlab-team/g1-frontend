@@ -18,3 +18,4 @@ Currently, two official plugins are available:
 - React-router-dom": "6.26.0"
 - React-icons": "5.3.0"
 - Tailwindcss": "3.4.10"
+- PruebaDrojas
