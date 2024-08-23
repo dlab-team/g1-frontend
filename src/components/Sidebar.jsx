@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  AiOutlineCalendar as CalendarIcon,
-  AiOutlineRise as RiseIcon,
-  AiOutlinePieChart as PieChartIcon,
-} from "react-icons/ai";
-import { FaHouse as HouseIcon } from "react-icons/fa6";
+import { FaHome as HouseIcon } from "react-icons/fa";
 import { SlArrowLeft as ArrowLeftIcon } from "react-icons/sl";
 import { HiMenu as MenuIcon } from "react-icons/hi";
 import { BiLogOut as LogoutIcon, BiBell as BellIcon } from "react-icons/bi";
+import {
+  HomeOutline,
+  TrendingUpOutline,
+  CalendarOutline,
+  ChartBarOutline,
+} from "../assets/icons";
 
 const SidebarComponent = () => {
   const [isMinimized, setIsMinimized] = useState(false);
@@ -41,7 +42,11 @@ const SidebarComponent = () => {
                     isMinimized ? "justify-center" : ""
                   }`}
                 >
-                  <HouseIcon size={28} className="mr-2" />
+                  <img
+                    src={HomeOutline}
+                    alt="Inicio"
+                    className="w-6 h-6 mr-2 fill-current text-white" // Aplica color blanco
+                  />
                   {!isMinimized && <span>Inicio</span>}
                 </Link>
               </li>
@@ -52,7 +57,11 @@ const SidebarComponent = () => {
                     isMinimized ? "justify-center" : ""
                   }`}
                 >
-                  <RiseIcon size={28} className="mr-2" />
+                  <img
+                    src={TrendingUpOutline}
+                    alt="Objetivos"
+                    className="w-6 h-6 mr-2 fill-current text-white" // Aplica color blanco
+                  />
                   {!isMinimized && <span>Objetivos</span>}
                 </Link>
               </li>
@@ -63,7 +72,11 @@ const SidebarComponent = () => {
                     isMinimized ? "justify-center" : ""
                   }`}
                 >
-                  <CalendarIcon size={28} className="mr-2" />
+                  <img
+                    src={CalendarOutline}
+                    alt="Actividades"
+                    className="w-6 h-6 mr-2 fill-current text-white" // Aplica color blanco
+                  />
                   {!isMinimized && <span>Actividades</span>}
                 </Link>
               </li>
@@ -74,7 +87,11 @@ const SidebarComponent = () => {
                     isMinimized ? "justify-center" : ""
                   }`}
                 >
-                  <PieChartIcon size={28} className="mr-2" />
+                  <img
+                    src={ChartBarOutline}
+                    alt="Métricas"
+                    className="w-6 h-6 mr-2 fill-current text-white" // Aplica color blanco
+                  />
                   {!isMinimized && <span>Métricas</span>}
                 </Link>
               </li>
@@ -85,7 +102,7 @@ const SidebarComponent = () => {
                     isMinimized ? "justify-center" : ""
                   }`}
                 >
-                  <BellIcon size={28} className="mr-2" />
+                  <BellIcon size={28} color="white" className="mr-2" />
                   {!isMinimized && <span>Notificaciones</span>}
                 </Link>
               </li>
