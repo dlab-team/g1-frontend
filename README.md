@@ -1,11 +1,25 @@
-# React + Vite
+# Proyecto incubadora G1
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Instrucciones para iniciar el proyecto:
 
-Currently, two official plugins are available:
+1. Clonar o forkear el repositorio:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+git clone https://github.com/dlab-team/g1-frontend
+cd g1-frontend
+```
+
+2. Instalar las dependencias
+
+```bash
+npm install
+```
+
+3. Ejecución ▶️
+
+```bash
+npm run dev
+```
 
 # Herramientas a utilizar en FE:
 - JS
@@ -18,3 +32,24 @@ Currently, two official plugins are available:
 - React-router-dom": "6.26.0"
 - React-icons": "5.3.0"
 - Tailwindcss": "3.4.10"
+
+## Authors
+
+## Product Owner
+- Diego Rojas
+
+## Tech Leader
+- Fabián Peña
+
+## Developers
+- Manuel Cantolla [https://github.com/mcantolla]
+- Jennifer Castillo [https://github.com/LleniCastle]
+- Tiare Cornejo
+- Matías Farfán [https://github.com/matttoo-f]
+- Marklim González [https://github.com/marklimjavier]
+- Manuel Millán [https://github.com/ManuelMillan1979]
+- Nicolás Orrego []
+- Cristián Pozo [https://github.com/Crispole]
+- José Luis Quinteros [https://github.com/Joseito9]
+- Gerardo Santana [https://github.com/gersantana]
+- Fernando Sepúlveda [https://github.com/Fernandosbenavides]
