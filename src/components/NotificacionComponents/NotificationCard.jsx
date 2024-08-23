@@ -2,7 +2,7 @@ import React from "react";
 
 const NotificationCard = ({ title, description, time, isHighlighted }) => (
   <div
-    className={`flex items-center border border-gray-200 rounded-lg p-4 shadow-sm ${
+    className={`flex items-center border border-gray-200 rounded-lg p-4 shadow-lg ${
       isHighlighted ? "bg-primary-50" : "bg-white"
     }`}
   >

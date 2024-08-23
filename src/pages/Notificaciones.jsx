@@ -17,8 +17,10 @@ const Notificaciones = () => {
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      <div className="flex items-center justify-between mb-6 border-b border-gray-200 pb-4">
-        <h1 className="text-3xl font-bold font-sans">Notificaciones</h1>
+      <div className="flex flex-col items-center justify-center mb-6 border-b border-gray-200 pb-4 tablet:flex-row tablet:justify-between tablet:border-b tablet:pb-4 mobile:border-b-0 mobile:pb-0">
+        <h1 className="text-3xl font-bold font-sans text-center tablet:text-left">
+          Notificaciones
+        </h1>
         <div className="hidden tablet:block">
           <ToggleButton />
         </div>
