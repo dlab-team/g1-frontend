@@ -1,12 +1,16 @@
-import './App.css'
-import RoutesApp from './routes/RoutesApp'
+import React from 'react';
+import Sidebar from './components/sidebar.jsx';
 
 function App() {
   return (
-    <>
-        <RoutesApp/>
-    </>
-  )
+    <div className="flex">
+      <Sidebar />
+      <div className="flex-grow p-6">
+        {/* Contenido principal */}
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
+
