@@ -36,7 +36,7 @@ npm run dev
 ## Authors
 
 ## Product Owner
-- Diego Rojas
+- Diego Rojas Brañez
 
 ## Tech Leader
 - Fabián Peña
