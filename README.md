@@ -53,3 +53,15 @@ npm run dev
 - José Luis Quinteros [https://github.com/Joseito9]
 - Gerardo Santana [https://github.com/gersantana]
 - Fernando Sepúlveda [https://github.com/Fernandosbenavides]
+
+## Configuracion de fuentes
+```js
+fontFamily:{
+	// fuente predeterminada Roboto
+	sans: ['Roboto', 'sans-serif'],
+	// fuente Work-Sans: medium = 500, semi-bold= 600, semi-bold = 600 Italic
+	workSans: ['Work Sans', 'sans-serif'],
+	// Fuente Roboto: normal = 400, medium = 500
+	roboto: ['Roboto',]
+}
+```
