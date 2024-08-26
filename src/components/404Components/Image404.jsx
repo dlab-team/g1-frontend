@@ -1,5 +1,5 @@
-import error404Webp from '../../assets/img/error404.webp'
-import error404Png from '../../assets/img/error404.png'
+import error404Webp from '../../assets/images/images-404/error404.Webp'
+import error404Png from '../../assets/images/images-404/error404.png'
 import PropTypes from 'prop-types'
 
 const Image404 = ({className}) => {
