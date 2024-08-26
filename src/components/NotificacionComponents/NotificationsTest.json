@@ -1,0 +1,49 @@
+{
+  "sections": [
+    {
+      "title": "Hoy",
+      "notifications": [
+        {
+          "title": "Desafío Latam",
+          "description": "No completaste el objetivo: Asistir a 2 actividades de Networking por mes",
+          "time": "Hace 2 horas"
+        },
+        {
+          "title": "Desafío Latam",
+          "description": "No completaste el objetivo: Asistir a 2 actividades de Networking por mes",
+          "time": "Hace 2 horas"
+        }
+      ]
+    },
+    {
+      "title": "Hace 2 días",
+      "notifications": [
+        {
+          "title": "Desafío Latam",
+          "description": "No completaste el objetivo: Asistir a 2 actividades de Networking por mes",
+          "time": "Hace 2 días"
+        },
+        {
+          "title": "Desafío Latam",
+          "description": "No completaste el objetivo: Asistir a 2 actividades de Networking por mes",
+          "time": "Hace 2 días"
+        }
+      ]
+    },
+    {
+      "title": "01 de junio, 2024",
+      "notifications": [
+        {
+          "title": "Desafío Latam",
+          "description": "No completaste el objetivo: Asistir a 2 actividades de Networking por mes",
+          "time": "Hace 8 días"
+        },
+        {
+          "title": "Desafío Latam",
+          "description": "No completaste el objetivo: Asistir a 2 actividades de Networking por mes",
+          "time": "Hace 8 días"
+        }
+      ]
+    }
+  ]
+}
