@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Roboto Font */
+@layer base {
+	@font-face {
+		font-family: "Roboto";
+		src: url(../public/fonts/Roboto-Regular.woff2) format("woff2");
+		font-weight: 400;
+		font-display: swap;
+		font-style: normal;
+	}
+}
+@font-face {
+	font-family: "Roboto";
+	src: url(../public/fonts/Roboto-Medium.woff2) format("woff2");
+	font-weight: 500;
+	font-display: swap;
+	font-style: normal;
+}
+
+/* Work-Sans font */
+@font-face {
+	font-family: "Work Sans";
+	src: url(../public/fonts/WorkSans-VariableFont_wght.woff2) format("woff2");
+	font-weight: 500;
+	font-display: swap;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Work Sans";
+	src: url(../public/fonts/WorkSans-VariableFont_wght.woff2) format("woff2");
+	font-weight: 600;
+	font-display: swap;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Work Sans";
+	src: url(../public/fonts/WorkSans-SemiBoldItalic.woff2) format("woff2");
+	font-weight: 600;
+	font-display: swap;
+	font-style: italic;
+}
