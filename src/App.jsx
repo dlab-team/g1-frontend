@@ -1,13 +1,19 @@
 import ReactDOM from 'react-dom';
 import React, { useState } from "react";
+import Sidebar from './components/sidebar.jsx';
 import './index.css';
+ReactDOM.render(<App />, document.getElementById('root'));
 
 function App() {
   };
 
   return (
     <div>
-    <h1></h1>
+      {!isModalVisible ? (
+        <ResetPassword onSubmit={handleResetPasswordSubmit}/>
+      ) : (
+        <Modal />
+      )}
     </div>
   );
 
