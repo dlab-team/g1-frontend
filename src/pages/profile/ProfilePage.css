@@ -1,0 +1,16 @@
+#container{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#perfil-title {
+    width: 228px;
+    height: 72px;
+    top: 38px;
+    left: 331px;
+    padding-top: 8px;
+    gap: 8px;
+    opacity: 1;
+    text-align: center;
+    margin-bottom: 2%;
+}

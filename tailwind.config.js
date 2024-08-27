@@ -3,12 +3,21 @@ export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
+			fontFamily:{
+				// fuente predeterminada Roboto
+				sans: ['Roboto', 'sans-serif'],
+				// fuente Work-Sans: medium = 500, semi-bold= 600, semi-bold = 600 Italic
+				workSans: ['Work Sans', 'sans-serif'],
+				// Fuente Roboto: normal = 400, medium = 500
+				roboto: ['Roboto', 'sans-serif']
+			},
+
 			colors: {
 				// personalizar colores ejm:
 				// 'nombre-del-color': '#243cff'
 
 				primary: {
-					/*paleta verde*/
+					/*paleta verde*/ 
 					50: "#f1f5ea",
 					100: "#d3e1be",
 					200: "#bed29f",
