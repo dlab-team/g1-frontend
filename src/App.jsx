@@ -1,21 +1,12 @@
-import ReactDOM from 'react-dom';
-import React, { useState } from "react";
-import Sidebar from './components/sidebar.jsx';
-import './index.css';
-ReactDOM.render(<App />, document.getElementById('root'));
+import './App.css'
+import RoutesApp from './routes/RoutesApp'
 
 function App() {
-  };
-
   return (
-    <div>
-      {!isModalVisible ? (
-        <ResetPassword onSubmit={handleResetPasswordSubmit}/>
-      ) : (
-        <Modal />
-      )}
-    </div>
-  );
+    <>
+        <RoutesApp/>
+    </>
+  )
+}
 
-
-export default App;
+export default App
