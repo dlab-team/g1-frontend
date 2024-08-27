@@ -65,24 +65,3 @@ fontFamily:{
 	roboto: ['Roboto',]
 }
 ```
-
-## Authors
-
-## Product Owner
-- Diego Rojas
-
-## Tech Leader
-- Fabián Peña
-
-## Developers
-- Manuel Cantolla [https://github.com/mcantolla]
-- Jennifer Castillo [https://github.com/LleniCastle]
-- Tiare Cornejo
-- Matías Farfán [https://github.com/matttoo-f]
-- Marklim González [https://github.com/marklimjavier]
-- Manuel Millán [https://github.com/ManuelMillan1979]
-- Nicolás Orrego []
-- Cristián Pozo [https://github.com/Crispole]
-- José Luis Quinteros [https://github.com/Joseito9]
-- Gerardo Santana [https://github.com/gersantana]
-- Fernando Sepúlveda [https://github.com/Fernandosbenavides]
