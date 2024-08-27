@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
 import { LuPencil } from "react-icons/lu";
 import { MdOutlineEmail, MdOutlinePhone } from "react-icons/md";
 import ExperienceCard from '../../components/profileComponents/ExperienceCard.jsx';
 import AddExperienceForm from '../../components/profileComponents/AddExperienceForm.jsx';
 import PersonalDataForm from '../../components/profileComponents/PersonalDataForm.jsx';
 import '../profile/ProfilePage.css'; //agregar css a index,css
+import { useState } from "react";
+
 
 const ProfilePage = () => {
     const [showAddForm, setShowAddForm] = useState(false);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import NotificationCard from "../components/NotificacionComponents/NotificationCard";
 import ToggleButton from "../components/NotificacionComponents/ToggleButton";
 import MarkAsReadButton from "../components/NotificacionComponents/ReadButton";
