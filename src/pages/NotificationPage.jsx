@@ -1,10 +1,10 @@
 import  { useState, useEffect } from "react";
-import NotificationCard from "../components/NotificacionComponents/NotificationCard";
-import ToggleButton from "../components/NotificacionComponents/ToggleButton";
-import MarkAsReadButton from "../components/NotificacionComponents/ReadButton";
-import notificationsData from "../components/NotificacionComponents/NotificationsTest.json";
+import NotificationCard from "../components/NotificationComponents/NotificationCard";
+import ToggleButton from "../components/NotificationComponents/ToggleButton";
+import MarkAsReadButton from "../components/NotificationComponents/ReadButton";
+import notificationsData from "../components/NotificationComponents/NotificationsTest.json";
 
-const Notificaciones = () => {
+const NotificationPage = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
@@ -52,4 +52,4 @@ const Notificaciones = () => {
   );
 };
 
-export default Notificaciones;
+export default NotificationPage;

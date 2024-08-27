@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export const FormRegistro = () => {
+export const FormRegister = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

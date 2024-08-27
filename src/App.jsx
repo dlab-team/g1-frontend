@@ -5,7 +5,6 @@ function App() {
   return (
     <>
         <RoutesApp/>
-        <h1>holaaaaaaaaaaaaa</h1>
     </>
   )
 }
