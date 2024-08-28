@@ -16,15 +16,15 @@ const NavbarAdmin = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   return (
-    <div className='flex h-screen  h-[1024px]'>
+    <div className='flex h-screen  h-[0px]'>
       <nav
-        className={`fixed top-0 left-0 bottom-0 flex flex-col transition-all duration-300 bg-primary-500 text-center text-white ${
+        className={`fixed top-0 left-0 bottom-0 right-0 flex flex-col transition-all duration-300 bg-primary-500 text-center text-white ${
           isCollapsed ? 'w-[364px]' : 'w-[135px]'
         }`}
       >
         <div
           className={`p-2 flex  ${
-            isCollapsed ? 'ml-auto' : 'items-center justify-center'
+            isCollapsed ? '' : 'items-center justify-center'
           }`}
         >
           <button

@@ -80,15 +80,19 @@ const Login = () => {
     }
 
     const goToForgotPassword = () => {
-        navigate('/forgot-password')
+        navigate('/resetpassword')
     }
 
     const goToSignUp = () => {
-        navigate('/signup')
+        navigate('/register')
     }
 
     return (
-        <div className="w-[287px] h-[567px] flex flex-col gap-4 p-4 items-center">
+        <div className="w-[287px] h-[567px] flex flex-col gap-4 p-4 items-center" style={{
+            backgroundImage:
+              'url("/src/assets/images/bg2.png"), linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3))',
+            backgroundBlendMode: 'overlay'
+          }}>
             <h1 className="text-center text-xl font-workSans font-semibold italic">Te damos la bienvenida!</h1>
             <p className="text-center text-sm font-roboto">Por favor ingresa tus datos</p>
             <form 

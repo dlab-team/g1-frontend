@@ -3,7 +3,7 @@ import { MdOutlineEmail, MdOutlinePhone } from "react-icons/md";
 import ExperienceCard from '../../components/profileComponents/ExperienceCard.jsx';
 import AddExperienceForm from '../../components/profileComponents/AddExperienceForm.jsx';
 import PersonalDataForm from '../../components/profileComponents/PersonalDataForm.jsx';
-import '../profile/ProfilePage.css'; //agregar css a index,css
+import '../profile/ProfilePage.css'; 
 import { useState } from "react";
 
 
@@ -13,21 +13,21 @@ const ProfilePage = () => {
     const [profileImage, setProfileImage] = useState("src/assets/images/foto_perfil_figma.jpeg");
 
     const handleAddExperienceClick = () => {
-        setShowAddForm(!showAddForm); //  formulario de añadir experiencia
+        setShowAddForm(!showAddForm); 
     };
 
     const handleEditPersonalDataClick = () => {
-        setShowPersonalDataForm(true); //  edita datos personales
+        setShowPersonalDataForm(true); 
     };
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
             const imageUrl = URL.createObjectURL(file);
-            setProfileImage(imageUrl); // Actualizar la imagen de perfil con la nueva imagen seleccionada
+            setProfileImage(imageUrl);
         }
     };
-{/* datos para prueba */}
+
     const initialData = {
         nombre: "Sergio",
         apellido: "Muñoz García",
@@ -37,13 +37,10 @@ const ProfilePage = () => {
     };
 
     return (
-        <div className="bg-primary-50 min-h-screen p-8" id="container">
-            {/* el titulo */}
+        <div className=" bg-primary-50 min-h-screen w-auto p-8" id="container">
             <div className="flex justify-start" id="perfil-title">
                 <img src="src/assets/images/title.png" alt="title" />
             </div>
-
-            {/* datos del perfil */}
             <div className="bg-white shadow-md rounded-lg p-6 mb-8">
                 <div className="flex items-center">
                     <div className="relative w-40 h-40 border-4 border-primary-500 rounded-full flex items-center justify-center overflow-hidden">
@@ -61,7 +58,6 @@ const ProfilePage = () => {
                             onChange={handleImageChange}
                         />
 
-                        {/* button de cambio de img sin funcionalidad con database */}
                         <button
                             className="absolute bottom-2 rounded-full w-7 h-7 border-2 border-primary-500 bg-white text-primary-500 flex items-center justify-center text-xl font-bold"
                             onClick={() => document.getElementById("profileImageInput").click()}
@@ -89,7 +85,6 @@ const ProfilePage = () => {
                 </div>
             </div>
 
-            {/* editar datos personales */}
             {showPersonalDataForm && (
                 <PersonalDataForm
                     initialData={initialData}
@@ -97,10 +92,8 @@ const ProfilePage = () => {
                 />
             )}
 
-            {/* experiencias profesionales */}
             <div className="bg-white shadow-md rounded-lg p-6 mb-8">
                 <div className="space-y-4">
-                    {/* experiencia */}
                     <ExperienceCard
                         profesionalRole="Ingeniero de Sistemas"
                         organization="Webhelp"
@@ -112,7 +105,6 @@ const ProfilePage = () => {
                         period="Enero 2022 - Octubre 2022"
                     />
 
-                    {/*  añadir nueva experiencia */}
                     <div>
                         <div className="flex items-start justify-between mb-2"></div>
                         <table className="w-full">
@@ -138,7 +130,6 @@ const ProfilePage = () => {
                     </div>
                 </div>
 
-                {/* mostrar formulario de añadir experiencia*/}
                 {showAddForm && <AddExperienceForm />}
             </div>
         </div>

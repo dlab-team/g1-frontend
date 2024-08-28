@@ -1,10 +1,19 @@
 import { FaChevronLeft } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 const Modal = () => {
+  const navigate = useNavigate()
+
+  const handleBackToLogin = () => {
+    navigate('/login')
+  }
+
   return (
     <div className='flex items-center justify-center min-h-screen bg-gray-100 relative'>
       <div className='p-6 max-w-sm bg-gray'>
-        <FaChevronLeft className='h-6 text-gray-400' />
+        <button className='text-gray-600 mb-4' onClick={handleBackToLogin}>
+          <FaChevronLeft className='h-6 text-gray-400' />
+        </button>
         <h2 className='text-title-300 text-2xl text-center font-semibold mb-2'>
           Restablecer contraseña
         </h2>
@@ -17,7 +26,7 @@ const Modal = () => {
             <br />
             Por favor verifica la bandeja de entrada
           </p>
-          <button className='  mx-auto flex justify-center bg-primary-500 text-white py-2 px-4 rounded-full w-48'>
+          <button className='mx-auto flex justify-center bg-primary-500 text-white py-2 px-4 rounded-full w-48'>
             Aceptar
           </button>
         </div>
