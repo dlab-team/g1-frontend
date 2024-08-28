@@ -9,7 +9,7 @@ const Login = () => {
     const initialFormState = {
         email: '',
         password: '',
-    };
+    }
 
     const [user, setUser] = useState(initialFormState)
     const [rememberPassword, setRememberPassword] = useState(false)
@@ -39,10 +39,10 @@ const Login = () => {
         }))
     }
 
-    const handleToggleChange = () => {
-        setRememberPassword((prev) => !prev)
+    const handleToggleChange = (newValue) => {
+        setRememberPassword(newValue)
 
-        if (!rememberPassword) {
+        if (newValue) {
             localStorage.setItem('email', user.email)
             localStorage.setItem('password', user.password)
         } else {
@@ -66,26 +66,30 @@ const Login = () => {
         try {
             const { data } = await axios.post(ENDPOINT, user)
             window.sessionStorage.setItem('token', data.token)
-            window.alert('Usuario identificado con éxito .')
+            window.alert('Usuario identificado con éxito.')
             navigate('/perfil')
         } catch (error) {
-            const { response: { data } } = error
-            console.error(data);
-            window.alert(`${data.message} 🙁.`)
-        }
+            console.error(error)
+    
+            if (error.response) {
+                const message = error.response.data.message || 'Ocurrió un error con la solicitud.'
+                window.alert(`${message} 🙁.`)
+            } else {
+                window.alert('No se pudo conectar con el servidor. Por favor, intenta más tarde.')
+            }}
     }
 
     const goToForgotPassword = () => {
         navigate('/forgot-password')
-    };
+    }
 
     const goToSignUp = () => {
         navigate('/signup')
-    };
+    }
 
     return (
         <div className="w-[287px] h-[567px] flex flex-col gap-4 p-4 items-center">
-            <h1 className="text-center  text-xl font-workSans font-semibold-600 italic">Te damos la bienvenida!</h1>
+            <h1 className="text-center text-xl font-workSans font-semibold italic">Te damos la bienvenida!</h1>
             <p className="text-center text-sm font-roboto">Por favor ingresa tus datos</p>
             <form 
                 className="flex flex-col gap-1"
@@ -109,16 +113,13 @@ const Login = () => {
                     onChange={handleInputChange}
                     placeholder="Ingresa tu contraseña"
                 />
-                {
-                    countPass && (<p className="text-xs text-gray-500">Mínimo 8 caracteres</p>)
-                }
+                {countPass && (<p className="text-xs text-gray-500">Mínimo 8 caracteres</p>)}
                 <div className="flex items-center gap-2">
-                    <ToggleSwitch enabled={rememberPassword} setEnabled={handleToggleChange} />
-                    
+                    <ToggleSwitch enabled={rememberPassword} onChange={handleToggleChange} />
                 </div>
                 <button 
                     type="submit"
-                    className="w-full h-8 mt-4 bg-primary-500 text-white font-workSans-600 text-sm px-4 rounded-full hover:bg-primary-600 focus:outline-none focus:ring-2  focus:ring-opacity-50" 
+                    className="w-full h-8 mt-4 bg-primary-500 text-white font-workSans font-semibold text-sm px-4 rounded-full hover:bg-primary-600 focus:outline-none focus:ring-2  focus:ring-opacity-50" 
                 >
                     Ingresar
                 </button> 
@@ -130,7 +131,7 @@ const Login = () => {
                 </div>
             </form>
         </div>
-    );
-};
+    )
+}
 
-export default Login;
+export default Login
