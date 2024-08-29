@@ -53,46 +53,52 @@ const Login = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-
+    
         if (!user.email.trim() || !user.password.trim()) {
             return window.alert('Email y contraseña obligatorios.')
         }
-
+    
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
         if (!emailRegex.test(user.email)) {
             return window.alert('El formato del email no es correcto!')
         }
-
+    
         try {
-            const { data } = await axios.post(ENDPOINT, user)
+            const response = await fetch(ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user),
+            })
+    
+            if (!response.ok) {
+                const errorData = await response.json()
+                const message = errorData.message || 'Ocurrió un error con la solicitud.'
+                return window.alert(`${message} 🙁.`)
+            }
+    
+            const data = await response.json()
             window.sessionStorage.setItem('token', data.token)
             window.alert('Usuario identificado con éxito.')
             navigate('/perfil')
+
         } catch (error) {
             console.error(error)
-    
-            if (error.response) {
-                const message = error.response.data.message || 'Ocurrió un error con la solicitud.'
-                window.alert(`${message} 🙁.`)
-            } else {
-                window.alert('No se pudo conectar con el servidor. Por favor, intenta más tarde.')
-            }}
+            window.alert('No se pudo conectar con el servidor. Por favor, intenta más tarde.')
+        }
     }
 
     const goToForgotPassword = () => {
-        navigate('/resetpassword')
+        navigate('/forgot-password')
     }
 
     const goToSignUp = () => {
-        navigate('/register')
+        navigate('/signup')
     }
 
     return (
-        <div className="w-[287px] h-[567px] flex flex-col gap-4 p-4 items-center" style={{
-            backgroundImage:
-              'url("/src/assets/images/bg2.png"), linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3))',
-            backgroundBlendMode: 'overlay'
-          }}>
+        <div className="w-[287px] h-[567px] flex flex-col gap-4 p-4 items-center">
             <h1 className="text-center text-xl font-workSans font-semibold italic">Te damos la bienvenida!</h1>
             <p className="text-center text-sm font-roboto">Por favor ingresa tus datos</p>
             <form 
