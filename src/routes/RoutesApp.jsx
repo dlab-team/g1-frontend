@@ -26,19 +26,10 @@ function Perfil() {
 	);
   }
 
-  function NotFound() {
-	return (
-	  <div>
-		<SidebarComponent/>
-		<NotFoundPage />
-	  </div>
-	);
-  }
-
 const RoutesApp = () => {
 	return (
 		<Routes>
-			<Route path="*" element={<NotFound />}></Route>
+			<Route path="*" element={<NotFoundPage/>}></Route>
 			<Route path="/" element={<Navigate to="/login" />}></Route>
 			<Route path="/login" element={<LoginPage />}></Route>
 			<Route path="/profile" element={<Perfil/>} />
