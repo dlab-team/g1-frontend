@@ -3,8 +3,8 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import ProfilePage from "../pages/profile/ProfilePage.jsx";
 import NotificationPage from "../pages/NotificationPage.jsx";
-import RegisterPage from "../pages/RegisterPage.jsx";
-import ResetPasswordPage from "../pages/ResetPasswordPage.jsx";
+import SignupPage from "../pages/SignupPage.jsx";
+import ForgotPasswordPage from "../pages/ForgotPasswordPage.jsx";
 import SidebarComponent from "../components/Sidebar.jsx";
 
 
@@ -42,9 +42,9 @@ const RoutesApp = () => {
 			<Route path="/" element={<Navigate to="/login" />}></Route>
 			<Route path="/login" element={<LoginPage />}></Route>
 			<Route path="/profile" element={<Perfil/>} />
-			<Route path="/register" element={<RegisterPage />} />
+			<Route path="/signup" element={<SignupPage />} />
 			<Route path="/notification" element={<Notificaciones />} />
-			<Route path="/resetpassword" element={<ResetPasswordPage/>} />
+			<Route path="/forgot-password" element={<ForgotPasswordPage/>} />
 		</Routes>
 	);
 };

@@ -1,6 +1,6 @@
 import { FormRegister } from "../components/registro/FormRegister";
 
-const RegisterPage = () => {
+const SignupPage = () => {
 	return (
 		<div className="flex items-center justify-center flex-col min-h-screen">
 			<FormRegister />
@@ -8,4 +8,4 @@ const RegisterPage = () => {
 	);
 };
 
-export default RegisterPage;
+export default SignupPage;
