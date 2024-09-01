@@ -33,8 +33,8 @@ const RoutesApp = () => {
 			<Route path="/" element={<Navigate to="/login" />}></Route>
 			<Route path="/login" element={<LoginPage />}></Route>
 			<Route path="/profile" element={<Perfil/>} />
-			<Route path="/signup" element={<SignupPage />} />
-			<Route path="/notification" element={<Notificaciones />} />
+			<Route path="/signup" element={<SignupPage/>} />
+			<Route path="/notification" element={<NotificationPage/>} />
 			<Route path="/forgot-password" element={<ForgotPasswordPage/>} />
 		</Routes>
 	);

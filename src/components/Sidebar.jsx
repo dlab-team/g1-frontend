@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaHome as HouseIcon } from "react-icons/fa";
 import { SlArrowLeft as ArrowLeftIcon } from "react-icons/sl";
@@ -18,7 +18,7 @@ const SidebarComponent = () => {
   const [isMinimized, setIsMinimized] = useState(false);
 
   return (
-    <div className="flex  h-[0px]">
+    <div className="flex h-[0px]">
       <nav
         className={`fixed top-0 left-0 bottom-0 flex flex-col transition-all duration-300 bg-primary-500 text-center text-white ${
           isMinimized ? "w-60" : "w-28"
