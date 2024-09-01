@@ -26,7 +26,7 @@ const Modal = () => {
             <br />
             Por favor verifica la bandeja de entrada
           </p>
-          <button className='mx-auto flex justify-center bg-primary-500 text-white py-2 px-4 rounded-full w-48'>
+          <button onClick={handleBackToLogin} className='mx-auto flex justify-center bg-primary-500 text-white py-2 px-4 rounded-full w-48 hover:bg-primary-700'>
             Aceptar
           </button>
         </div>
