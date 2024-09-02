@@ -9,7 +9,7 @@ import {
   TrendingUpOutline,
   CalendarOutline,
   LogoutOutline,
-  ChartBarOutline,
+  ChartBarOutline,  
 } from '../assets/icons'
 import foto_perfil_figma from '../assets/images/foto_perfil_figma.jpeg'
 import logo_academia from '../assets/images/logo_academia.png'

@@ -1,4 +1,3 @@
-import { FaChevronLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
 const Modal = () => {
@@ -9,24 +8,16 @@ const Modal = () => {
   }
 
   return (
-    <div className='flex items-center justify-center min-h-screen bg-gray-100 relative'>
-      <div className='p-6 max-w-sm bg-gray'>
-        <button className='text-gray-600 mb-4' onClick={handleBackToLogin}>
-          <FaChevronLeft className='h-6 text-gray-400' />
-        </button>
-        <h2 className='text-title-300 text-2xl text-center font-semibold mb-2'>
-          Restablecer contraseña
-        </h2>
-        <p className='text-title-100 text-sm text-center'>
-          Por favor ingresa el correo registrado
-        </p>
-        <div className='bg-white text-left p-8 rounded-lg'>
-          <p className='text-sm lg:text-xs mb-4'>
+    <div className='flex items-center justify-center min-h-screen bg-gray-100 '>
+      <div className='p-[10px] bg-gray'>
+
+        <div className='bg-white w-[315px] h-[207px] tablet:w-[461px] tablet:h-[212px] flex flex-col justify-center items- text-center p-0 rounded-lg'>
+          <p className=' text-[16px] tablet:text-[20px] mb-4'>
             Hemos enviado un enlace a tu correo electrónico.
             <br />
             Por favor verifica la bandeja de entrada
           </p>
-          <button onClick={handleBackToLogin} className='mx-auto flex justify-center bg-primary-500 text-white py-2 px-4 rounded-full w-48 hover:bg-primary-700'>
+          <button onClick={handleBackToLogin} className='font-workSans w-[287px] h-[48px] font-semibold text-[20px] mx-auto bg-primary-500 text-white py-2 px-4 rounded-full tablet:w-72 tablet:h-12 hover:bg-primary-700'>
             Aceptar
           </button>
         </div>

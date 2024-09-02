@@ -172,10 +172,10 @@ export const FormRegister = () => {
           </div>
         </div>
 
-        <div className='mt-6'>
+        <div className='mt-6 '>
           <button
             type='submit'
-            className='w-full bg-[#729e2e] text-white py-2 px-4 rounded-md hover:bg-[#89b049] transition duration-300'
+            className='w-[287px] h-[48px] tablet:w-[461px] tablet:h-[50px] block mx-auto bg-primary-500 text-white py-2 px-4 rounded-full hover:bg-primary-600'
           >
             Crear cuenta
           </button>
