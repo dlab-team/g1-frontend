@@ -36,7 +36,7 @@ export const FormRegister = () => {
           backgroundBlendMode: 'overlay'
         }}
       >
-        <h2 className='text-2xl font-bold mb-4 text-center'>
+        <h2 className='font-workSans italic text-2xl font-semibold mb-4 text-center'>
           Te damos la Bienvenida!
         </h2>
         <p className='text-center mb-6'>
@@ -185,8 +185,8 @@ export const FormRegister = () => {
           <p>
             ¿Ya tienes cuenta?{' '}
             Inicia Sesión
-
           </p>
+          
         </div>
       </form>
     </div>

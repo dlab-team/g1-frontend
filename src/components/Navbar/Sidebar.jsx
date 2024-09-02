@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaHome as HouseIcon } from "react-icons/fa";
 import { SlArrowLeft as ArrowLeftIcon } from "react-icons/sl";
 import { HiMenu as MenuIcon } from "react-icons/hi";
-import { BiLogOut as LogoutIcon, BiBell as BellIcon } from "react-icons/bi";
+import {BiBell as BellIcon } from "react-icons/bi";
 import {
   HomeOutline,
   TrendingUpOutline,
   CalendarOutline,
   LogoutOutline,
   ChartBarOutline,  
-} from '../assets/icons'
-import foto_perfil_figma from '../assets/images/foto_perfil_figma.jpeg'
-import logo_academia from '../assets/images/logo_academia.png'
+} from '../../assets/icons'
+import foto_perfil_figma from '../../assets/images/foto_perfil_figma.jpeg'
+import logo_academia from '../../assets/images/logo_academia.png'
 
 const SidebarComponent = () => {
   const [isMinimized, setIsMinimized] = useState(false);

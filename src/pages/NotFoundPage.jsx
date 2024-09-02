@@ -1,7 +1,7 @@
 import ButtonRegresar from "../components/404Components/ButtonBack";
 import Image404 from "../components/404Components/Image404";
 import Message404 from "../components/404Components/Message404";
-import SidebarComponent from "../components/Sidebar";
+import SidebarComponent from "../components/Navbar/Sidebar.jsx";
 
 const Error404Page = () => {
 	return (

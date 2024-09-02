@@ -5,7 +5,7 @@ import AddExperienceForm from '../../components/profileComponents/AddExperienceF
 import PersonalDataForm from '../../components/profileComponents/PersonalDataForm.jsx';
 import '../profile/ProfilePage.css'; 
 import { useState } from "react";
-import SidebarComponent from "../../components/Sidebar.jsx";
+import SidebarComponent from "../../components/Navbar/Sidebar.jsx";
 
 
 const ProfilePage = () => {
