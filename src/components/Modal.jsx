@@ -20,13 +20,13 @@ const Modal = () => {
         <p className='text-title-100 text-sm text-center'>
           Por favor ingresa el correo registrado
         </p>
-        <div className='bg-white text-left p-8 rounded-lg'>
+        <div className='bg-white text-left font-roboto p-8 rounded-lg'>
           <p className='text-sm lg:text-xs mb-4'>
             Hemos enviado un enlace a tu correo electrónico.
             <br />
             Por favor verifica la bandeja de entrada
           </p>
-          <button className='mx-auto flex justify-center bg-primary-500 text-white py-2 px-4 rounded-full w-48'>
+          <button className='mx-auto flex justify-center bg-primary-500 text-white font-workSans py-2 px-4 rounded-full w-48'>
             Aceptar
           </button>
         </div>
