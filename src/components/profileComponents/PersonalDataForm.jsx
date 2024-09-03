@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PersonalDataForm = ({ initialData, onClose }) => {
+const PersonalDataForm = ({ initialData, onUpdate }) => {
     const [formData, setFormData] = useState(initialData);
 
     const handleChange = (e) => {
@@ -13,9 +13,7 @@ const PersonalDataForm = ({ initialData, onClose }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // aqui se debe manejar la lógica de actualización de datos
-        console.log("Datos actualizados:", formData);
-        onClose();
+        onUpdate(formData); // Actualiza los datos del perfil
     };
 
     return (
@@ -23,6 +21,7 @@ const PersonalDataForm = ({ initialData, onClose }) => {
             <div className="bg-white p-8 rounded-lg shadow-lg w-96">
                 <h2 className="text-lg font-bold mb-4">Datos Personales</h2>
                 <form onSubmit={handleSubmit}>
+                    {/* Rest of the form fields... */}
                     <div className="mb-4">
                         <label className="block text-gray-700">Nombre</label>
                         <input
@@ -71,23 +70,17 @@ const PersonalDataForm = ({ initialData, onClose }) => {
                             onChange={handleChange}
                             className="w-full p-2 border border-gray-300 rounded"
                         >
-                            <option value="Chile">Chile</option>
+                            <option value="Chile">Santiago de Chile</option>
                             <option value="Argentina">Argentina</option>
                             <option value="Peru">Perú</option>
-                            {/* falta editar opciones segun las utilizadas en backend*/}
+                            {/* Agrega otras segun DB */}
                         </select>
                     </div>
                     <div className="flex justify-end">
-                        <button
-                            type="button"
-                            onClick={onClose}
-                            className="mr-4 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
-                        >
-                            Cancelar
-                        </button>
+                        
                         <button
                             type="submit"
-                            className="px-4 py-2 bg-primary-500 text-white rounded hover:bg-primary-600"
+                            className="px-4 py-2 bg-blue-500 text-white rounded"
                         >
                             Guardar
                         </button>

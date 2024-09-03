@@ -1,23 +1,26 @@
 import { LuPencil } from "react-icons/lu";
 import { MdOutlineEmail, MdOutlinePhone } from "react-icons/md";
 import ExperienceCard from '../../components/profileComponents/ExperienceCard.jsx';
-import AddExperienceForm from '../../components/profileComponents/AddExperienceForm.jsx';
 import PersonalDataForm from '../../components/profileComponents/PersonalDataForm.jsx';
-import '../profile/ProfilePage.css'; 
+import PresentationCard from '../../components/profileComponents/PresentationCard.jsx';
+import '../profile/ProfilePage.css';
 import { useState } from "react";
 
-
 const ProfilePage = () => {
-    const [showAddForm, setShowAddForm] = useState(false);
     const [showPersonalDataForm, setShowPersonalDataForm] = useState(false);
     const [profileImage, setProfileImage] = useState("src/assets/images/foto_perfil_figma.jpeg");
 
-    const handleAddExperienceClick = () => {
-        setShowAddForm(!showAddForm); 
-    };
+    // Estado para los datos del perfil
+    const [profileData, setProfileData] = useState({
+        nombre: "Sergio",
+        apellido: "Muñoz García",
+        email: "sergio23@gmail.com",
+        telefono: "+56 9 53427586",
+        pais: "Santiago de Chile",
+    });
 
     const handleEditPersonalDataClick = () => {
-        setShowPersonalDataForm(true); 
+        setShowPersonalDataForm(true);
     };
 
     const handleImageChange = (e) => {
@@ -28,16 +31,14 @@ const ProfilePage = () => {
         }
     };
 
-    const initialData = {
-        nombre: "Sergio",
-        apellido: "Muñoz García",
-        email: "sergio23@gmail.com",
-        telefono: "+56 9 53427586",
-        pais: "Chile",
+    // Función para actualizar los datos del perfil
+    const handleUpdateProfile = (newData) => {
+        setProfileData(newData);
+        setShowPersonalDataForm(false); // Cierra el formulario después de guardar
     };
 
     return (
-        <div className=" bg-primary-50 min-h-screen w-auto p-8" id="container">
+        <div className="bg-primary-50 min-h-screen w-auto p-8" id="container">
             <div className="flex justify-start" id="perfil-title">
                 <img src="src/assets/images/title.png" alt="title" />
             </div>
@@ -57,7 +58,6 @@ const ProfilePage = () => {
                             style={{ display: "none" }}
                             onChange={handleImageChange}
                         />
-
                         <button
                             className="absolute bottom-2 rounded-full w-7 h-7 border-2 border-primary-500 bg-white text-primary-500 flex items-center justify-center text-xl font-bold"
                             onClick={() => document.getElementById("profileImageInput").click()}
@@ -67,15 +67,21 @@ const ProfilePage = () => {
                     </div>
 
                     <div className="ml-6">
-                        <h2 className="text-tittle-600 text-xl font-bold">Sergio Muñoz García</h2>
-                        <p className="text-tittle-400 text-gray-500">Santiago de Chile</p>
-                        <div className="flex items-center text-tittle-400 ">
-                            <p className="flex items-center mr-4 text-gray-500"><MdOutlineEmail className="mr-2" />sergio23@gmail.com</p>
-                            <p className="flex items-center text-gray-500"><MdOutlinePhone className="mr-2" />+56 9 53427586</p>
+                        <h2 className="text-tittle-600 text-xl font-bold">{`${profileData.nombre} ${profileData.apellido}`}</h2>
+                        <p className="text-tittle-400 text-gray-500">{profileData.pais}</p>
+                        <div className="flex items-center text-tittle-400">
+                            <p className="flex items-center mr-4 text-gray-500">
+                                <MdOutlineEmail className="mr-2" />
+                                {profileData.email}
+                            </p>
+                            <p className="flex items-center text-gray-500">
+                                <MdOutlinePhone className="mr-2" />
+                                {profileData.telefono}
+                            </p>
                         </div>
                     </div>
                     <div className="ml-auto">
-                        <button 
+                        <button
                             className="text-gray-500 hover:text-gray-700 mr-5"
                             onClick={handleEditPersonalDataClick}
                         >
@@ -87,13 +93,24 @@ const ProfilePage = () => {
 
             {showPersonalDataForm && (
                 <PersonalDataForm
-                    initialData={initialData}
+                    initialData={profileData} // Pasa los datos actuales del perfil
                     onClose={() => setShowPersonalDataForm(false)}
+                    onUpdate={handleUpdateProfile} // Pasa la función de actualización
                 />
             )}
 
+            <div className="bg-white shadow-md rounded-lg p-6">
+                <div className="space-y-4">
+                    <PresentationCard
+                        profesionalTitle="Analista de Marketing"
+                        descriptionTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                    />
+                </div>
+            </div>
+
             <div className="bg-white shadow-md rounded-lg p-6 mb-8">
                 <div className="space-y-4">
+                    <h1 className="text-tittle-600 font-bold text-left flex items-center mb-4 italic ml-5 text-lg">Experiencia Profesional</h1>
                     <ExperienceCard
                         profesionalRole="Ingeniero de Sistemas"
                         organization="Webhelp"
@@ -104,33 +121,10 @@ const ProfilePage = () => {
                         organization="Webhelp"
                         period="Enero 2022 - Octubre 2022"
                     />
-
-                    <div>
-                        <div className="flex items-start justify-between mb-2"></div>
-                        <table className="w-full">
-                            <thead>
-                                <tr>
-                                    <th className="text-tittle-500 font-bold text-left flex items-center ml-5">
-                                        <div className="flex items-center justify-center text-2xl w-4 h-4 bg-primary-200 rounded-full mr-2">
-                                            <div className="text-black mb-2">•</div>
-                                        </div>
-                                        Añadir nueva experiencia
-                                    </th>
-                                    <th className="text-right">
-                                        <button
-                                            onClick={handleAddExperienceClick}
-                                            className="text-gray-500 hover:text-gray-700 mr-5"
-                                        >
-                                            <LuPencil />
-                                        </button>
-                                    </th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
+                    <ExperienceCard
+                        profesionalRole="Añadir nueva experiencia"
+                    />
                 </div>
-
-                {showAddForm && <AddExperienceForm />}
             </div>
         </div>
     );

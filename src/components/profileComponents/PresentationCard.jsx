@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { LuPencil } from "react-icons/lu";
 
-const ExperienceCard = ({ profesionalRole, organization, period }) => {
+const ExperienceCard = ({ profesionalTitle, descriptionTitle }) => {
     const [isEditing, setIsEditing] = useState(false);
-    const [role, setRole] = useState(profesionalRole);
-    const [org, setOrg] = useState(organization);
-    const [per, setPer] = useState(period);
+    const [title, setTitle] = useState(profesionalTitle);
+    const [desc, setDesc] = useState(descriptionTitle);
 
     const handleEditClick = () => {
         setIsEditing(!isEditing);
@@ -22,28 +21,22 @@ const ExperienceCard = ({ profesionalRole, organization, period }) => {
                 <div>
                     <input
                         type="text"
-                        value={role}
-                        onChange={(e) => setRole(e.target.value)}
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                         className="border p-2 mb-2 w-full"
-                        placeholder="Rol Profesional"
+                        placeholder="Titulo Profesional"
                     />
                     <input
                         type="text"
-                        value={org}
-                        onChange={(e) => setOrg(e.target.value)}
+                        value={desc}
+                        onChange={(e) => setDesc(e.target.value)}
                         className="border p-2 mb-2 w-full"
-                        placeholder="Organización"
+                        placeholder="Descripción del título profesional"
                     />
-                    <input
-                        type="text"
-                        value={per}
-                        onChange={(e) => setPer(e.target.value)}
-                        className="border p-2 mb-2 w-full"
-                        placeholder="Periodo"
-                    />
+
                     <button
                         onClick={handleSaveClick}
-                        className="px-2 py-1 bg-primary-500 text-white rounded text-sm hover:bg-primary-600 m-2 flex items-end justify-end"
+                        className="px-2 py-1 bg-primary-500 text-white rounded text-sm hover:bg-primary-600 m-2"
                     >
                         Guardar {/* editar diseño button, agregar buton eliminar quizas */}
                     </button>
@@ -54,11 +47,8 @@ const ExperienceCard = ({ profesionalRole, organization, period }) => {
                         <table className="w-full">
                             <thead>
                                 <tr>
-                                    <th className="text-tittle-500 font-bold text-left flex items-center">
-                                        <div className="flex items-center justify-center text-2xl w-4 h-4 bg-primary-200 rounded-full mr-2">
-                                            <div className="text-black mb-2 mt-2">•</div>
-                                        </div>
-                                        {role}
+                                    <th className="text-tittle-600 font-bold text-left flex items-center mb-4 italic text-lg">
+                                        {title}
                                     </th>
                                     <th className="text-right">
                                         <button onClick={handleEditClick} className="text-gray-500 hover:text-gray-700">
@@ -69,10 +59,7 @@ const ExperienceCard = ({ profesionalRole, organization, period }) => {
                             </thead>
                             <tbody className="text-left">
                                 <tr>
-                                    <td className="text-tittle-400">{org}</td>
-                                </tr>
-                                <tr>
-                                    <td className="text-tittle-400">{per}</td>
+                                    <td className="text-tittle-400 text-justify">{desc}</td>
                                 </tr>
                             </tbody>
                         </table>

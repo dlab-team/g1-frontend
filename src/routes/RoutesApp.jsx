@@ -10,30 +10,30 @@ import SidebarComponent from "../components/Sidebar.jsx";
 
 function Perfil() {
 	return (
-	  <div className=" bg-primary-50">
-		<SidebarComponent/>
-		<ProfilePage />
-	  </div>
+		<div className=" bg-primary-50">
+			<SidebarComponent />
+			<ProfilePage />
+		</div>
 	);
-  }
+}
 
-  function Notificaciones() {
+function Notificaciones() {
 	return (
-	  <div>
-		<SidebarComponent/>
-		<NotificationPage />
-	  </div>
+		<div>
+			<SidebarComponent />
+			<NotificationPage />
+		</div>
 	);
-  }
+}
 
-  function NotFound() {
+function NotFound() {
 	return (
-	  <div>
-		<SidebarComponent/>
-		<NotFoundPage />
-	  </div>
+		<div>
+			<SidebarComponent />
+			<NotFoundPage />
+		</div>
 	);
-  }
+}
 
 const RoutesApp = () => {
 	return (
@@ -41,10 +41,10 @@ const RoutesApp = () => {
 			<Route path="*" element={<NotFound />}></Route>
 			<Route path="/" element={<Navigate to="/login" />}></Route>
 			<Route path="/login" element={<LoginPage />}></Route>
-			<Route path="/profile" element={<Perfil/>} />
+			<Route path="/profile" element={<Perfil />} />
 			<Route path="/register" element={<RegisterPage />} />
 			<Route path="/notification" element={<Notificaciones />} />
-			<Route path="/resetpassword" element={<ResetPasswordPage/>} />
+			<Route path="/resetpassword" element={<ResetPasswordPage />} />
 		</Routes>
 	);
 };
