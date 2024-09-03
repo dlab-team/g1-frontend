@@ -137,7 +137,7 @@ const SidebarComponent = () => {
               }`}
             >
               <img src={LogoutOutline} alt='cerrar sesion' className='mr-2' />
-              {isMinimized && <span className='fons-roboto text-3'>Cerrar Sesión</span>}
+              {isMinimized && <span className='font-roboto text-3'>Cerrar Sesión</span>}
             </p>
           </div>
           <img
@@ -150,7 +150,7 @@ const SidebarComponent = () => {
         </div>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default SidebarComponent;
+export default SidebarComponent
