@@ -29,7 +29,7 @@ npm run dev
 - Tailwind 3.4.10
 - React 18.3.1
 - React-dom 18.3.1
-- "react-hook-form": "^7.53.0"
+- React-hook-form: 7.53.0
 - Node 20.13.1
 - React-router-dom": "6.26.0"
 - React-icons": "5.3.0"
