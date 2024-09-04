@@ -1,17 +1,25 @@
 import { FaChevronLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import Modal from './Modal'
 
 function ResetPassword({ onSubmit }) {
   const navigate = useNavigate()
   const { register, handleSubmit, formState: { errors } } = useForm()
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleBackToLogin = () => {
     navigate('/Login')
   }
-  
+
   const onFormSubmit = (data) => {
+    setIsSubmitted(true)
     onSubmit(data)
+  }
+
+  if (isSubmitted) {
+    return <Modal />
   }
 
   return (
@@ -22,7 +30,7 @@ function ResetPassword({ onSubmit }) {
         </button>
         <h2 className='text-center text-2xl font-workSans font-semibold italic text-gray-900'> Restablecer contraseña </h2>
         <p className='text-center font-roboto text-gray-500 mb-6'> Por favor ingresa el correo registrado </p>
-        <form onSubmit={(handleSubmit)}>
+        <form onSubmit={handleSubmit(onFormSubmit)}>
           <div className='mb-4'>
             <label htmlFor='email' className='block text-sm font-roboto text-gray-700'> Correo electrónico
             </label>
