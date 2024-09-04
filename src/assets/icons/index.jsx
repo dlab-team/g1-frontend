@@ -5,6 +5,7 @@ import ChartBarOutline from './ChartBarOutline.svg'
 import ChevronLeftOutline from './ChevronLeftOutline.svg'
 import LogoutOutline from './LogoutOutline.svg'
 import mdiAccountOutline from './mdiAccountOutline.svg'
+import BellOutline from './BellOutline.svg'
 import Menu from './Menu.svg'
 
 export {
@@ -15,5 +16,6 @@ export {
   ChevronLeftOutline,
   LogoutOutline,
   mdiAccountOutline,
+  BellOutline,
   Menu
 }

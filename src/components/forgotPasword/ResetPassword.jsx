@@ -28,7 +28,7 @@ function ResetPassword({ onSubmit }) {
         <button className='text-gray-600 mb-4' onClick={handleBackToLogin}>
           <FaChevronLeft size={24} />
         </button>
-        <h2 className='text-center text-2xl font-workSans text-gray-900'> Restablecer contraseña </h2>
+        <h2 className='text-center text-2xl font-workSans font-semibold italic text-gray-900'> Restablecer contraseña </h2>
         <p className='text-center font-roboto text-gray-500 mb-6'> Por favor ingresa el correo registrado </p>
         <form onSubmit={handleSubmit(onFormSubmit)}>
           <div className='mb-4'>
@@ -37,7 +37,7 @@ function ResetPassword({ onSubmit }) {
             <input
               type='email'
               id='email'
-              className={`mt-1 block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm`}
+              className={`mt-1 block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm`}
               {...register('email', {
                 required: 'El correo electrónico es obligatorio',
                 pattern: {

@@ -1,5 +1,5 @@
 import Login from "../components/Login/FormLogin"
-import MensajeLogin from "../components/MensajeLogin"
+import MensajeLogin from "../components/Login/MensajeLogin"
 
 const LoginPage = () => {
   return (

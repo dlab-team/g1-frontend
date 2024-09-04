@@ -5,6 +5,7 @@ import AddExperienceForm from '../../components/profileComponents/AddExperienceF
 import PersonalDataForm from '../../components/profileComponents/PersonalDataForm.jsx';
 import '../profile/ProfilePage.css'; 
 import { useState } from "react";
+import SidebarComponent from "../../components/Navbar/Sidebar.jsx";
 
 
 const ProfilePage = () => {
@@ -38,6 +39,7 @@ const ProfilePage = () => {
 
     return (
         <div className=" bg-primary-50 min-h-screen w-auto p-8" id="container">
+            <SidebarComponent/>
             <div className="flex justify-start" id="perfil-title">
                 <img src="src/assets/images/title.png" alt="title" />
             </div>
