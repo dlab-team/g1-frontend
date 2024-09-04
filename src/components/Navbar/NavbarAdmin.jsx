@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import foto_perfil_figma from '../assets/images/foto_perfil_figma.jpeg'
-import logo_academia from '../assets/images/logo_academia.png'
 import {
   HomeOutline,
   TrendingUpOutline,
   CalendarOutline,
-  ChevronLeftOutline,
   LogoutOutline,
-  mdiAccountOutline,
-  Menu
-} from '../assets/icons'
+  Menu,
+  mdiAccountOutline
+} from '../../assets/icons'
+import foto_perfil_figma from '../../assets/images/foto_perfil_figma.jpeg'
+import logo_academia from '../../assets/images/logo_academia.png'
+
 
 const NavbarAdmin = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
