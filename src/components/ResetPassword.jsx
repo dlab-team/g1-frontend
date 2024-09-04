@@ -23,7 +23,7 @@ function ResetPassword({ onSubmit }) {
   }
 
   return (
-    <div className='flex items-center justify-center min-h-screen bg-gray-50'>
+    <div className='flex items-center justify min-h-screen bg-gray-50'>
       <div className='bg-white p-6 rounded-lg shadow-lg max-w-md w-full'>
         <button className='text-gray-600 mb-4' onClick={handleBackToLogin}>
           <FaChevronLeft size={24} />
