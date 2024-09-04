@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ArrowBackButton from '../_common/ArrowBackButton'
 
 export const FormRegister = () => {
   const [formData, setFormData] = useState({
@@ -26,16 +27,19 @@ export const FormRegister = () => {
   }
 
   return (
-    <div className='w-full max-w-xl mt-10 lg:mt-0'>
+    <div className='w-full flex justify-center mt-10 lg:mt-0'>
       <form
         onSubmit={handleSubmit}
-        className='bg-gray-100 rounded-lg w-full p-4 max-w-lg lg:max-w-screen-sm shadow-lg'
+        className='bg-gray-100 rounded-lg w-[287px] p-4 tablet:w-[730px] desktop:w-[1084px] shadow-lg'
         style={{
           backgroundImage:
             'url("/src/assets/images/bg2.png"), linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3))',
           backgroundBlendMode: 'overlay'
         }}
       >
+        {/*componente de boton flecha < goback */}
+        <ArrowBackButton/>
+
         <h2 className='font-workSans italic text-2xl font-semibold mb-4 text-center'>
           Te damos la Bienvenida!
         </h2>
@@ -43,7 +47,7 @@ export const FormRegister = () => {
           Regístrate e inicia tu transformación laboral
         </p>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        <div className='grid grid-cols-1 tablet:grid-cols-2 gap-4'>
           <div>
             <label htmlFor='firstName' className='block font-medium'>
               Nombre *

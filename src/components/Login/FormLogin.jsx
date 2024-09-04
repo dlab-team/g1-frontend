@@ -135,7 +135,8 @@ const Login = () => {
                 <div className="flex flex-col gap-3">
                     <p onClick={goToForgotPassword} className="text-primary-500 text-center text-xs cursor-pointer">Olvidé mi contraseña</p>
                     <div>
-                        <p className="text-center text-sm">¿No tienes una cuenta? <span onClick={goToSignUp} className="font-bold cursor-pointer text-primary-500">Regístrate</span> </p>
+                        <p className="text-center text-sm">¿No tienes una cuenta? <span onClick={goToSignUp} className="font-medium font-workSans
+                         cursor-pointer text-primary-500">Regístrate</span> </p>
                     </div>
                 </div>
             </form>
