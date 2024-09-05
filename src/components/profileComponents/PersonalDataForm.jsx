@@ -1,7 +1,31 @@
 import React, { useState } from 'react';
 
-const PersonalDataForm = ({ initialData, onUpdate }) => {
+const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
     const [formData, setFormData] = useState(initialData);
+    const [errors, setErrors] = useState({});
+
+    const validateForm = () => {
+        const newErrors = {};
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^\+?\d{1,4}?[\s.-]?\(?\d{1,4}?\)?[\s.-]?\d{1,4}[\s.-]?\d{1,9}$/;
+
+        if (!formData.nombre) newErrors.nombre = "El nombre es obligatorio.";
+        if (!formData.apellido) newErrors.apellido = "El apellido es obligatorio.";
+        if (!formData.email) {
+            newErrors.email = "El email es obligatorio.";
+        } else if (!emailRegex.test(formData.email)) {
+            newErrors.email = "El email no es válido.";
+        }
+        if (!formData.telefono) {
+            newErrors.telefono = "El teléfono es obligatorio.";
+        } else if (!phoneRegex.test(formData.telefono)) {
+            newErrors.telefono = "El teléfono no es válido.";
+        }
+        if (!formData.pais) newErrors.pais = "El país es obligatorio.";
+        
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -13,7 +37,12 @@ const PersonalDataForm = ({ initialData, onUpdate }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onUpdate(formData); // Actualiza los datos del perfil
+        if (validateForm()) {
+            onUpdate(formData);
+            alert('Información guardada con éxito.');
+        } else {
+            alert('Por favor, completa todos los campos obligatorios.');
+        }
     };
 
     return (
@@ -21,7 +50,6 @@ const PersonalDataForm = ({ initialData, onUpdate }) => {
             <div className="bg-white p-8 rounded-lg shadow-lg w-96">
                 <h2 className="text-lg font-bold mb-4">Datos Personales</h2>
                 <form onSubmit={handleSubmit}>
-                    {/* Rest of the form fields... */}
                     <div className="mb-4">
                         <label className="block text-gray-700">Nombre</label>
                         <input
@@ -31,6 +59,7 @@ const PersonalDataForm = ({ initialData, onUpdate }) => {
                             onChange={handleChange}
                             className="w-full p-2 border border-gray-300 rounded"
                         />
+                        {errors.nombre && <p className="text-red-500 text-sm">{errors.nombre}</p>}
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700">Apellido</label>
@@ -41,6 +70,7 @@ const PersonalDataForm = ({ initialData, onUpdate }) => {
                             onChange={handleChange}
                             className="w-full p-2 border border-gray-300 rounded"
                         />
+                        {errors.apellido && <p className="text-red-500 text-sm">{errors.apellido}</p>}
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700">Email</label>
@@ -51,6 +81,7 @@ const PersonalDataForm = ({ initialData, onUpdate }) => {
                             onChange={handleChange}
                             className="w-full p-2 border border-gray-300 rounded"
                         />
+                        {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700">Teléfono</label>
@@ -61,6 +92,7 @@ const PersonalDataForm = ({ initialData, onUpdate }) => {
                             onChange={handleChange}
                             className="w-full p-2 border border-gray-300 rounded"
                         />
+                        {errors.telefono && <p className="text-red-500 text-sm">{errors.telefono}</p>}
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700">País</label>
@@ -70,19 +102,28 @@ const PersonalDataForm = ({ initialData, onUpdate }) => {
                             onChange={handleChange}
                             className="w-full p-2 border border-gray-300 rounded"
                         >
+                            <option value="">Seleccionar país</option>
                             <option value="Chile">Santiago de Chile</option>
                             <option value="Argentina">Argentina</option>
                             <option value="Peru">Perú</option>
-                            {/* Agrega otras segun DB */}
+                            {/* Agrega otras opciones según la DB */}
                         </select>
+                        {errors.pais && <p className="text-red-500 text-sm">{errors.pais}</p>}
                     </div>
                     <div className="flex justify-end">
-                        
                         <button
                             type="submit"
                             className="px-4 py-2 bg-blue-500 text-white rounded"
+                            disabled={Object.keys(errors).length > 0}
                         >
                             Guardar
+                        </button>
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="ml-4 px-4 py-2 bg-gray-300 text-black rounded"
+                        >
+                            Cancelar
                         </button>
                     </div>
                 </form>

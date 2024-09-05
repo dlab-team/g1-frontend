@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { LuPencil } from "react-icons/lu";
+import { PencilOutline } from '../../assets/icons'
 
-const ExperienceCard = ({ profesionalTitle, descriptionTitle }) => {
+const PresentationCard = ({ profesionalTitle, descriptionTitle }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [title, setTitle] = useState(profesionalTitle);
     const [desc, setDesc] = useState(descriptionTitle);
@@ -11,10 +11,14 @@ const ExperienceCard = ({ profesionalTitle, descriptionTitle }) => {
     };
 
     const handleSaveClick = () => {
-        // aqui guardar la información editada en database
-        setIsEditing(false);
+        if (title.trim() && desc.trim()) {
+            setIsEditing(false);
+            alert('Cambios guardados');
+        } else {
+            alert('Los campos no pueden estar en blanco.');
+        }
     };
-
+    
     return (
         <div className="bg-white shadow-md rounded-lg p-6 mb-4">
             {isEditing ? (
@@ -38,7 +42,7 @@ const ExperienceCard = ({ profesionalTitle, descriptionTitle }) => {
                         onClick={handleSaveClick}
                         className="px-2 py-1 bg-primary-500 text-white rounded text-sm hover:bg-primary-600 m-2"
                     >
-                        Guardar {/* editar diseño button, agregar buton eliminar quizas */}
+                        Guardar
                     </button>
                 </div>
             ) : (
@@ -51,8 +55,12 @@ const ExperienceCard = ({ profesionalTitle, descriptionTitle }) => {
                                         {title}
                                     </th>
                                     <th className="text-right">
-                                        <button onClick={handleEditClick} className="text-gray-500 hover:text-gray-700">
-                                            <LuPencil />
+                                        <button onClick={handleEditClick}>
+                                            <img
+                                                src={PencilOutline}
+                                                alt="Editar"
+                                                className="w-20 h-20 hover:opacity-50 transition-opacity duration-300 ease-in-out"
+                                            />
                                         </button>
                                     </th>
                                 </tr>
@@ -70,4 +78,4 @@ const ExperienceCard = ({ profesionalTitle, descriptionTitle }) => {
     );
 };
 
-export default ExperienceCard;
+export default PresentationCard;
