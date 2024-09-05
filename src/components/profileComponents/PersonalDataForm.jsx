@@ -113,7 +113,7 @@ const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
                     <div className="flex justify-end">
                         <button
                             type="submit"
-                            className="px-4 py-2 bg-blue-500 text-white rounded"
+                            className="px-4 py-2 bg-primary-600 text-white rounded"
                             disabled={Object.keys(errors).length > 0}
                         >
                             Guardar
@@ -121,7 +121,7 @@ const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
                         <button
                             type="button"
                             onClick={onClose}
-                            className="ml-4 px-4 py-2 bg-gray-300 text-black rounded"
+                            className="ml-4 px-4 py-2 bg-primary-600 text-white rounded"
                         >
                             Cancelar
                         </button>
