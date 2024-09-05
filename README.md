@@ -25,9 +25,11 @@ npm run dev
 - JS
 - Vite 5.4.0
 - React 18.3.1
+- Axios 1.7.5
 - Tailwind 3.4.10
 - React 18.3.1
 - React-dom 18.3.1
+- React-hook-form: 7.53.0
 - Node 20.13.1
 - React-router-dom": "6.26.0"
 - React-icons": "5.3.0"
@@ -44,7 +46,7 @@ npm run dev
 ## Developers
 - Manuel Cantolla [https://github.com/mcantolla]
 - Jennifer Castillo [https://github.com/LleniCastle]
-- Tiare Cornejo
+- Tiare Cornejo [https://github.com/cccigano]
 - Matías Farfán [https://github.com/matttoo-f]
 - Marklim González [https://github.com/marklimjavier]
 - Manuel Millán [https://github.com/ManuelMillan1979]
@@ -53,3 +55,15 @@ npm run dev
 - José Luis Quinteros [https://github.com/Joseito9]
 - Gerardo Santana [https://github.com/gersantana]
 - Fernando Sepúlveda [https://github.com/Fernandosbenavides]
+
+## Configuracion de fuentes
+```js
+fontFamily:{
+	// fuente predeterminada Roboto
+	sans: ['Roboto', 'sans-serif'],
+	// fuente Work-Sans: medium = 500, semi-bold= 600, semi-bold = 600 Italic
+	workSans: ['Work Sans', 'sans-serif'],
+	// Fuente Roboto: normal = 400, medium = 500
+	roboto: ['Roboto',]
+}
+```

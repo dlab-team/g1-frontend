@@ -8,7 +8,7 @@ const handleBack = () => {
 }
   return (
 
-    <button onClick={handleBack} className="bg-primary-500 w-[12.5rem] h-[3.1rem] text-[1.25rem] text-white font-semibold rounded-full">Regresar</button>
+    <button onClick={handleBack} className="font-workSans bg-primary-500 w-[12.5rem] h-[3.1rem] text-[1.25rem] text-white font-semibold rounded-full hover:bg-primary-700">Regresar</button>
 
   )
 }
