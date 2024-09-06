@@ -29,6 +29,7 @@ npm run dev
 - Tailwind 3.4.10
 - React 18.3.1
 - React-dom 18.3.1
+- React-hook-form: 7.53.0
 - Node 20.13.1
 - React-router-dom": "6.26.0"
 - React-icons": "5.3.0"
@@ -49,7 +50,6 @@ npm run dev
 - Matías Farfán [https://github.com/matttoo-f]
 - Marklim González [https://github.com/marklimjavier]
 - Manuel Millán [https://github.com/ManuelMillan1979]
-- Nicolás Orrego []
 - Cristián Pozo [https://github.com/Crispole]
 - José Luis Quinteros [https://github.com/Joseito9]
 - Gerardo Santana [https://github.com/gersantana]

@@ -3,7 +3,8 @@ import ExperienceCard from '../../components/profileComponents/ExperienceCard.js
 import PersonalDataForm from '../../components/profileComponents/PersonalDataForm.jsx';
 import PresentationCard from '../../components/profileComponents/PresentationCard.jsx';
 import { PencilOutline, Email, Phone } from '../../assets/icons';
-import '../profile/ProfilePage.css';
+import SidebarComponent from "../../components/Navbar/Sidebar.jsx";
+import '../profile/ProfilePage.css'; 
 
 const ProfilePage = () => {
     const [showPersonalDataForm, setShowPersonalDataForm] = useState(false);
@@ -65,7 +66,8 @@ const ProfilePage = () => {
     };
 
     return (
-        <div className="bg-primary-50 min-h-screen w-auto p-8" id="container">
+        <div className=" bg-primary-50 min-h-screen w-auto p-8" id="container">
+            <SidebarComponent/>
             <div className="flex justify-start" id="perfil-title">
                 <img src="src/assets/images/title.png" alt="title" />
             </div>

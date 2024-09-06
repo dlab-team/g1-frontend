@@ -9,6 +9,7 @@ import PencilOutline from './PencilOutline.svg'
 import Phone from './Phone.svg'
 import Email from './Email.svg'
 import TrashOutline from './TrashOutline.svg'
+import BellOutline from './BellOutline.svg'
 import Menu from './Menu.svg'
 
 export {
@@ -19,9 +20,10 @@ export {
   ChevronLeftOutline,
   LogoutOutline,
   mdiAccountOutline,
-  Menu,
   PencilOutline,
   Email,
   Phone,
-  TrashOutline
+  TrashOutline,
+  BellOutline,
+  Menu
 }

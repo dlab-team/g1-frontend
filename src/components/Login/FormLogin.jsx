@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import axios from "axios"
 import ToggleSwitch from "./ToggleSwitch"
 
 const Login = () => {
@@ -129,7 +128,7 @@ const Login = () => {
                 </div>
                 <button 
                     type="submit"
-                    className="w-full h-8 mt-4 bg-primary-500 text-white font-workSans font-semibold text-sm px-4 rounded-full hover:bg-primary-600 focus:outline-none focus:ring-2  focus:ring-opacity-50" 
+                    className="w-full h-8 mt-4 bg-primary-500 text-white font-workSans font-semibold text-sm px-4 rounded-full hover:bg-primary-700 focus:outline-none focus:ring-2  focus:ring-opacity-50" 
                 >
                     Ingresar
                 </button> 
