@@ -3,6 +3,7 @@ import TrendingUpOutline from './TrendingUpOutline.svg'
 import CalendarOutline from './CalendarOutline.svg'
 import ChartBarOutline from './ChartBarOutline.svg'
 import ChevronLeftOutline from './ChevronLeftOutline.svg'
+import ChevronRightOutline from './ChevronRightOutline.svg'
 import LogoutOutline from './LogoutOutline.svg'
 import mdiAccountOutline from './mdiAccountOutline.svg'
 import BellOutline from './BellOutline.svg'
@@ -14,6 +15,7 @@ export {
   CalendarOutline,
   ChartBarOutline,
   ChevronLeftOutline,
+  ChevronRightOutline,
   LogoutOutline,
   mdiAccountOutline,
   BellOutline,
