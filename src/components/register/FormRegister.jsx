@@ -1,35 +1,24 @@
-import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import ArrowBackButton from '../_common/ArrowBackButton'
 
 export const FormRegister = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    country: '',
-    education: '',
-    jobTitle: '',
-    experience: '',
-    password: ''
-  })
+  const { register, handleSubmit, formState: { errors } } = useForm()
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData({
-      ...formData,
-      [name]: value
-    })
+  const navigate = useNavigate()
+
+  const handleLoginRedirect = () => {
+    navigate('/login')
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(formData)
+  const onSubmit = (data) => {
+    console.log(data)
   }
 
   return (
     <div className='w-full flex justify-center mt-10 lg:mt-0'>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         className='bg-gray-100 rounded-lg w-[287px] p-4 tablet:w-[730px] desktop:w-[1084px] shadow-lg'
         style={{
           backgroundImage:
@@ -55,12 +44,11 @@ export const FormRegister = () => {
             <input
               type='text'
               name='firstName'
-              value={formData.firstName}
-              onChange={handleChange}
+              {...register('firstName', { required: 'Nombre es requerido' })}
               className='mt-1 block w-full p-2 border border-gray-300 rounded-md'
               placeholder='Nombres'
-              required
             />
+            {errors.firstName && <p className='text-red-500 text-sm'>{errors.firstName.message}</p>}
           </div>
           <div>
             <label htmlFor='lastName' className='block font-medium'>
@@ -69,12 +57,11 @@ export const FormRegister = () => {
             <input
               type='text'
               name='lastName'
-              value={formData.lastName}
-              onChange={handleChange}
+              {...register('lastName', { required: 'Apellido es requerido' })}
               className='mt-1 block w-full p-2 border border-gray-300 rounded-md'
               placeholder='Apellidos'
-              required
             />
+            {errors.lastName && <p className='text-red-500 text-sm'>{errors.lastName.message}</p>}
           </div>
           <div>
             <label htmlFor='email' className='block font-medium'>
@@ -83,12 +70,11 @@ export const FormRegister = () => {
             <input
               type='email'
               name='email'
-              value={formData.email}
-              onChange={handleChange}
+              {...register('email', { required: 'Correo electrónico es requerido' })}
               className='mt-1 block w-full p-2 border border-gray-300 rounded-md'
               placeholder='ejemplo@gmail.com'
-              required
             />
+            {errors.email && <p className='text-red-500 text-sm'>{errors.email.message}</p>}
           </div>
           <div>
             <label htmlFor='country' className='block font-medium'>
@@ -96,10 +82,8 @@ export const FormRegister = () => {
             </label>
             <select
               name='country'
-              value={formData.country}
-              onChange={handleChange}
+              {...register('country', { required: 'País es requerido' })}
               className='mt-1 block w-full p-2 border border-gray-300 rounded-md'
-              required
             >
               <option value=''>País</option>
               <option value='mx'>México</option>
@@ -107,8 +91,8 @@ export const FormRegister = () => {
               <option value='ven'>Venezuela</option>
               <option value='cl'>Chile</option>
               <option value=''>Otro</option>
-              {/* Agrega más opciones */}
             </select>
+            {errors.country && <p className='text-red-500 text-sm'>{errors.country.message}</p>}
           </div>
           <div>
             <label htmlFor='education' className='block font-medium'>
@@ -117,12 +101,11 @@ export const FormRegister = () => {
             <input
               type='text'
               name='education'
-              value={formData.education}
-              onChange={handleChange}
+              {...register('education', { required: 'Educación es requerida' })}
               className='mt-1 block w-full p-2 border border-gray-300 rounded-md'
               placeholder='Educación'
-              required
             />
+            {errors.education && <p className='text-red-500 text-sm'>{errors.education.message}</p>}
           </div>
           <div>
             <label htmlFor='jobTitle' className='block font-medium'>
@@ -130,10 +113,8 @@ export const FormRegister = () => {
             </label>
             <select
               name='jobTitle'
-              value={formData.jobTitle}
-              onChange={handleChange}
+              {...register('jobTitle', { required: 'Cargo es requerido' })}
               className='mt-1 block w-full p-2 border border-gray-300 rounded-md'
-              required
             >
               <option value=''>Cargo</option>
               <option value='manager'>Gerente</option>
@@ -142,8 +123,8 @@ export const FormRegister = () => {
               <option value='developer'>Desarrollador Frontend</option>
               <option value='developer'>Desarrollador Backend</option>
               <option value='other'>Otro</option>
-              {/* Agrega más opciones */}
             </select>
+            {errors.jobTitle && <p className='text-red-500 text-sm'>{errors.jobTitle.message}</p>}
           </div>
           <div>
             <label htmlFor='experience' className='block font-medium'>
@@ -152,12 +133,11 @@ export const FormRegister = () => {
             <input
               type='text'
               name='experience'
-              value={formData.experience}
-              onChange={handleChange}
+              {...register('experience', { required: 'Experiencia es requerida' })}
               className='mt-1 block w-full p-2 border border-gray-300 rounded-md'
               placeholder='Cargo'
-              required
             />
+            {errors.experience && <p className='text-red-500 text-sm'>{errors.experience.message}</p>}
           </div>
           <div>
             <label htmlFor='password' className='block font-medium'>
@@ -166,20 +146,18 @@ export const FormRegister = () => {
             <input
               type='password'
               name='password'
-              value={formData.password}
-              onChange={handleChange}
+              {...register('password', { required: 'Contraseña es requerida', minLength: { value: 8, message: 'Mínimo 8 caracteres' } })}
               className='mt-1 block w-full p-2 border border-gray-300 rounded-md'
               placeholder='Crea una contraseña'
-              required
             />
-            <p className='text-sm text-gray-500 mt-1'>Mínimo 8 caracteres</p>
+            {errors.password && <p className='text-red-500 text-sm'>{errors.password.message}</p>}
           </div>
         </div>
 
-        <div className='mt-6 '>
+        <div className='mt-6'>
           <button
             type='submit'
-            className='w-[287px] h-[48px] tablet:w-[461px] tablet:h-[50px] block mx-auto bg-primary-500 text-white py-2 px-4 rounded-full hover:bg-primary-600'
+            className='w-full bg-[#729e2e] text-white py-2 px-4 rounded-md hover:bg-[#89b049] transition duration-300'
           >
             Crear cuenta
           </button>
@@ -188,9 +166,8 @@ export const FormRegister = () => {
         <div className='mt-4 text-center'>
           <p>
             ¿Ya tienes cuenta?{' '}
-            Inicia Sesión
+            <button onClick={handleLoginRedirect}>Inicia Sesión </button>
           </p>
-          
         </div>
       </form>
     </div>
