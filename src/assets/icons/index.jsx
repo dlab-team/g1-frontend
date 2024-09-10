@@ -3,6 +3,7 @@ import TrendingUpOutline from './TrendingUpOutline.svg'
 import CalendarOutline from './CalendarOutline.svg'
 import ChartBarOutline from './ChartBarOutline.svg'
 import ChevronLeftOutline from './ChevronLeftOutline.svg'
+import ChevronRightOutline from './ChevronRightOutline.svg'
 import LogoutOutline from './LogoutOutline.svg'
 import mdiAccountOutline from './mdiAccountOutline.svg'
 import PencilOutline from './PencilOutline.svg'
@@ -12,6 +13,8 @@ import TrashOutline from './TrashOutline.svg'
 import BellOutline from './BellOutline.svg'
 import Menu from './Menu.svg'
 import Filterlist from './Filter list.svg'
+import SearchOutline1 from './SearchOutline1.svg'
+import PlusCircleOutline from './PlusCircleOutline.svg'
 
 export {
   HomeOutline,
@@ -19,6 +22,7 @@ export {
   CalendarOutline,
   ChartBarOutline,
   ChevronLeftOutline,
+  ChevronRightOutline,
   LogoutOutline,
   mdiAccountOutline,
   PencilOutline,
@@ -27,5 +31,7 @@ export {
   TrashOutline,
   BellOutline,
   Menu,
-  Filterlist
+  Filterlist,
+  SearchOutline1,
+  PlusCircleOutline
 }
