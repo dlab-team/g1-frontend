@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { TrashOutline } from '../../assets/icons';
+import { TrashOutline } from '../../assets/icons'; 
 
 const ExperienceCard = ({ id, profesionalRole, organization, period, isEditing, onDelete }) => {
-    const { register, handleSubmit, watch } = useForm({
+    const { register, handleSubmit, watch, setValue, getValues } = useForm({
         defaultValues: {
             role: profesionalRole || '',
             organization: organization || '',
@@ -15,56 +15,67 @@ const ExperienceCard = ({ id, profesionalRole, organization, period, isEditing, 
     const organizationValue = watch('organization');
     const periodValue = watch('period');
 
-    const handleDelete = () => {
-        if (window.confirm("¿Estás seguro de que deseas eliminar esta experiencia?")) {
-            onDelete(id);
-        }
-    };
-
     const onSubmit = (data) => {
         if (!data.role.trim() || !data.organization.trim() || !data.period.trim()) {
             alert("Todos los campos son obligatorios. Por favor, complétalos antes de guardar.");
             return;
         }
         alert('Cambios guardados');
+        // aquí  lógica para guardar los datos
     };
-    
 
+    const handleSave = () => {
+        const values = getValues();
+        if (!values.role.trim() || !values.organization.trim() || !values.period.trim()) {
+            alert("Todos los campos son obligatorios. Por favor, complétalos antes de guardar.");
+            return;
+        }
+        onSubmit(values);
+    };
+
+    
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md rounded-lg p-6 mb-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 mb-4">
             {isEditing ? (
                 <div className="flex items-center">
                     <div className="flex-1">
                         <input
                             type="text"
-                            {...register('role')}
+                            {...register('role', { required: "Este campo es obligatorio" })}
                             className="border p-2 mb-2 w-full"
                             placeholder="Rol Profesional"
                         />
                         <input
                             type="text"
-                            {...register('organization')}
+                            {...register('organization', { required: "Este campo es obligatorio" })}
                             className="border p-2 mb-2 w-full"
                             placeholder="Organización"
                         />
                         <input
                             type="text"
-                            {...register('period')}
+                            {...register('period', { required: "Este campo es obligatorio" })}
                             className="border p-2 mb-2 w-full"
                             placeholder="Periodo"
                         />
                     </div>
-                    <button
-                        type="button"
-                        onClick={handleDelete}
-                        disabled={!roleValue || !organizationValue || !periodValue}
-                    >
-                        <img
-                            src={TrashOutline}
-                            alt="Eliminar"
-                            className="w-6 h-6 opacity-50 hover:opacity-100 transition-opacity duration-300 ease-in-out m-5"
-                        />
-                    </button>
+                    <div className="flex items-center space-x-4">
+                        <button
+                            type="button"
+                            onClick={handleSave}
+                            className="text-primary-500 hover:text-primary-700 font-semibold ml-5"
+                        > Guardar
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => onDelete(id)}
+                        >
+                            <img
+                                src={TrashOutline}
+                                alt="Eliminar"
+                                className="w-6 h-6 opacity-50 hover:opacity-100 transition-opacity duration-300 ease-in-out"
+                            />
+                        </button>
+                    </div>
                 </div>
             ) : (
                 <div>
@@ -97,4 +108,3 @@ const ExperienceCard = ({ id, profesionalRole, organization, period, isEditing, 
 };
 
 export default ExperienceCard;
-

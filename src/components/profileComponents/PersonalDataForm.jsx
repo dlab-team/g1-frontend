@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
@@ -113,7 +114,7 @@ const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
                     <div className="flex justify-end">
                         <button
                             type="submit"
-                            className="px-4 py-2 bg-primary-600 text-white rounded"
+                            className="px-4 py-2 ext-primary-500 hover:text-primary-700 font-semibold"
                             disabled={Object.keys(errors).length > 0}
                         >
                             Guardar
@@ -121,7 +122,7 @@ const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
                         <button
                             type="button"
                             onClick={onClose}
-                            className="ml-4 px-4 py-2 bg-primary-600 text-white rounded"
+                            className="px-4 py-2 ext-primary-500 hover:text-primary-700 font-semibold"
                         >
                             Cancelar
                         </button>

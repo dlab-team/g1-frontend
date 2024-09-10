@@ -11,6 +11,7 @@ import Email from './Email.svg'
 import TrashOutline from './TrashOutline.svg'
 import BellOutline from './BellOutline.svg'
 import Menu from './Menu.svg'
+import Filterlist from './Filter list.svg'
 
 export {
   HomeOutline,
@@ -25,5 +26,6 @@ export {
   Phone,
   TrashOutline,
   BellOutline,
-  Menu
+  Menu,
+  Filterlist
 }
