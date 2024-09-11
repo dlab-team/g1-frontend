@@ -73,20 +73,18 @@ const Login = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        const message =
-          errorData.message || "Ocurrió un error con la solicitud.";
-        return window.alert(`${message} 🙁.`);
+        const message = errorData.message || "Ocurrió un error con la solicitud.";
+        window.alert("Email o contraseña incorrectos.");
+        return;
       }
 
       const data = await response.json();
       window.sessionStorage.setItem("token", data.token);
       window.alert("Usuario identificado con éxito.");
-      navigate("/perfil");
+      navigate("/tasks");
     } catch (error) {
       console.error(error);
-      window.alert(
-        "No se pudo conectar con el servidor. Por favor, intenta más tarde."
-      );
+      window.alert("No se pudo conectar con el servidor. Por favor, intenta más tarde.");
     }
   };
 
@@ -138,7 +136,7 @@ const Login = () => {
         </div>
         <button
           type="submit"
-          className="w-full h-8 mt-4 bg-primary-500 text-white font-workSans font-semibold text-sm px-4 rounded-full hover:bg-primary-700 focus:outline-none focus:ring-2  focus:ring-opacity-50"
+          className="w-full h-8 mt-4 bg-primary-500 text-white font-workSans font-semibold text-sm px-4 rounded-full hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-opacity-50"
         >
           Ingresar
         </button>
@@ -154,8 +152,7 @@ const Login = () => {
               ¿No tienes una cuenta?{" "}
               <span
                 onClick={goToSignUp}
-                className="font-medium font-workSans
-                         cursor-pointer text-primary-500"
+                className="font-medium font-workSans cursor-pointer text-primary-500"
               >
                 Regístrate
               </span>{" "}
