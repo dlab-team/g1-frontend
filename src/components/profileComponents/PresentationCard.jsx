@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { PencilOutline } from '../../assets/icons'
 
@@ -40,7 +41,7 @@ const PresentationCard = ({ profesionalTitle, descriptionTitle }) => {
 
                     <button
                         onClick={handleSaveClick}
-                        className="px-2 py-1 bg-primary-500 text-white rounded text-sm hover:bg-primary-600 m-2"
+                        className="px-2 py-1 text-primary-500 font-semibold text-sm hover:text-primary-700 m-2"
                     >
                         Guardar
                     </button>
@@ -59,7 +60,7 @@ const PresentationCard = ({ profesionalTitle, descriptionTitle }) => {
                                             <img
                                                 src={PencilOutline}
                                                 alt="Editar"
-                                                className="w-20 h-20 hover:opacity-50 transition-opacity duration-300 ease-in-out"
+                                                className="w-6 h-6  hover:opacity-50 transition-opacity duration-300 ease-in-out mr-5"
                                             />
                                         </button>
                                     </th>
