@@ -4,7 +4,7 @@ import PersonalDataForm from '../../components/profileComponents/PersonalDataFor
 import PresentationCard from '../../components/profileComponents/PresentationCard.jsx';
 import { PencilOutline, Email, Phone } from '../../assets/icons';
 import SidebarComponent from "../../components/Navbar/Sidebar.jsx";
-import '../profile/ProfilePage.css'; 
+import '../profile/ProfilePage.css';
 
 const ProfilePage = () => {
     const [showPersonalDataForm, setShowPersonalDataForm] = useState(false);
@@ -25,11 +25,7 @@ const ProfilePage = () => {
     ]);
 
     const handleEditPersonalDataClick = () => {
-        if (validateProfileData()) {
-            setShowPersonalDataForm(true);
-        } else {
-            alert("Por favor, completa todos los campos antes de editar.");
-        }
+        setShowPersonalDataForm(true);
     };
 
     const handleImageChange = (e) => {
@@ -52,22 +48,14 @@ const ProfilePage = () => {
     };
 
     const handleAddExperience = () => {
-        const isValid = validateProfileData();
-        if (isValid) {
-            const newExperience = { id: Date.now(), role: "", organization: "", period: "", isNew: true };
-            setExperiences([...experiences, newExperience]);
-        } else {
-            alert("Por favor, completa todos los campos antes de añadir una nueva experiencia.");
-        }
+        const newExperience = { id: Date.now(), role: "", organization: "", period: "", isNew: true };
+        setExperiences([...experiences, newExperience]);
     };
 
-    const validateProfileData = () => {
-        return profileData.nombre && profileData.apellido && profileData.email && profileData.telefono && profileData.pais;
-    };
 
     return (
-        <div className=" bg-primary-50 min-h-screen w-auto p-8" id="container">
-            <SidebarComponent/>
+        <div className="bg-primary-50 min-h-screen w-auto p-8" id="container">
+            <SidebarComponent />
             <div className="flex justify-start" id="perfil-title">
                 <img src="src/assets/images/title.png" alt="title" />
             </div>
@@ -134,81 +122,80 @@ const ProfilePage = () => {
                 </div>
             </div>
 
-            {
-                showPersonalDataForm && (
-                    <PersonalDataForm
-                        initialData={profileData}
-                        onClose={() => setShowPersonalDataForm(false)}
-                        onUpdate={handleUpdateProfile}
-                    />
-                )
-            }
+            {showPersonalDataForm && (
+                <PersonalDataForm
+                    initialData={profileData}
+                    onClose={() => setShowPersonalDataForm(false)}
+                    onUpdate={handleUpdateProfile}
+                />
+            )}
 
-            <div className="bg-white shadow-md rounded-lg p-6">
-                <div className="space-y-4">
-                    <PresentationCard
-                        profesionalTitle="Analista de Marketing"
-                        descriptionTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-                    />
-                </div>
+            <div className="bg-whitep-6 mb-10">
+                <PresentationCard
+                    profesionalTitle="Analista de Marketing"
+                    descriptionTitle="Lorem ipsum dolor sit amet consectetur adipiscing elit diam ac torquent, nulla per
+                    purus proin a arcu blandit facilisis mi, pretium risus volutpat sapien gravida pharetra nostra 
+                    integer sociosqu. Rhoncus lacus curabitur lectus pulvinar nulla nam ornare nullam pellentesque 
+                    netus odio quam integer vitae habitant, donec aenean porttitor platea laoreet nostra sodales taciti 
+                    dignissim cras pretium velit morbi sapien. Auctor ligula luctus convallis potenti libero suscipit egestas 
+                    vel congue rhoncus, class cras mollis sagittis nulla dictum sed iaculis sodales, netus id duis metus primis
+                    fames sociosqu ultrices phasellus."
+                />
             </div>
 
-            <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-                <div className="space-y-4">
-                    <div className="flex justify-between items-center mb-4 ml-5">
-                        <h1 className="text-tittle-600 font-bold italic text-lg">Experiencia Profesional</h1>
-                        <button
-                            onClick={() => setIsEditingExperiences(!isEditingExperiences)}
-                            disabled={!validateProfileData()}
-                        >
-                            <img
-                                src={PencilOutline}
-                                alt="Editar"
-                                className="w-6 h-6  hover:opacity-50 transition-opacity duration-300 ease-in-out mr-5"
-                            />
-                        </button>
-                    </div>
-
-                    {experiences.map(exp => (
-                        <ExperienceCard
-                            key={exp.id}
-                            id={exp.id}
-                            profesionalRole={exp.role}
-                            organization={exp.organization}
-                            period={exp.period}
-                            isEditing={isEditingExperiences}
-                            onDelete={handleDeleteExperience}
+            <div className="bg-white p-6 mb-8">
+                <div className="flex justify-between items-center mb-4 ml-5">
+                    <h1 className="text-tittle-600 font-bold italic text-lg">Experiencia Profesional</h1>
+                    <button
+                        onClick={() => setIsEditingExperiences(!isEditingExperiences)}
+                    >
+                        <img
+                            src={PencilOutline}
+                            alt="Editar"
+                            className="w-6 h-6  hover:opacity-50 transition-opacity duration-300 ease-in-out mr-5"
                         />
-                    ))}
-
-                    {isEditingExperiences && !showPersonalDataForm && (
-                        <button
-                            className="ml-8 text-primary-500 hover:text-primary-700 font-semibold"
-                            onClick={handleAddExperience}
-                        >
-                            Añadir nueva experiencia
-                        </button>
-                    )}
-
-                    {!showPersonalDataForm && !isEditingExperiences && (
-                        <div className="bg-white shadow-md rounded-lg p-6 mb-8 mt-4">
-                            <div className="flex items-start justify-between mb-2">
-                                <table className="w-full">
-                                    <thead>
-                                        <tr>
-                                            <th className="text-tittle-500 font-bold text-left flex items-center">
-                                                <div className="flex items-center justify-center text-2xl w-4 h-4 bg-primary-200 rounded-full mr-2">
-                                                    <div className="text-black mb-2 mt-2">•</div>
-                                                </div>
-                                                Añadir nueva experiencia
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-                    )}
+                    </button>
                 </div>
+
+                {experiences.map(exp => (
+                    <ExperienceCard
+                        key={exp.id}
+                        id={exp.id}
+                        profesionalRole={exp.role}
+                        organization={exp.organization}
+                        period={exp.period}
+                        isEditing={isEditingExperiences}
+                        onDelete={handleDeleteExperience}
+                    />
+                ))}
+
+                {isEditingExperiences && (
+                    <button
+                        className="ml-8 text-primary-500 hover:text-primary-700 font-semibold"
+                        onClick={handleAddExperience}
+                    >
+                        Añadir nueva experiencia
+                    </button>
+                )}
+
+                {!showPersonalDataForm && !isEditingExperiences && (
+                    <div className="bg-white p-6 mb-8 mt-4 ">
+                        <div className="flex items-start justify-between mb-2">
+                            <table className="w-full">
+                                <thead>
+                                    <tr>
+                                        <th className="text-tittle-500 font-bold text-left flex items-center">
+                                            <div className="flex items-center justify-center text-2xl w-4 h-4 bg-primary-200 rounded-full mr-2">
+                                                <div className="text-black mb-2 mt-2">•</div>
+                                            </div>
+                                            Añadir nueva experiencia
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
