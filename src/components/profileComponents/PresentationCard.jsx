@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { PencilOutline } from '../../assets/icons'
 
 const PresentationCard = ({ profesionalTitle, descriptionTitle }) => {

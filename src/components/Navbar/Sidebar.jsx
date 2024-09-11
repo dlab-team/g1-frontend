@@ -1,110 +1,114 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { SlArrowLeft as ArrowLeftIcon } from "react-icons/sl";
-import { HiMenu as MenuIcon } from "react-icons/hi";
-import {BiBell as BellIcon } from "react-icons/bi";
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { SlArrowLeft as ArrowLeftIcon } from 'react-icons/sl'
+import { HiMenu as MenuIcon } from 'react-icons/hi'
+import { BiBell as BellIcon } from 'react-icons/bi'
 import {
   HomeOutline,
   TrendingUpOutline,
   CalendarOutline,
   LogoutOutline,
-  ChartBarOutline,  
+  ChartBarOutline
 } from '../../assets/icons'
 import foto_perfil_figma from '../../assets/images/foto_perfil_figma.jpeg'
 import logo_academia from '../../assets/images/logo_academia.png'
 
 const SidebarComponent = () => {
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false)
 
   return (
-    <div className="flex h-[0px]">
+    <div className='flex h-[0px]'>
       <nav
         className={`fixed top-0 left-0 bottom-0 flex flex-col transition-all duration-300 bg-primary-500 text-center text-white ${
-          isMinimized ? "w-60" : "w-28"
+          isMinimized ? 'w-60' : 'w-24'
         }`}
       >
         {/* Button to toggle collapse */}
-        <div className="p-4 flex items-center justify-center">
+        <div className='p-4 flex items-center justify-center'>
           <button
             onClick={() => setIsMinimized(!isMinimized)}
-            className="text-white"
+            className='text-white'
           >
-            {isMinimized ? <ArrowLeftIcon size={28} /> : <MenuIcon size={28} /> }
+            {isMinimized ? <ArrowLeftIcon size={28} /> : <MenuIcon size={28} />}
           </button>
         </div>
 
         {/* Sidebar items */}
-        <div className={`flex-1 ${isMinimized ? "" : "block"}`}>
-          <div className="p-4">
-            <ul className="space-y-4">
+        <div className={`flex-1 ${isMinimized ? '' : 'block'}`}>
+          <div className='p-4'>
+            <ul className='space-y-4'>
               <li>
                 <Link
-                  to="/"
+                  to='/'
                   className={`flex py-2 px-4 rounded hover:bg-primary-600 ${
-                    isMinimized ? "" : "justify-center"
+                    isMinimized ? '' : 'justify-center'
                   }`}
                 >
                   <img
+                    title='Inicio'
                     src={HomeOutline}
-                    alt="Inicio"
-                    className="w-6 h-6 mr-2 fill-current text-white" // Aplica color blanco
+                    alt='Inicio'
+                    className='w-6 h-6 mr-2 fill-current text-white' // Aplica color blanco
                   />
                   {isMinimized && <span>Inicio</span>}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/goals"
+                  to='/goals'
                   className={`flex py-2 px-4 rounded hover:bg-primary-600 ${
-                    isMinimized ? "" : "justify-center"
+                    isMinimized ? '' : 'justify-center'
                   }`}
                 >
                   <img
+                    title='Objetivos'
                     src={TrendingUpOutline}
-                    alt="Objetivos"
-                    className="w-6 h-6 mr-2 fill-current text-white" // Aplica color blanco
+                    alt='Objetivos'
+                    className='w-6 h-6 mr-2 fill-current text-white' // Aplica color blanco
                   />
                   {isMinimized && <span>Objetivos</span>}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/tasks"
+                  to='/tasks'
                   className={`flex py-2 px-4 rounded hover:bg-primary-600 ${
-                    isMinimized ? "" : "justify-center"
+                    isMinimized ? '' : 'justify-center'
                   }`}
                 >
                   <img
+                    title='Actividades'
                     src={CalendarOutline}
-                    alt="Actividades"
-                    className="w-6 h-6 mr-2 fill-current text-white" // Aplica color blanco
+                    alt='Actividades'
+                    className='w-6 h-6 mr-2 fill-current text-white' // Aplica color blanco
                   />
                   {isMinimized && <span>Actividades</span>}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/analytics"
+                  to='/analytics'
                   className={`flex py-2 px-4 rounded hover:bg-primary-600 ${
-                    isMinimized ? "" : "justify-center"
+                    isMinimized ? '' : 'justify-center'
                   }`}
                 >
                   <img
+                    title='Métricas'
                     src={ChartBarOutline}
-                    alt="Métricas"
-                    className="w-6 h-6 mr-2 fill-current text-white" // Aplica color blanco
+                    alt='Métricas'
+                    className='w-6 h-6 mr-2 fill-current text-white' // Aplica color blanco
                   />
                   {isMinimized && <span>Métricas</span>}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/notification"
+                  to='/notification'
                   className={`flex py-2 px-4 rounded hover:bg-primary-600 ${
-                    isMinimized ? "" : "justify-center"
+                    isMinimized ? '' : 'justify-center'
                   }`}
                 >
-                  <BellIcon size={28} color="white" className="mr-2" />
+                  <BellIcon size={28} color='white' className='mr-2' title='Notificaciones' />
                   {isMinimized && <span>Notificaciones</span>}
                 </Link>
               </li>
@@ -118,12 +122,12 @@ const SidebarComponent = () => {
             isMinimized ? 'flex items-center justify-center' : 'items-center'
           }`}
         >
-          <Link to="/profile">
+          <Link to='/profile'>
             <img
               src={foto_perfil_figma}
-              alt="Perfil"
+              alt='Perfil'
               className={`transition-transform duration-300 ${
-                isMinimized ? "w-[150px] h-[150px]" : "w-[60px] h-[60px] mt-8"
+                isMinimized ? 'w-[150px] h-[150px]' : 'w-[60px] h-[60px] mt-8'
               } rounded-full border-[5px] border-primary-500`}
             />
           </Link>

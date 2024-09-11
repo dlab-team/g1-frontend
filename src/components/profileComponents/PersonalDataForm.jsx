@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
     const [formData, setFormData] = useState(initialData);
