@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ToggleSwitch from "./ToggleSwitch";
 
 const Login = () => {
-  const ENDPOINT = "http://localhost:3000/login";
+  const ENDPOINT = import.meta.env.VITE_API_URL;
 
   const initialFormState = {
     email: "",
@@ -63,7 +63,7 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch(ENDPOINT, {
+      const response = await fetch(`${ENDPOINT}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

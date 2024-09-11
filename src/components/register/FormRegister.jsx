@@ -8,7 +8,7 @@ export const FormRegister = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const ENDPOINT = "http://localhost:3000/usuario/newUsuario";
+  const ENDPOINT = import.meta.env.VITE_API_URL;
 
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export const FormRegister = () => {
     }
 
     try {
-      const response = await fetch(ENDPOINT, {
+      const response = await fetch(`${ENDPOINT}/usuario/newUsuario`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
