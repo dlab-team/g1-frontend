@@ -77,7 +77,7 @@ const Login = () => {
       const responseData = await response.json()
       window.sessionStorage.setItem('token', responseData.token)
       window.alert('Usuario identificado con éxito.')
-      navigate('/perfil')
+      navigate('/tasks')
     } catch (error) {
       console.error(error)
       window.alert(
