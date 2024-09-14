@@ -56,7 +56,7 @@ export const FormRegister = () => {
     <div className="w-full flex justify-center mt-10 lg:mt-0">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-gray-100 rounded-lg w-[287px] p-4 tablet:w-[730px] desktop:w-[1084px] shadow-lg"
+        className="bg-gray-100 rounded-lg w-[287px] py-4 tablet:w-[730px] tablet:px-[3rem] desktop:w-[1084px] shadow-lg "
         style={{
           backgroundImage:
             'url("/src/assets/images/bg2.png"), linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3))',
@@ -66,7 +66,7 @@ export const FormRegister = () => {
         {/*componente de boton flecha < goback */}
         <ArrowBackButton />
 
-        <h2 className="font-workSans italic text-2xl font-semibold mb-4 text-center">
+        <h2 className="font-workSans italic text-2xl font-semibold mb-4 tablet:mt-10 text-center">
           Te damos la Bienvenida!
         </h2>
         <p className="text-center mb-6">
@@ -82,7 +82,7 @@ export const FormRegister = () => {
               type="text"
               name="firstName"
               {...register("firstName", { required: "Nombre es requerido" })}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md h-[50px]"
               placeholder="Nombres"
             />
             {errors.firstName && (
@@ -97,7 +97,7 @@ export const FormRegister = () => {
               type="text"
               name="lastName"
               {...register("lastName", { required: "Apellido es requerido" })}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md h-[50px]"
               placeholder="Apellidos"
             />
             {errors.lastName && (
@@ -114,7 +114,7 @@ export const FormRegister = () => {
               {...register("email", {
                 required: "Correo electrónico es requerido",
               })}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md h-[50px]"
               placeholder="ejemplo@gmail.com"
             />
             {errors.email && (
@@ -125,12 +125,12 @@ export const FormRegister = () => {
             <label htmlFor="country" className="block font-medium">
               País
             </label>
-            <select
+            <select 
               name="country"
               {...register("country", { required: "País es requerido" })}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md h-[50px]"
             >
-              <option value="">País</option>
+              <option value="" hidden>País</option>
               <option value="México">México</option>
               <option value="Argentina">Argentina</option>
               <option value="Venezuela">Venezuela</option>
@@ -152,9 +152,9 @@ export const FormRegister = () => {
             <select
               name="education"
               {...register("education", { required: "Educación es requerido" })}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md h-[50px]"
             >
-              <option value="">Educación</option>
+              <option value="" hidden>Educación</option>
               <option value="Desarrollador Fullstack">
                 Desarrollador Fullstack
               </option>
@@ -188,9 +188,9 @@ export const FormRegister = () => {
             <select
               name="jobTitle"
               {...register("jobTitle", { required: "Cargo es requerido" })}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md h-[50px]"
             >
-              <option value="">Cargo</option>
+              <option value="" hidden>Cargo</option>
               <option value="Desarrollador">Desarrollador</option>
               <option value="Diseñador">Diseñador</option>
               <option value="Analista">Analista</option>
@@ -209,9 +209,9 @@ export const FormRegister = () => {
               {...register("experience", {
                 required: "Experiencia es requerido",
               })}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md h-[50px]"
             >
-              <option value="">Experiencia</option>
+              <option value="" hidden>Experiencia</option>
               <option value="Sin Experiencia">sin experiencia</option>
               <option value="Trainee">1 año</option>
               <option value="Semi-Senior">2 a 4 años</option>
@@ -239,7 +239,7 @@ export const FormRegister = () => {
                     "Debe contener al menos una letra mayúscula, una minúscula y un número",
                 },
               })}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md h-[50px]"
               placeholder="Crea una contraseña"
             />
             {errors.password && (
@@ -251,17 +251,17 @@ export const FormRegister = () => {
         <div className="mt-6">
           <button
             type="submit"
-            className="w-full bg-[#729e2e] text-white py-2 px-4 rounded-md hover:bg-[#89b049] transition duration-300"
+            className=" text-xl font-workSans font-semibold w-full h-[50px] mx-auto block tablet:w-[461px] bg-primary-500 text-white py-2 px-4 rounded-full hover:bg-primary-700 "
           >
             Crear cuenta
           </button>
         </div>
 
-        <div className="mt-4 text-center">
-          <p>
+        <div className="text-sm tablet:text-xl mt-9 text-center flex justify-center gap-2">
+          <p className="font-normal ">
             ¿Ya tienes cuenta?{" "}
-            <button onClick={handleLoginRedirect}>Inicia Sesión </button>
           </p>
+          <button className="font-semibold" onClick={handleLoginRedirect}>Inicia Sesión </button>
         </div>
       </form>
     </div>
