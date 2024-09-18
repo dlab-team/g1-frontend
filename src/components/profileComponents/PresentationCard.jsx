@@ -1,6 +1,5 @@
-
-import { useState } from 'react';
-import { PencilOutline } from '../../assets/icons'
+import React, { useState } from 'react';
+import { PencilOutline } from '../../assets/icons';
 
 const PresentationCard = ({ profesionalTitle, descriptionTitle }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -19,11 +18,11 @@ const PresentationCard = ({ profesionalTitle, descriptionTitle }) => {
             alert('Los campos no pueden estar en blanco.');
         }
     };
-    
+
     return (
-        <div className="bg-white shadow-md rounded-lg p-6 mb-4">
+        <div className="bg-white p-4 sm:p-6 mb-4 flex pr-4 ">
             {isEditing ? (
-                <div>
+                <div className="flex flex-col items-start justify-between w-full h-full mb-2">
                     <input
                         type="text"
                         value={title}
@@ -31,47 +30,44 @@ const PresentationCard = ({ profesionalTitle, descriptionTitle }) => {
                         className="border p-2 mb-2 w-full"
                         placeholder="Titulo Profesional"
                     />
-                    <input
-                        type="text"
+                    <textarea
                         value={desc}
                         onChange={(e) => setDesc(e.target.value)}
                         className="border p-2 mb-2 w-full"
                         placeholder="Descripción del título profesional"
+                        rows="4"
                     />
-
                     <button
                         onClick={handleSaveClick}
-                        className="px-2 py-1 text-primary-500 font-semibold text-sm hover:text-primary-700 m-2"
+                        className="px-4 py-2 text-primary-500 font-semibold text-sm hover:text-primary-700"
                     >
                         Guardar
                     </button>
                 </div>
             ) : (
                 <div>
-                    <div className="flex items-start justify-between mb-2">
-                        <table className="w-full">
-                            <thead>
-                                <tr>
-                                    <th className="text-tittle-600 font-bold text-left flex items-center mb-4 italic text-lg">
-                                        {title}
-                                    </th>
-                                    <th className="text-right">
-                                        <button onClick={handleEditClick}>
-                                            <img
-                                                src={PencilOutline}
-                                                alt="Editar"
-                                                className="w-6 h-6  hover:opacity-50 transition-opacity duration-300 ease-in-out mr-5"
-                                            />
-                                        </button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody className="text-left">
-                                <tr>
-                                    <td className="text-tittle-400 text-justify">{desc}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div className="flex items-start justify-start mb-2">
+                        <div>
+                            <div className="flex flex-row justify-between">
+                                <h6 className="text-base md:text-lg font-bold italic p-4">
+                                    {title}
+                                </h6>
+                                <button
+                                    onClick={handleEditClick}
+                                    className="text-right sm:ml-6"
+                                >
+                                    <img
+                                        src={PencilOutline}
+                                        alt="Editar"
+                                        className=" w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out"
+                                    />
+                                </button>
+                            </div>
+                            <p className="text-sm md:text-lg text-tittle-400 text-justify mt-2 p-4">
+                                {desc}
+                            </p>
+                        </div>
+
                     </div>
                 </div>
             )}
@@ -80,3 +76,4 @@ const PresentationCard = ({ profesionalTitle, descriptionTitle }) => {
 };
 
 export default PresentationCard;
+

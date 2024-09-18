@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 
 const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
@@ -23,7 +22,7 @@ const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
             newErrors.telefono = "El teléfono no es válido.";
         }
         if (!formData.pais) newErrors.pais = "El país es obligatorio.";
-        
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -47,8 +46,8 @@ const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-            <div className="bg-white p-8 rounded-lg shadow-lg w-96">
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 shadow-lg rounded-lg ">
+            <div className="bg-white p-8 rounded-lg shadow-lg w-96 ">
                 <h2 className="text-lg font-bold mb-4">Datos Personales</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
@@ -134,3 +133,4 @@ const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
 };
 
 export default PersonalDataForm;
+
