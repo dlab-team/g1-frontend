@@ -1,5 +1,5 @@
 import SidebarComponent from "../components/Navbar/Sidebar";
-import TaskTable from "../components/TaskTableComponents/TaskTableComponents/TaskTableComponents";
+import TaskTable from "../components/TaskTableComponents/TaskTableComponents";
 
 const TaskTablePage = () => {
     return (
