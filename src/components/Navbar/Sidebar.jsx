@@ -20,7 +20,7 @@ const SidebarComponent = () => {
     <div className='flex h-[0px]'>
       <nav
         className={`fixed top-0 left-0 bottom-0 flex flex-col transition-all duration-300 bg-primary-500 text-center text-white ${
-          isMinimized ? 'w-60' : 'w-24'
+          isMinimized ? 'w-45' : 'w-24'
         }`}
       >
         {/* Button to toggle collapse */}
@@ -127,7 +127,7 @@ const SidebarComponent = () => {
               src={foto_perfil_figma}
               alt='Perfil'
               className={`transition-transform duration-300 ${
-                isMinimized ? 'w-[150px] h-[150px]' : 'w-[60px] h-[60px] mt-8'
+                isMinimized ? 'w-[150px] h-[150px]' : 'w-[60px] h-[60px] rounded-full border-[3px] mt-8'
               } rounded-full border-[5px] border-primary-500`}
             />
           </Link>
@@ -148,7 +148,7 @@ const SidebarComponent = () => {
             src={logo_academia}
             alt='logo desafio latam'
             className={`transition-transform duration-300 ${
-              isMinimized ? 'w-[141px] h-[49px]' : 'w-[98px] h-[34px]'
+              isMinimized ? 'w-[141px] h-[49px]' : 'w-[98px] h-[24px]'
             }`}
           />
         </div>
