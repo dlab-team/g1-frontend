@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ExperienceCard from '../../components/profileComponents/ExperienceCard.jsx';
 import PersonalDataForm from '../../components/profileComponents/PersonalDataForm.jsx';
 import PresentationCard from '../../components/profileComponents/PresentationCard.jsx';
-import { PencilOutline, Email, Phone } from '../../assets/icons';
+import { PencilOutline, Email, Phone } from '../../assets/icons/index.jsx';
 import SidebarComponent from "../../components/Navbar/Sidebar.jsx";
 import '../profile/ProfilePage.css';
+import imgProfileFigma from '../../assets/images/foto_perfil_figma.jpeg'
 
 const ProfilePage = () => {
     const [showPersonalDataForm, setShowPersonalDataForm] = useState(false);
-    const [profileImage, setProfileImage] = useState("src/assets/images/foto_perfil_figma.jpeg");
+    const [profileImage, setProfileImage] = useState(imgProfileFigma);
 
     const [profileData, setProfileData] = useState({
         nombre: "Sergio",
@@ -63,12 +64,12 @@ const ProfilePage = () => {
                 <div className="flex items-center">
                     <div className="flex items-center justify-center">
                         <div className="relative w-32 h-32 md:w-40 md:h-40 border-4 border-primary-500 rounded-full flex items-center justify-center overflow-hidden">
-                            <img
+                            <img 
                                 src={profileImage}
                                 alt="Foto de perfil"
                                 className="absolute inset-0 w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-0 left-0 w-full h-11 bg-white"></div>
+                            <div className="absolute bottom-0 left-0 w-full h-11 bg-white bg-opacity-70"></div>
                             <input
                                 type="file"
                                 accept="image/*"
@@ -77,7 +78,7 @@ const ProfilePage = () => {
                                 onChange={handleImageChange}
                             />
                             <button
-                                className="absolute bottom-2 rounded-full w-7 h-7 border-2 border-primary-500 bg-white text-primary-500 flex items-center justify-center text-xl font-bold hover:w-8 hover:h-8 transition-4m duration-300 ease-in-out mr-1"
+                                className="absolute bottom-2 rounded-full w-7 h-7 border-2 border-primary-500  text-primary-500 flex items-center justify-center text-xl font-bold hover:w-8 hover:h-8 transition-4m duration-300 ease-in-out  bg-transparent"
                                 onClick={() => document.getElementById("profileImageInput").click()}
                             >
                                 +
