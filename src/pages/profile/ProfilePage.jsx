@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ExperienceCard from '../../components/profileComponents/ExperienceCard.jsx';
 import PersonalDataForm from '../../components/profileComponents/PersonalDataForm.jsx';
 import PresentationCard from '../../components/profileComponents/PresentationCard.jsx';
-import { PencilOutline, Email, Phone } from '../../assets/icons';
+import { PencilOutline, Email, Phone } from '../../assets/icons/index.jsx';
 import SidebarComponent from "../../components/Navbar/Sidebar.jsx";
+import imgProfileFigma from '../../assets/images/foto_perfil_figma.jpeg';
 
 const ProfilePage = () => {
     const [showPersonalDataForm, setShowPersonalDataForm] = useState(false);
-    const [profileImage, setProfileImage] = useState("src/assets/images/foto_perfil_figma.jpeg");
+    const [profileImage, setProfileImage] = useState(imgProfileFigma);
 
     const [profileData, setProfileData] = useState({
         nombre: "Sergio",
@@ -74,37 +75,36 @@ const ProfilePage = () => {
     };
     return (
         <div className=" min-h-screen w-auto lg:pr-36 lg:pl-72 sm:pr-12 sm:pl-60 pt-12 pb-12 pr-4 pl-32">
-            <SidebarComponent
-            />
+            <SidebarComponent/>
+      
             <div className="flex justify-start pb-12 w-28 sm:w-40 md:w-52" id="perfil-title">
                 <img src="src/assets/images/title.png" alt="title" />
             </div>
 
-            <div className=" bg-white shadow-xl rounded-lg p-4 sm:p-6 mb-6 sm:mb-8 flex md:flex-row md:justify-start flex justify-between w-full" >
-
-                <div className="flex w-2"></div>
-                <div className="flex flex-col items-center md:flex-row w-full">
-                    {/* Foto de perfil y botón de agregar */}
-                    <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 border-4 border-primary-500 rounded-full overflow-hidden">
-                        <img
-                            src={profileImage}
-                            alt="Foto de perfil"
-                            className="absolute inset-0 w-full h-full object-cover"
-                        />
-                        <div className="absolute bottom-0 left-0 right-0 h-7 sm:h-10 md:h-11 bg-white opacity-70"></div>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            id="profileImageInput"
-                            style={{ display: "none" }}
-                            onChange={handleImageChange}
-                        />
-                        <button
-                            className="absolute bottom-2 left-1/2 transform -translate-x-1/2 rounded-full w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 border-2 border-primary-500 bg-white text-primary-500 flex items-center justify-center font-bold hover:  sm:hover:w-7 sm:hover:h-7 md:hover:w-8 md:hover:h-8 transition-all duration-300"
-                            onClick={() => document.getElementById("profileImageInput").click()}
-                        >
-                            +
-                        </button>
+            <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+                <div className="flex items-center">
+                    <div className="flex items-center justify-center">
+                        <div className="relative w-32 h-32 md:w-40 md:h-40 border-4 border-primary-500 rounded-full flex items-center justify-center overflow-hidden">
+                            <img
+                                src={profileImage}
+                                alt="Foto de perfil"
+                                className="absolute inset-0 w-full h-full object-cover"
+                            />
+                            <div className="absolute bottom-0 left-0 w-full h-11 bg-white bg-opacity-70"></div>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                id="profileImageInput"
+                                style={{ display: "none" }}
+                                onChange={handleImageChange}
+                            />
+                            <button
+                                className="absolute bottom-2 rounded-full w-7 h-7 border-2 border-primary-500  text-primary-500 flex items-center justify-center text-xl font-bold hover:w-8 hover:h-8 transition-4m duration-300 ease-in-out  bg-transparent"
+                                onClick={() => document.getElementById("profileImageInput").click()}
+                            >
+                                +
+                            </button>
+                        </div>
                     </div>
 
                     {/* Información del perfil */}
