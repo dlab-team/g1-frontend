@@ -1,11 +1,22 @@
+import { useState } from 'react'
 import SidebarComponent from '../components/Navbar/Sidebar'
 import { ChevronLeftOutline, ChevronRightOutline } from '../assets/icons/index'
 
 const GoalsPage = () => {
+  const [isSidebarMinimized, setIsSidebarMinimized] = useState(false)
+
+  const handleSidebarToggle = (isMinimized) => {
+    setIsSidebarMinimized(isMinimized)
+  }
+
   return (
     <>
-      <SidebarComponent />
-      <div className='p-4 max-w mx-48'>
+      <SidebarComponent onToggle={handleSidebarToggle} />
+      <div
+        className={`p-4 max-w mx-48 transition-all duration-300 ${
+          isSidebarMinimized ? 'ml-60' : 'ml-28'
+        }`}
+      >
         <div className='mb-4 border-b border-gray-200 pb-4'>
           <h1 className='font-workSans italic text-3xl font-semibold text-left'>
             Objetivos
