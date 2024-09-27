@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { ChevronLeftOutline } from '../../assets/icons'
 
-const TaskTableForm = ({ onClose, onChange }) => {
-    const [formData, setFormData] = useState({
+const TaskTableForm = ({ onClose, onChange, initialData }) => {
+    const [formData, setFormData] = useState(initialData || {
         title: '',
         companyName: '',
         url: '',
@@ -10,17 +10,44 @@ const TaskTableForm = ({ onClose, onChange }) => {
         jobType: 'presencial',
         description: '',
     })
-
-    const handleSubmit = (e) => {
+    const ENDPOINT = "futuro Endpoint con Backend"
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('Datos enviados:', JSON.stringify(formData, null, 2))
-        onClose() 
+        const newTask = { ...formData, id: Date.now() }
+        //EndPoint basado en el FormRegister para asi poder hacer mas facil la conexion con back, falta modificar Fecth
+        try {
+            const response = await fetch(`Task.json`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newTask),
+            })
+    
+            if (!response.ok) {
+                throw new Error('Problema al guardar, Por favor ajustar ruta')
+            }
+    
+            const result = await response.json()
+            console.log('Datos enviados:', result)
+            onChange(newTask)
+            onClose()
+            setFormData({
+                title: '',
+                companyName: '',
+                url: '',
+                location: 'local',
+                jobType: 'presencial',
+                description: '',
+            })
+        } catch (error) {
+            console.error('Error:', error)
+        }
     }
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
         setFormData((prev) => ({ ...prev, [name]: value }))
-        onChange({ ...formData, [name]: value })
     }
 
     return (
@@ -111,6 +138,7 @@ const TaskTableForm = ({ onClose, onChange }) => {
                         </button>
                         <button
                             type='submit'
+                            onSubmit={handleSubmit}
                             className='bg-primary-500 text-white text-xl font-workSans p-2 w-[130px] h-[50px] rounded-full mt-4'
                         >
                             Guardar
@@ -127,6 +155,7 @@ const TaskTableForm = ({ onClose, onChange }) => {
                     </div>
                     <button
                         type='submit'
+                        onSubmit={handleSubmit}
                         className='bg-primary-500 text-white text-xl font-workSans w-full h-[50px] mt-6 rounded-full'
                     >
                         Guardar
