@@ -95,12 +95,6 @@ const SidebarComponent = ({ onToggle }) => {
                     isMinimized ? '' : 'justify-center'
                   }`}
                 >
-                  <img
-                    title='Notificaciones'
-                    src={BellOutline}
-                    alt='BellIcon'
-                    className='w-6 h-6 mr-2 fill-current text-white' // Aplica color blanco
-                  />
                   <BellIcon size={28} color='white' className='mr-2' title='Notificaciones' />
                   {isMinimized && <span>Notificaciones</span>}
                 </Link>
