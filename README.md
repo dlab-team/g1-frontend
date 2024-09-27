@@ -25,7 +25,6 @@ npm run dev
 - JS
 - Vite 5.4.0
 - React 18.3.1
-- Axios 1.7.5
 - Tailwind 3.4.10
 - React 18.3.1
 - React-dom 18.3.1

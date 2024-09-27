@@ -6,8 +6,14 @@ import ChevronLeftOutline from './ChevronLeftOutline.svg'
 import ChevronRightOutline from './ChevronRightOutline.svg'
 import LogoutOutline from './LogoutOutline.svg'
 import mdiAccountOutline from './mdiAccountOutline.svg'
+import PencilOutline from './PencilOutline.svg'
+import Phone from './Phone.svg'
+import Email from './Email.svg'
+import TrashOutline from './TrashOutline.svg'
 import BellOutline from './BellOutline.svg'
 import Menu from './Menu.svg'
+import SearchOutline1 from './SearchOutline1.svg'
+import PlusCircleOutline from './PlusCircleOutline.svg'
 
 export {
   HomeOutline,
@@ -18,6 +24,12 @@ export {
   ChevronRightOutline,
   LogoutOutline,
   mdiAccountOutline,
+  PencilOutline,
+  Email,
+  Phone,
+  TrashOutline,
   BellOutline,
-  Menu
+  Menu,
+  SearchOutline1,
+  PlusCircleOutline
 }

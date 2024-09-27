@@ -30,11 +30,14 @@ const SidebarComponent = ({ onToggle }) => {
           isMinimized ? 'w-60' : 'w-28'
         }`}
       >
+        {/* Botón para colapsar/expandir el sidebar */}
         <div className='p-4 flex items-center justify-center'>
           <button onClick={handleToggle} className='text-white'>
             {isMinimized ? <ArrowLeftIcon size={28} /> : <MenuIcon size={28} />}
           </button>
         </div>
+
+        {/* Elementos del sidebar */}
         <div className={`flex-1 ${isMinimized ? '' : 'block'}`}>
           <div className='p-4'>
             <ul className='space-y-4'>
@@ -116,6 +119,8 @@ const SidebarComponent = ({ onToggle }) => {
             </ul>
           </div>
         </div>
+
+        {/* Perfil de usuario y cerrar sesión */}
         <div
           className={`bg-gray-950 text-white p-4 flex flex-col items-center gap-4 h-[571px] ${
             isMinimized ? 'flex items-center justify-center' : 'items-center'

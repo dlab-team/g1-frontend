@@ -11,9 +11,12 @@ const GoalsPage = () => {
 
   return (
     <div className='flex'>
+      {/* Sidebar fijo a la izquierda */}
       <div className='fixed left-0 top-0 h-full z-10'>
         <SidebarComponent onToggle={handleSidebarToggle} />
       </div>
+
+      {/* Contenido principal con margen izquierdo dinámico basado en el estado del sidebar */}
       <div
         className={`flex-1 p-4 md:p-8 max-w-full transition-all duration-300 ${
           isSidebarMinimized ? 'ml-60' : 'ml-28'

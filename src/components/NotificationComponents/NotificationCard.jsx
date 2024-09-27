@@ -1,5 +1,4 @@
-import React from "react";
-
+import imageAdl from '../../assets/images/NotificacionImages/desafiologo.png'
 const NotificationCard = ({ title, description, time, isHighlighted }) => (
   <div
     className={`flex items-center border border-gray-200 rounded-lg p-4 shadow-lg ${
@@ -8,7 +7,7 @@ const NotificationCard = ({ title, description, time, isHighlighted }) => (
   >
     <div className="flex-shrink-0">
       <img
-        src="src/assets/images/NotificacionImages/desafiologo.png"
+        src={imageAdl}
         alt={title}
         className="w-12 h-12 rounded-full"
       />
