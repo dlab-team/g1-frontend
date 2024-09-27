@@ -13,27 +13,31 @@ import {
 import foto_perfil_figma from '../../assets/images/foto_perfil_figma.jpeg'
 import logo_academia from '../../assets/images/logo_academia.png'
 
-const SidebarComponent = () => {
+const SidebarComponent = ({ onToggle }) => {
   const [isMinimized, setIsMinimized] = useState(false)
+
+  const handleToggle = () => {
+    setIsMinimized(!isMinimized)
+    if (onToggle) {
+      onToggle(!isMinimized)
+    }
+  }
 
   return (
     <div className='flex h-[0px]'>
       <nav
         className={`fixed top-0 left-0 bottom-0 flex flex-col transition-all duration-300 bg-primary-500 text-center text-white ${
-          isMinimized ? 'w-45' : 'w-24'
+          isMinimized ? 'w-60' : 'w-28'
         }`}
       >
-        {/* Button to toggle collapse */}
+        {/* Botón para colapsar/expandir el sidebar */}
         <div className='p-4 flex items-center justify-center'>
-          <button
-            onClick={() => setIsMinimized(!isMinimized)}
-            className='text-white'
-          >
+          <button onClick={handleToggle} className='text-white'>
             {isMinimized ? <ArrowLeftIcon size={28} /> : <MenuIcon size={28} />}
           </button>
         </div>
 
-        {/* Sidebar items */}
+        {/* Elementos del sidebar */}
         <div className={`flex-1 ${isMinimized ? '' : 'block'}`}>
           <div className='p-4'>
             <ul className='space-y-4'>
@@ -116,7 +120,7 @@ const SidebarComponent = () => {
           </div>
         </div>
 
-        {/* User profile, logout, and new image */}
+        {/* Perfil de usuario y cerrar sesión */}
         <div
           className={`bg-gray-950 text-white p-4 flex flex-col items-center gap-4 h-[571px] ${
             isMinimized ? 'flex items-center justify-center' : 'items-center'
@@ -127,7 +131,7 @@ const SidebarComponent = () => {
               src={foto_perfil_figma}
               alt='Perfil'
               className={`transition-transform duration-300 ${
-                isMinimized ? 'w-[150px] h-[150px]' : 'w-[60px] h-[60px] rounded-full border-[3px] mt-8'
+                isMinimized ? 'w-[150px] h-[150px]' : 'w-[60px] h-[60px] mt-8 rounded-full border-[3px]'
               } rounded-full border-[5px] border-primary-500`}
             />
           </Link>
