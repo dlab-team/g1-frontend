@@ -46,6 +46,7 @@ const SidebarComponent = ({ onToggle }) => {
                   }`}
                 >
                   <img
+                    title='Inicio'
                     src={HomeOutline}
                     alt='Inicio'
                     className='w-6 h-6 mr-2 fill-current text-white' // Aplica color blanco
@@ -61,6 +62,7 @@ const SidebarComponent = ({ onToggle }) => {
                   }`}
                 >
                   <img
+                    title='Objetivos'
                     src={TrendingUpOutline}
                     alt='Objetivos'
                     className='w-6 h-6 mr-2 fill-current text-white' // Aplica color blanco
@@ -76,6 +78,7 @@ const SidebarComponent = ({ onToggle }) => {
                   }`}
                 >
                   <img
+                    title='Actividades'
                     src={CalendarOutline}
                     alt='Actividades'
                     className='w-6 h-6 mr-2 fill-current text-white' // Aplica color blanco
@@ -91,6 +94,7 @@ const SidebarComponent = ({ onToggle }) => {
                   }`}
                 >
                   <img
+                    title='Métricas'
                     src={ChartBarOutline}
                     alt='Métricas'
                     className='w-6 h-6 mr-2 fill-current text-white' // Aplica color blanco
@@ -105,14 +109,13 @@ const SidebarComponent = ({ onToggle }) => {
                     isMinimized ? '' : 'justify-center'
                   }`}
                 >
-                  <BellIcon size={28} color='white' className='mr-2' />
+                  <BellIcon size={28} color='white' className='mr-2' title='Notificaciones' />
                   {isMinimized && <span>Notificaciones</span>}
                 </Link>
               </li>
             </ul>
           </div>
         </div>
-        {/* User profile, logout, and new image */}
         <div
           className={`bg-gray-950 text-white p-4 flex flex-col items-center gap-4 h-[571px] ${
             isMinimized ? 'flex items-center justify-center' : 'items-center'
@@ -123,7 +126,7 @@ const SidebarComponent = ({ onToggle }) => {
               src={foto_perfil_figma}
               alt='Perfil'
               className={`transition-transform duration-300 ${
-                isMinimized ? 'w-[150px] h-[150px]' : 'w-[60px] h-[60px] mt-8'
+                isMinimized ? 'w-[150px] h-[150px]' : 'w-[60px] h-[60px] mt-8 rounded-full border-[3px]'
               } rounded-full border-[5px] border-primary-500`}
             />
           </Link>
@@ -144,7 +147,7 @@ const SidebarComponent = ({ onToggle }) => {
             src={logo_academia}
             alt='logo desafio latam'
             className={`transition-transform duration-300 ${
-              isMinimized ? 'w-[141px] h-[49px]' : 'w-[98px] h-[34px]'
+              isMinimized ? 'w-[141px] h-[49px]' : 'w-[98px] h-[24px]'
             }`}
           />
         </div>
