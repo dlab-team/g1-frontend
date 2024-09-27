@@ -6,7 +6,6 @@ import { BiBell as BellIcon } from 'react-icons/bi'
 import {
   HomeOutline,
   TrendingUpOutline,
-  CalendarOutline,
   LogoutOutline,
   ChartBarOutline
 } from '../../assets/icons'
@@ -43,7 +42,7 @@ const SidebarComponent = ({ onToggle }) => {
             <ul className='space-y-4'>
               <li>
                 <Link
-                  to='/'
+                  to='/tasks'
                   className={`flex py-2 px-4 rounded hover:bg-primary-600 ${
                     isMinimized ? '' : 'justify-center'
                   }`}
@@ -75,22 +74,6 @@ const SidebarComponent = ({ onToggle }) => {
               </li>
               <li>
                 <Link
-                  to='/tasks'
-                  className={`flex py-2 px-4 rounded hover:bg-primary-600 ${
-                    isMinimized ? '' : 'justify-center'
-                  }`}
-                >
-                  <img
-                    title='Actividades'
-                    src={CalendarOutline}
-                    alt='Actividades'
-                    className='w-6 h-6 mr-2 fill-current text-white' // Aplica color blanco
-                  />
-                  {isMinimized && <span>Actividades</span>}
-                </Link>
-              </li>
-              <li>
-                <Link
                   to='/analytics'
                   className={`flex py-2 px-4 rounded hover:bg-primary-600 ${
                     isMinimized ? '' : 'justify-center'
@@ -112,6 +95,12 @@ const SidebarComponent = ({ onToggle }) => {
                     isMinimized ? '' : 'justify-center'
                   }`}
                 >
+                  <img
+                    title='Notificaciones'
+                    src={BellOutline}
+                    alt='BellIcon'
+                    className='w-6 h-6 mr-2 fill-current text-white' // Aplica color blanco
+                  />
                   <BellIcon size={28} color='white' className='mr-2' title='Notificaciones' />
                   {isMinimized && <span>Notificaciones</span>}
                 </Link>
