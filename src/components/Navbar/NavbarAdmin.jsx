@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import LogoutModal from './LogoutModal'
 import foto_perfil_figma from '../../assets/images/foto_perfil_figma.jpeg'
 import logo_academia from '../../assets/images/logo_academia.png'
 import {
@@ -14,6 +15,15 @@ import {
 
 const NavbarAdmin = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false)
+
+  const handleLogoutClick = () => {
+    setIsLogoutModalOpen(true)
+  }
+
+  const closeLogoutModal = () => {
+    setIsLogoutModalOpen(false)
+  }
 
   return (
     <div className='flex h-screen  h-[0px]'>
@@ -123,8 +133,8 @@ const NavbarAdmin = () => {
                 isCollapsed ? 'mt-2' : ''
               }`}
             >
-              <img src={LogoutOutline} alt='cerrar sesion' className='mr-2' />
-              {isCollapsed && <span className='fons-roboto text-3'>Cerrar Sesión</span>}
+              <img src={LogoutOutline} alt='cerrar sesion' className='mr-2 cursor-pointer' onClick={handleLogoutClick} />
+              {isCollapsed && <span className='font-roboto text-3 cursor-pointer' onClick={handleLogoutClick}>Cerrar Sesión</span>}
             </p>
           </div>
           <img
@@ -134,6 +144,7 @@ const NavbarAdmin = () => {
               isCollapsed ? 'w-[141px] h-[49px]' : 'w-[98px] h-[34px]'
             }`}
           />
+          <LogoutModal isOpen={isLogoutModalOpen} onClose={closeLogoutModal} />
         </div>
       </nav>
     </div>

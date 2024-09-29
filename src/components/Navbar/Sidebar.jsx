@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import LogoutModal from './LogoutModal'
 import { SlArrowLeft as ArrowLeftIcon } from 'react-icons/sl'
 import { HiMenu as MenuIcon } from 'react-icons/hi'
 import { BiBell as BellIcon } from 'react-icons/bi'
@@ -13,14 +14,23 @@ import {
 import foto_perfil_figma from '../../assets/images/foto_perfil_figma.jpeg'
 import logo_academia from '../../assets/images/logo_academia.png'
 
-const SidebarComponent = ({ onToggle }) => {
+const SidebarComponent = () => {
   const [isMinimized, setIsMinimized] = useState(false)
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false)
 
   const handleToggle = () => {
     setIsMinimized(!isMinimized)
     if (onToggle) {
       onToggle(!isMinimized)
     }
+  }
+
+  const handleLogoutClick = () => {
+    setIsLogoutModalOpen(true)
+  }
+
+  const closeLogoutModal = () => {
+    setIsLogoutModalOpen(false)
   }
 
   return (
@@ -144,8 +154,8 @@ const SidebarComponent = ({ onToggle }) => {
                 isMinimized ? 'mt-2' : ''
               }`}
             >
-              <img src={LogoutOutline} alt='cerrar sesion' className='mr-2' />
-              {isMinimized && <span className='font-roboto text-3'>Cerrar Sesión</span>}
+              <img src={LogoutOutline} alt='cerrar sesion' className='mr-2 cursor-pointer' onClick={handleLogoutClick} />
+              {isMinimized && <span className='font-roboto text-3 cursor-pointer' onClick={handleLogoutClick}>Cerrar Sesión</span>}
             </p>
           </div>
           <img
@@ -155,6 +165,7 @@ const SidebarComponent = ({ onToggle }) => {
               isMinimized ? 'w-[141px] h-[49px]' : 'w-[98px] h-[24px]'
             }`}
           />
+          <LogoutModal isOpen={isLogoutModalOpen} onClose={closeLogoutModal} />
         </div>
       </nav>
     </div>
