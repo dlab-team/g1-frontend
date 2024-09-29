@@ -12,7 +12,6 @@ import Email from './Email.svg'
 import TrashOutline from './TrashOutline.svg'
 import BellOutline from './BellOutline.svg'
 import Menu from './Menu.svg'
-import Filterlist from './Filter list.svg'
 import SearchOutline1 from './SearchOutline1.svg'
 import PlusCircleOutline from './PlusCircleOutline.svg'
 
@@ -31,7 +30,6 @@ export {
   TrashOutline,
   BellOutline,
   Menu,
-  Filterlist,
   SearchOutline1,
   PlusCircleOutline
 }

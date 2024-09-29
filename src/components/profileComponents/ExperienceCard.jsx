@@ -1,5 +1,6 @@
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { TrashOutline } from '../../assets/icons'; 
+import { TrashOutline } from '../../assets/icons';
 
 const ExperienceCard = ({ id, profesionalRole, organization, period, isEditing, onDelete }) => {
     const { register, handleSubmit, watch, setValue, getValues } = useForm({
@@ -20,7 +21,7 @@ const ExperienceCard = ({ id, profesionalRole, organization, period, isEditing, 
             return;
         }
         alert('Cambios guardados');
-        // aquí  lógica para guardar los datos
+        // lógica para guardar los datos
     };
 
     const handleSave = () => {
@@ -32,12 +33,11 @@ const ExperienceCard = ({ id, profesionalRole, organization, period, isEditing, 
         onSubmit(values);
     };
 
-    
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 mb-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-4 sm:p-6 mb-4 ">
             {isEditing ? (
-                <div className="flex items-center">
-                    <div className="flex-1">
+                <div className="flex flex-col md:flex-row items-center">
+                    <div className="flex-1 w-full sm:w-auto ">
                         <input
                             type="text"
                             {...register('role', { required: "Este campo es obligatorio" })}
@@ -57,28 +57,33 @@ const ExperienceCard = ({ id, profesionalRole, organization, period, isEditing, 
                             placeholder="Periodo"
                         />
                     </div>
-                    <div className="flex items-center space-x-4">
-                        <button
-                            type="button"
-                            onClick={handleSave}
-                            className="text-primary-500 hover:text-primary-700 font-semibold ml-5"
-                        > Guardar
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => onDelete(id)}
-                        >
-                            <img
-                                src={TrashOutline}
-                                alt="Eliminar"
-                                className="w-6 h-6 opacity-50 hover:opacity-100 transition-opacity duration-300 ease-in-out"
-                            />
-                        </button>
+                    <div className="flex md:flex-col items-center space-x-4 mt-4 sm:mt-0">
+                        <div>
+                            <button
+                                type="button"
+                                onClick={handleSave}
+                                className="text-primary-500 hover:text-primary-700 font-semibold p-5"
+                            >
+                                Guardar
+                            </button>
+                        </div>
+                        <div>
+                            <button
+                                type="button"
+                                onClick={() => onDelete(id)}
+                            >
+                                <img
+                                    src={TrashOutline}
+                                    alt="Eliminar"
+                                    className="w-5 h-5 sm:w-6 sm:h-6 opacity-50 hover:opacity-100 transition-opacity duration-300 ease-in-out"
+                                />
+                            </button>
+                        </div>
                     </div>
                 </div>
             ) : (
                 <div>
-                    <div className="flex items-start justify-between mb-2">
+                    <div className="flex items-start justify-between mb-2 text-sm md:text-lg ">
                         <table className="w-full">
                             <thead>
                                 <tr>
