@@ -1,9 +1,11 @@
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import ToggleSwitch from './ToggleSwitch'
+import { ContextApp } from '../../context/ContextApp.jsx'
 
 const Login = () => {
+  const { setUser } = useContext(ContextApp)
   const ENDPOINT = import.meta.env.VITE_API_URL
 
   const {
@@ -75,7 +77,8 @@ const Login = () => {
       }
 
       const responseData = await response.json()
-      window.sessionStorage.setItem('token', responseData.token)
+      window.sessionStorage.setItem('token', responseData.data.token)
+      setUser(responseData.data.id)
       window.alert('Usuario identificado con éxito.')
       navigate('/tasks')
     } catch (error) {
@@ -166,4 +169,4 @@ const Login = () => {
   )
 }
 
-export default Login;
+export default Login
