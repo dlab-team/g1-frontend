@@ -80,7 +80,8 @@ const Login = () => {
       window.sessionStorage.setItem('token', responseData.data.token)
       setUser(responseData.data.id)
       window.alert('Usuario identificado con éxito.')
-      navigate('/tasks')
+      console.log(responseData.data)
+      if (responseData.data.rol === '2') navigate('/tasks')
     } catch (error) {
       console.error(error)
       window.alert(
