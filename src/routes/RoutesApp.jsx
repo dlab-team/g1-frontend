@@ -6,7 +6,8 @@ import NotificationPage from '../pages/NotificationPage.jsx'
 import SignupPage from '../pages/SignupPage.jsx'
 import ForgotPasswordPage from '../pages/ForgotPasswordPage.jsx'
 import GoalsPage from '../pages/GoalsPage.jsx'
-import TaskTablePage from "../pages/TaskTablePage.jsx";
+import TaskTablePage from '../pages/TaskTablePage.jsx'
+import ProfileAdminPage from '../pages/ProfileAdminPage.jsx'
 
 const RoutesApp = () => {
   return (
@@ -20,6 +21,7 @@ const RoutesApp = () => {
 			<Route path='/forgot-password' element={<ForgotPasswordPage/>} />
 			<Route path='/goals' element={<GoalsPage/>} />
 			<Route path="/tasks" element={<TaskTablePage/>}></Route>
+			<Route path="/profileadmin" element={<ProfileAdminPage/>}></Route>
 		</Routes>
 	)
 }
