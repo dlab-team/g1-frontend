@@ -1,17 +1,27 @@
-import React from 'react'
+import { useState } from 'react'
 import SidebarComponent from '../components/Navbar/Sidebar'
 import { ChevronLeftOutline, ChevronRightOutline } from '../assets/icons/index'
 
 const GoalsPage = () => {
+  const [isSidebarMinimized, setIsSidebarMinimized] = useState(false)
+
+  const handleSidebarToggle = (isMinimized) => {
+    setIsSidebarMinimized(isMinimized)
+  }
+
   return (
     <div className='flex'>
       {/* Sidebar fijo a la izquierda */}
       <div className='fixed left-0 top-0 h-full z-10'>
-        <SidebarComponent />
+        <SidebarComponent onToggle={handleSidebarToggle} />
       </div>
 
-      {/* Contenido principal con margen izquierdo para el sidebar */}
-      <div className='flex-1 ml-16 sm:ml-20 md:ml-48 p-4 md:p-8 max-w-full'>
+      {/* Contenido principal con margen izquierdo dinámico basado en el estado del sidebar */}
+      <div
+        className={`flex-1 p-4 md:p-8 max-w-full transition-all duration-300 ${
+          isSidebarMinimized ? 'ml-60' : 'ml-28'
+        }`}
+      >
         <div className='mb-6 ml-10 pb-4 border-b border-gray-200'>
           <h1 className='font-workSans italic text-2xl sm:text-3xl font-semibold text-left truncate'>
             Objetivos
