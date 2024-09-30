@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
 import { SearchOutline1, PlusCircleOutline } from '../../assets/icons'
 import { ContextApp } from '../../context/ContextApp.jsx'
@@ -13,12 +13,13 @@ const TaskTable = () => {
   const [isFormVisible, setIsFormVisible] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [formData, setFormData] = useState({})
-  const [tasks, setTasks] = useState({})
+  const [tasks, setTasks] = useState(null)
 
   const getTasks = async (id) => {
     const params = { id }
     await axios.get(`${ENDPOINT}/jobs`, { params, headers: { Authorization: `Bearer ${token}` } })
       .then((result) => {
+        console.log(result)
         setTasks(result.data)
       })
       .catch((error) => {
@@ -55,6 +56,12 @@ const TaskTable = () => {
   const handleFormChange = (newData) => {
     setFormData(newData)
   }
+
+  useEffect(() => {
+    if (!tasks) {
+      getTasks(userId)
+    } else { console.log(tasks) }
+  }, [])
 
   return (
     <div className='flex-col w-full p-6'>
