@@ -3,7 +3,7 @@ import { ChevronLeftOutline } from '../../assets/icons'
 import { ContextApp } from '../../context/ContextApp.jsx'
 import axios from 'axios'
 
-const TaskTableForm = ({ onClose, onChange, close }) => {
+const TaskTableForm = ({ onClose, onChange, onSend }) => {
   const ENDPOINT = import.meta.env.VITE_API_URL
   const token = window.sessionStorage.getItem('token')
   const { userId } = useContext(ContextApp)
@@ -17,9 +17,12 @@ const TaskTableForm = ({ onClose, onChange, close }) => {
     user: userId
   })
   const posTasks = async (task) => {
-    await axios.post(`${ENDPOINT}/jobs`, { task, userId }, { headers: { Authorization: `Bearer ${token}` } })
+    await axios.post(`${ENDPOINT}/jobs`, { task }, { headers: { Authorization: `Bearer ${token}` } })
       .then((result) => {
-        if (result.status === 200)console.log('tarea subida')
+        if (result.status === 200) {
+          console.log('tarea subida')
+          onSend()
+        }
       })
       .catch((error) => {
         console.log(error)
@@ -29,7 +32,6 @@ const TaskTableForm = ({ onClose, onChange, close }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Datos enviados:', JSON.stringify(formData, null, 2))
-    close()
     posTasks(formData)
   }
 

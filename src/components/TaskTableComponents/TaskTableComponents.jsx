@@ -1,15 +1,16 @@
 import React, { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
-import { SearchOutline1, PlusCircleOutline } from '../../assets/icons'
+import { SearchOutline1, PlusCircleOutline, PencilOutline, TrashOutline } from '../../assets/icons'
 import { ContextApp } from '../../context/ContextApp.jsx'
 import TaskTableForm from './TaskTableForm'
 import TaskTableModal from './TaskTableModal'
+import { useNavigate } from 'react-router-dom'
 
 const TaskTable = () => {
   const ENDPOINT = import.meta.env.VITE_API_URL
   const token = window.sessionStorage.getItem('token')
   const { userId } = useContext(ContextApp)
-
+  const navigate = useNavigate()
   const [isFormVisible, setIsFormVisible] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [formData, setFormData] = useState({})
@@ -24,6 +25,20 @@ const TaskTable = () => {
       })
       .catch((error) => {
         console.log(error)
+      })
+  }
+  const deleteTask = async (id) => {
+    const params = { id }
+    await axios.delete(`${ENDPOINT}/jobs`, { params, headers: { Authorization: `Bearer ${token}` } })
+      .then((result) => {
+        if (result.status === 200) {
+          console.log('tarea borrada')
+          navigate('/tasks')
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+        console.error(error)
       })
   }
 
@@ -80,7 +95,7 @@ const TaskTable = () => {
       )}
       {isFormVisible && (
         <div className='fixed sm:top-1/2 sm:left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-50 sm:bg-white shadow-lg z-50 p-6 transition-transform duration-500 scale-100 sm:rounded-lg w-[calc(100%-32px)] h-[1024px] left-[calc(50%+38px)] top-1/2 sm:w-[521px] sm:h-[958px]'>
-          <TaskTableForm onClose={handleCloseForm} onChange={handleFormChange} close={closeModal} />
+          <TaskTableForm onClose={handleCloseForm} onChange={handleFormChange} onSend={handleCancel} />
         </div>
       )}
 
@@ -90,6 +105,34 @@ const TaskTable = () => {
             <h2 className='text-lg sm:text-xl md:text-2xl h-[40px] sm:h-[48px] font-semibold content-center sm:mb-4 text-white bg-title-500 font-workSans rounded-lg text-center'>
               Lista de deseos
             </h2>
+            {tasks && (tasks.map((task) => (
+              <div key={task.id} className='bg-white border border-gray-300 rounded-md p-4 flex items-center justify-between shadow-md'>
+                {/* Contenido del card */}
+                <div className='flex items-center space-x-2'>
+                  <div className='text-gray-800 font-semibold'>{task.cargo}</div>
+                  <div className='text-sm text-gray-500'>{task.nombre_empresa}</div>
+                </div>
+
+                {/* Acciones de editar y eliminar */}
+                <div className='flex space-x-2'>
+                  <button className='text-gray-500 hover:text-gray-700'>
+                    <img
+                      src={PencilOutline}
+                      alt='Editar'
+                      className=' w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out'
+                    />
+                  </button>
+                  <button onClick={() => deleteTask(task.id)} className='text-gray-500 hover:text-red-600'>
+                    <img
+                      src={TrashOutline}
+                      alt='Editar'
+                      className=' w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out'
+                    />
+                  </button>
+                </div>
+              </div>))
+            )}
+
             <div className='h-[36px] sm:h-[44px] mt-4 space-y-2 grid justify-items-center border border-gray-300 rounded-md'>
               <button onClick={toggleForm}><img className='size-8' src={PlusCircleOutline} alt='Agregar' /></button>
             </div>
