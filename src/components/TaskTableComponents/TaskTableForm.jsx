@@ -3,7 +3,7 @@ import { ChevronLeftOutline } from '../../assets/icons'
 import { ContextApp } from '../../context/ContextApp.jsx'
 import axios from 'axios'
 
-const TaskTableForm = ({ onClose, onChange, onSend }) => {
+const TaskTableForm = ({ onClose, onChange, onSend, onList }) => {
   const ENDPOINT = import.meta.env.VITE_API_URL
   const token = window.sessionStorage.getItem('token')
   const { userId } = useContext(ContextApp)
@@ -14,7 +14,8 @@ const TaskTableForm = ({ onClose, onChange, onSend }) => {
     location: 'local',
     jobType: 'presencial',
     description: '',
-    user: userId
+    user: userId,
+    list: onList
   })
   const posTasks = async (task) => {
     await axios.post(`${ENDPOINT}/jobs`, { task }, { headers: { Authorization: `Bearer ${token}` } })
@@ -49,7 +50,7 @@ const TaskTableForm = ({ onClose, onChange, onSend }) => {
         </button>
         <h1 className='text-center text-2xl ml-1 sm:ml-0 sm:text-4xl font-workSans italic'>Agregar Postulación</h1>
       </div>
-      <div className='flex-shrink-0 sm:w-[461px] sm:h-[90px] mt-6'>
+      <div className='sm:w-[461px] sm:h-[90px] mt-5'>
         <label className='block mb-2 mt-4 sm:mt-0 font-roboto font-medium'>Título Profesional</label>
         <input
           type='text'
@@ -60,7 +61,7 @@ const TaskTableForm = ({ onClose, onChange, onSend }) => {
           className='border border-primary-500 p-2 w-full rounded-md bg-gray-50 sm:bg-white'
         />
       </div>
-      <div className='flex-shrink-0 sm:w-[461px] sm:h-[90px]'>
+      <div className='sm:w-[461px] sm:h-[90px]'>
         <label className='block mb-2 mt-4 sm:mt-0 font-roboto font-medium'>Nombre de la Compañía</label>
         <input
           type='text'
@@ -103,14 +104,14 @@ const TaskTableForm = ({ onClose, onChange, onSend }) => {
           className='border border-primary-500 p-2 w-full rounded-md bg-gray-50 sm:bg-white'
         >
           <option value='presencial'>Presencial</option>
-          <option value='online'>Híbrido</option>
+          <option value='hibrido'>Híbrido</option>
         </select>
       </div>
       <div className='flex-shrink-0 sm:w-[461px] sm:h-[218px]'>
         <label className='block mb-2 mt-4 sm:mt-0 font-roboto font-medium'>Descripción del trabajo</label>
         <textarea
           name='description'
-          className='border border-primary-500 p-2 w-full h-[218px] rounded-md bg-gray-50 sm:bg-white'
+          className='border border-primary-500 p-2 w-full h-[100px] rounded-md bg-gray-50 sm:bg-white'
           placeholder='Descripción del Puesto'
           value={formData.description}
           onChange={handleInputChange}

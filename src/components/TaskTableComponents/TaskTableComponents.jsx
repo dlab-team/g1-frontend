@@ -14,7 +14,14 @@ const TaskTable = () => {
   const [isFormVisible, setIsFormVisible] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [formData, setFormData] = useState({})
-  const [tasks, setTasks] = useState(null)
+  const [tasks, setTasks] = useState([])
+  const [list, setList] = useState(null)
+
+  const filterList = (numberList) => tasks.filter(task => task.lista_id === numberList) || []
+  const deseos = filterList('1')
+  const postulados = filterList('2')
+  const ofertas = filterList('3')
+  const rechazados = filterList('4')
 
   const getTasks = async (id) => {
     const params = { id }
@@ -42,8 +49,9 @@ const TaskTable = () => {
       })
   }
 
-  const toggleForm = () => {
+  const toggleForm = (numberList) => {
     setIsFormVisible(!isFormVisible)
+    setList(numberList)
   }
 
   const openModal = () => {
@@ -73,10 +81,11 @@ const TaskTable = () => {
   }
 
   useEffect(() => {
-    if (!tasks) {
+    if (tasks.length === 0) {
       getTasks(userId)
-    } else { console.log(tasks) }
-  }, [])
+      console.log(deseos)
+    } else { console.log(deseos) }
+  }, [tasks])
 
   return (
     <div className='flex-col w-full p-6'>
@@ -95,7 +104,7 @@ const TaskTable = () => {
       )}
       {isFormVisible && (
         <div className='fixed sm:top-1/2 sm:left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-50 sm:bg-white shadow-lg z-50 p-6 transition-transform duration-500 scale-100 sm:rounded-lg w-[calc(100%-32px)] h-[1024px] left-[calc(50%+38px)] top-1/2 sm:w-[521px] sm:h-[958px]'>
-          <TaskTableForm onClose={handleCloseForm} onChange={handleFormChange} onSend={handleCancel} />
+          <TaskTableForm onClose={handleCloseForm} onChange={handleFormChange} onSend={handleCancel} onList={list} />
         </div>
       )}
 
@@ -105,7 +114,7 @@ const TaskTable = () => {
             <h2 className='text-lg sm:text-xl md:text-2xl h-[40px] sm:h-[48px] font-semibold content-center sm:mb-4 text-white bg-title-500 font-workSans rounded-lg text-center'>
               Lista de deseos
             </h2>
-            {tasks && (tasks.map((task) => (
+            {tasks && (deseos.map((task) => (
               <div key={task.id} className='bg-white border border-gray-300 rounded-md p-4 flex items-center justify-between shadow-md'>
                 {/* Contenido del card */}
                 <div className='flex items-center space-x-2'>
@@ -134,7 +143,7 @@ const TaskTable = () => {
             )}
 
             <div className='h-[36px] sm:h-[44px] mt-4 space-y-2 grid justify-items-center border border-gray-300 rounded-md'>
-              <button onClick={toggleForm}><img className='size-8' src={PlusCircleOutline} alt='Agregar' /></button>
+              <button onClick={() => toggleForm(1)}><img className='size-8' src={PlusCircleOutline} alt='Agregar' /></button>
             </div>
           </div>
 
@@ -142,8 +151,35 @@ const TaskTable = () => {
             <h2 className='text-lg sm:text-xl md:text-2xl h-[40px] sm:h-[48px] font-semibold content-center sm:mb-4 text-white bg-primary-500 font-workSans rounded-lg text-center'>
               Postulados
             </h2>
+            {tasks && (postulados.map((task) => (
+              <div key={task.id} className='bg-white border border-gray-300 rounded-md p-4 flex items-center justify-between shadow-md'>
+                {/* Contenido del card */}
+                <div className='flex items-center space-x-2'>
+                  <div className='text-gray-800 font-semibold'>{task.cargo}</div>
+                  <div className='text-sm text-gray-500'>{task.nombre_empresa}</div>
+                </div>
+
+                {/* Acciones de editar y eliminar */}
+                <div className='flex space-x-2'>
+                  <button className='text-gray-500 hover:text-gray-700'>
+                    <img
+                      src={PencilOutline}
+                      alt='Editar'
+                      className=' w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out'
+                    />
+                  </button>
+                  <button onClick={() => deleteTask(task.id)} className='text-gray-500 hover:text-red-600'>
+                    <img
+                      src={TrashOutline}
+                      alt='Editar'
+                      className=' w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out'
+                    />
+                  </button>
+                </div>
+              </div>))
+            )}
             <div className='h-[36px] sm:h-[44px] mt-4 space-y-2 grid justify-items-center border border-gray-300 rounded-md'>
-              <button onClick={toggleForm}><img className='size-8' src={PlusCircleOutline} alt='Agregar' /></button>
+              <button onClick={() => toggleForm(2)}><img className='size-8' src={PlusCircleOutline} alt='Agregar' /></button>
             </div>
           </div>
 
@@ -151,8 +187,35 @@ const TaskTable = () => {
             <h2 className='text-lg sm:text-xl md:text-2xl h-[40px] sm:h-[48px] font-semibold content-center sm:mb-4 text-white bg-primary-500 font-workSans rounded-lg text-center'>
               Oferta
             </h2>
+            {tasks && (ofertas.map((task) => (
+              <div key={task.id} className='bg-white border border-gray-300 rounded-md p-4 flex items-center justify-between shadow-md'>
+                {/* Contenido del card */}
+                <div className='flex items-center space-x-2'>
+                  <div className='text-gray-800 font-semibold'>{task.cargo}</div>
+                  <div className='text-sm text-gray-500'>{task.nombre_empresa}</div>
+                </div>
+
+                {/* Acciones de editar y eliminar */}
+                <div className='flex space-x-2'>
+                  <button className='text-gray-500 hover:text-gray-700'>
+                    <img
+                      src={PencilOutline}
+                      alt='Editar'
+                      className=' w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out'
+                    />
+                  </button>
+                  <button onClick={() => deleteTask(task.id)} className='text-gray-500 hover:text-red-600'>
+                    <img
+                      src={TrashOutline}
+                      alt='Editar'
+                      className=' w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out'
+                    />
+                  </button>
+                </div>
+              </div>))
+            )}
             <div className='h-[36px] sm:h-[44px] mt-4 space-y-2 grid justify-items-center border border-gray-300 rounded-md'>
-              <button onClick={toggleForm}><img className='size-8' src={PlusCircleOutline} alt='Agregar' /></button>
+              <button onClick={() => toggleForm(3)}><img className='size-8' src={PlusCircleOutline} alt='Agregar' /></button>
             </div>
           </div>
 
@@ -160,8 +223,35 @@ const TaskTable = () => {
             <h2 className='text-lg sm:text-xl md:text-2xl h-[40px] sm:h-[48px] font-semibold content-center sm:mb-4 text-white bg-primary-500 font-workSans rounded-lg text-center'>
               Rechazado
             </h2>
+            {tasks && (rechazados.map((task) => (
+              <div key={task.id} className='bg-white border border-gray-300 rounded-md p-4 flex items-center justify-between shadow-md'>
+                {/* Contenido del card */}
+                <div className='flex items-center space-x-2'>
+                  <div className='text-gray-800 font-semibold'>{task.cargo}</div>
+                  <div className='text-sm text-gray-500'>{task.nombre_empresa}</div>
+                </div>
+
+                {/* Acciones de editar y eliminar */}
+                <div className='flex space-x-2'>
+                  <button className='text-gray-500 hover:text-gray-700'>
+                    <img
+                      src={PencilOutline}
+                      alt='Editar'
+                      className=' w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out'
+                    />
+                  </button>
+                  <button onClick={() => deleteTask(task.id)} className='text-gray-500 hover:text-red-600'>
+                    <img
+                      src={TrashOutline}
+                      alt='Editar'
+                      className=' w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out'
+                    />
+                  </button>
+                </div>
+              </div>))
+            )}
             <div className='h-[36px] sm:h-[44px] mt-4 space-y-2 grid justify-items-center border border-gray-300 rounded-md'>
-              <button onClick={toggleForm}><img className='size-8' src={PlusCircleOutline} alt='Agregar' /></button>
+              <button onClick={() => toggleForm(4)}><img className='size-8' src={PlusCircleOutline} alt='Agregar' /></button>
             </div>
           </div>
         </div>
