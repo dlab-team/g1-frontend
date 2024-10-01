@@ -1,10 +1,10 @@
 import './App.css'
 import RoutesApp from './routes/RoutesApp'
 
-function App() {
+function App () {
   return (
     <>
-        <RoutesApp/>
+      <RoutesApp />
     </>
   )
 }

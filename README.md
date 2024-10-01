@@ -25,14 +25,15 @@ npm run dev
 - JS
 - Vite 5.4.0
 - React 18.3.1
-- Tailwind 3.4.10
-- React 18.3.1
 - React-dom 18.3.1
 - React-hook-form: 7.53.0
+- React-router-dom: 6.26.0
+- React-chartjs-2: 5.2.0
+- React-icons: 5.3.0
 - Node 20.13.1
-- React-router-dom": "6.26.0"
-- React-icons": "5.3.0"
-- Tailwindcss": "3.4.10"
+- Tailwind 3.4.10
+- Axios: 1.7.5
+- Chart.js: 4.4.4
 
 ## Authors
 
