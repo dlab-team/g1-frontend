@@ -1,21 +1,15 @@
-import { useState, useEffect, useContext } from "react";
-import axios from "axios"; // axios importado
-import ExperienceCard from '../../components/profileComponents/ExperienceCard.jsx';
-import PersonalDataForm from '../../components/profileComponents/PersonalDataForm.jsx';
-import PresentationCard from '../../components/profileComponents/PresentationCard.jsx';
-import { PencilOutline, Email, Phone } from '../../assets/icons/index.jsx';
-import SidebarComponent from "../../components/Navbar/Sidebar.jsx";
-import imgProfileFigma from '../../assets/images/foto_perfil_figma.jpeg';
-import imgTitleFigma from '../../assets/images/title.png'
-import { ContextApp } from '../../context/ContextApp.jsx';
+import React, { useState } from 'react';
+import ExperienceCard from '../components/profileComponents/ExperienceCard.jsx';
+import PersonalDataForm from '../components/profileComponents/PersonalDataForm.jsx';
+import PresentationCard from '../components/profileComponents/PresentationCard.jsx';
+import { PencilOutline, Email, Phone } from '../assets/icons/index.jsx';
+import SidebarComponent from "../components/Navbar/Sidebar.jsx";
+import imgProfileFigma from '../assets/images/foto_perfil_figma.jpeg';
 
 const ProfilePage = () => {
-
-    const {userId} = useContext(ContextApp); 
-    console.log('ID del usuario desde el contexto:', userId);
     const [showPersonalDataForm, setShowPersonalDataForm] = useState(false);
     const [profileImage, setProfileImage] = useState(imgProfileFigma);
-    const [titleImage, setTitleImage] = useState(imgTitleFigma);
+
     const [profileData, setProfileData] = useState({
         nombre: "Sergio",
         apellido: "Muñoz García",
@@ -24,62 +18,15 @@ const ProfilePage = () => {
         pais: "Santiago de Chile",
     });
 
+    const [isEditingExperiences, setIsEditingExperiences] = useState(false);
     const [experiences, setExperiences] = useState([
         { id: 1, role: "Ingeniero de Sistemas", organization: "Webhelp", period: "Diciembre 2022 - Noviembre 2023" },
         { id: 2, role: "Analista de Marketing", organization: "Webhelp", period: "Enero 2022 - Octubre 2022" },
     ]);
 
-    const [isEditingExperiences, setIsEditingExperiences] = useState(false);
-
-    const ENDPOINT = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
-    // obtener token 
-    const token = sessionStorage.getItem('token');
-
-    // obtener  datos de perfil desde back
-    const fetchProfileData = async () => {
-        try {
-            const response = await axios.get(`${ENDPOINT}/user/${userId}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            setProfileData(response.data);
-        } catch (error) {
-            console.error('Error al obtener el perfil:', error);
-        }
-    };
-
-    // obtener experiencias desde back
-    const fetchExperiences = async () => {
-        try {
-            const response = await axios.get(`${ENDPOINT}/api/experiencias`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            setExperiences(response.data);
-        } catch (error) {
-            console.error('Error al obtener las experiencias:', error);
-        }
-    };
-
-    // useEffect para obtener datos al cargar pag
-    useEffect(() => {
-        console.log('ID del usuario desde el contexto:', userId);
-        const fetchAllData = async () => {
-            if (userId) {
-                await fetchProfileData(setProfileData);
-                await fetchExperiences(setExperiences);
-            }
-        };
-
-        fetchAllData();
-    }, [userId]);
-
     const [errorMessage, setErrorMessage] = useState("");
 
-    // actualiza datos de experiencia 
+    // Función que actualiza los datos de cada experiencia en tiempo real
     const handleExperienceChange = (id, fieldName, fieldValue) => {
         setExperiences((prevExperiences) =>
             prevExperiences.map(exp =>
@@ -88,7 +35,7 @@ const ProfilePage = () => {
         );
     };
 
-    // abrir form de datos personales
+    // Función para abrir el formulario de edición de datos personales
     const handleEditPersonalDataClick = () => {
         setShowPersonalDataForm(true);
     };
@@ -101,65 +48,70 @@ const ProfilePage = () => {
         }
     };
 
-    // guardar los datos de cada experiencia
-    const handleSaveExperience = async (id, updatedData) => {
-        try {
-            const response = await axios.put(`${ENDPOINT}/api/experiencias/${id}`, updatedData);
-            const updatedExperiences = experiences.map(exp => exp.id === id ? response.data : exp);
-            setExperiences(updatedExperiences);
-        } catch (error) {
-            console.error('Error al actualizar la experiencia:', error);
-            alert('No se pudo actualizar la experiencia.');
-        }
-    };
-
-    // dalete para eliminar experiencia
-    const handleDeleteExperience = async (id) => {
-        if (window.confirm("¿Estás seguro de que deseas eliminar esta experiencia?")) {
-            try {
-                await axios.delete(`${ENDPOINT}/api/experiencias/${id}`);
-                setExperiences(experiences.filter(exp => exp.id !== id));
-            } catch (error) {
-                console.error('Error al eliminar la experiencia:', error);
-                alert('No se pudo eliminar la experiencia.');
-            }
-        }
-    };
-
-    //actualiza perfil
     const handleUpdateProfile = async (newData) => {
-        console.log('ID del usuario:', userId);
         try {
-            const response = await axios.put(`${ENDPOINT}/user/${userId}`, newData, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/update-profile`, {
+                method: 'PUT',
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
                 },
+                body: JSON.stringify(newData),
             });
-            setProfileData(response.data);
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Error al actualizar el perfil.');
+            }
+
+            const updatedProfile = await response.json();
+            setProfileData(updatedProfile);
+            setShowPersonalDataForm(false);
             alert('Perfil actualizado con éxito.');
         } catch (error) {
             console.error('Error al actualizar el perfil:', error);
-            alert('No se pudo actualizar el perfil.');
+            alert('No se pudo actualizar el perfil. Por favor, intenta de nuevo.');
         }
     };
 
-    //  añadir nueva experiencia
-    const handleAddExperience = async () => {
-        const newExperience = { role: "", organization: "", period: "" };
-        try {
-            const response = await axios.post(`${ENDPOINT}/api/experiencias`, newExperience);
-            setExperiences([...experiences, response.data]);
-        } catch (error) {
-            console.error('Error al añadir la experiencia:', error);
-            alert('No se pudo añadir la experiencia.');
+    // Función para guardar los datos de cada tarjeta de experiencia
+    const handleSaveExperience = (id, updatedData) => {
+        const updatedExperiences = experiences.map(exp =>
+            exp.id === id ? { ...exp, ...updatedData } : exp
+        );
+        setExperiences(updatedExperiences);
+    };
+
+
+    // Función para eliminar una experiencia
+    const handleDeleteExperience = (id) => {
+        if (window.confirm("¿Estás seguro de que deseas eliminar esta experiencia?")) {
+            setExperiences(experiences.filter(exp => exp.id !== id));
         }
     };
 
+
+    // Función para añadir una nueva experiencia
+    const handleAddExperience = () => {
+        const lastExperience = experiences[experiences.length - 1];
+
+        if (lastExperience && (lastExperience.role === "" || lastExperience.organization === "" || lastExperience.period === "")) {
+            setErrorMessage("Por favor, completa todos los campos antes de agregar una nueva experiencia.");
+            return;
+        }
+
+        const newExperience = { id: Date.now(), role: "", organization: "", period: "", isNew: true };
+        setExperiences([...experiences, newExperience]);
+        setErrorMessage(""); // Limpia el mensaje de error
+    };
+
+    // Función para alternar entre modo de edición y no edición
     const toggleEditExperiences = () => {
         setIsEditingExperiences(!isEditingExperiences);
     };
 
     const handleSaveAll = () => {
+        // Verificar si alguna experiencia tiene campos vacíos
         const incompleteExperience = experiences.find(exp => {
             console.log('Role:', exp.role);
             console.log('Organization:', exp.organization);
@@ -181,9 +133,9 @@ const ProfilePage = () => {
     return (
         <div className="min-h-screen w-auto lg:pr-36 lg:pl-72 sm:pr-12 sm:pl-60 pt-12 pb-12 pr-4 pl-32">
             <SidebarComponent />
-
+    
             <div className="flex justify-start pb-12 w-28 sm:w-40 md:w-52" id="perfil-title">
-                <img src={titleImage} alt="title" />
+                <img src="src/assets/images/title.png" alt="title" />
             </div>
 
             {/* Información del perfil */}
@@ -271,7 +223,7 @@ const ProfilePage = () => {
                     )}
                 </div>
 
-                {Array.isArray(experiences) && experiences.map(exp => (
+                {experiences.map((exp) => (
                     <ExperienceCard
                         key={exp.id}
                         id={exp.id}
