@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react'
 import { FaChevronLeft } from "react-icons/fa";
 import { CiUser } from "react-icons/ci";
 
+
 const Activities = () => {
+
+    
     const [users, setUsers] = useState([])
-    const ENDPOINT = '/FakeDataActivities.json'
+    const ENDPOINT = './FakeDataActivities.json'
 
     const dateRange = 'Lunes 03 junio, 2024 - Lunes 10 junio, 2024'
 

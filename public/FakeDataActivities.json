@@ -1,0 +1,63 @@
+[
+    {
+      "name": "Juan",
+      "lastName": "Pérez",
+      "categorie": "postulacion",
+      "title": "Postular",
+      "completed": true,
+      "professionalTitle": "Ingeniero en Computación",
+      "company": "Tech Solutions",
+      "dateStart": "2024-01-15",
+      "dateCreation": "2023-12-10",
+      "active": true
+    },
+    {
+      "name": "María",
+      "lastName": "González",
+      "categorie": "entrevista",
+      "title": "entrevista",
+      "completed": false,
+      "professionalTitle": "Licenciada en Informática",
+      "company": "Innovatech",
+      "dateStart": "2024-03-01",
+      "dateCreation": "2024-02-15",
+      "active": false
+    },
+    {
+      "name": "Carlos",
+      "lastName": "Ramírez",
+      "categorie": "evento networking",
+      "title": "evento networking",
+      "completed": true,
+      "professionalTitle": "Desarrollador de Software",
+      "company": "DataCorp",
+      "dateStart": "2023-11-10",
+      "dateCreation": "2023-10-05",
+      "active": true
+    },
+    {
+      "name": "Ana",
+      "lastName": "López",
+      "categorie": "postulacion",
+      "title": "postular",
+      "completed": false,
+      "professionalTitle": "Ingeniera de Sistemas",
+      "company": "CloudTech",
+      "dateStart": "2024-05-22",
+      "dateCreation": "2024-04-12",
+      "active": true
+    },
+    {
+      "name": "Pedro",
+      "lastName": "Fernández",
+      "categorie": "entrevista",
+      "title": "entrevista",
+      "completed": true,
+      "professionalTitle": "Diseñador Gráfico especializado en Web",
+      "company": "Creative Minds",
+      "dateStart": "2024-06-01",
+      "dateCreation": "2024-05-15",
+      "active": false
+    }
+  ]
+  

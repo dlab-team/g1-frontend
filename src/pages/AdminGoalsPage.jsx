@@ -1,4 +1,4 @@
-import NavbarAdmin from "../components/Navbar/NavbarAdmin";
+import NavbarAdmin from "../components/Admin/NavbarAdmin";
 
 const AdminGoalsPage = () => {
     return (
