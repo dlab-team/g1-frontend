@@ -34,6 +34,7 @@ npm run dev
 - Tailwind 3.4.10
 - Axios: 1.7.5
 - Chart.js: 4.4.4
+- Chartjs-plugin-datalabels: 2.2.0
 
 ## Authors
 
