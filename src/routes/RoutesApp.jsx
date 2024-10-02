@@ -1,7 +1,7 @@
 import NotFoundPage from '../pages/NotFoundPage'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import LoginPage from '../pages/LoginPage'
-import ProfilePage from '../pages/profile/ProfilePage.jsx'
+import ProfilePage from '../pages/ProfilePage.jsx'
 import NotificationPage from '../pages/NotificationPage.jsx'
 import SignupPage from '../pages/SignupPage.jsx'
 import ForgotPasswordPage from '../pages/ForgotPasswordPage.jsx'
@@ -10,7 +10,7 @@ import MetricsPage from '../pages/Metrics.jsx'
 import TaskTablePage from "../pages/TaskTablePage.jsx";
 
 const RoutesApp = () => {
-  return (
+    return (
 		<Routes>
 			<Route path='*' element={<NotFoundPage/>}></Route>
 			<Route path='/' element={<Navigate to='/login' />}></Route>

@@ -1,27 +1,29 @@
 import { useState } from 'react';
 
-const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
-    const [formData, setFormData] = useState(initialData);
+const PersonalDataForm = ({ initialData = {}, onUpdate, onClose }) => {
+    const [formData, setFormData] = useState({
+        nombre: initialData.nombre || '',
+        apellido: initialData.apellido || '',
+        email: initialData.email || '',
+        telefono: initialData.telefono || '',
+        pais: initialData.pais || ''
+    });
     const [errors, setErrors] = useState({});
 
     const validateForm = () => {
         const newErrors = {};
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const phoneRegex = /^\+?\d{1,4}?[\s.-]?\(?\d{1,4}?\)?[\s.-]?\d{1,4}[\s.-]?\d{1,9}$/;
+        const validators = {
+            nombre: (value) => value ? "" : "El nombre es obligatorio.",
+            apellido: (value) => value ? "" : "El apellido es obligatorio.",
+            email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "El email no es válido.",
+            telefono: (value) => /^\+?\d{1,4}?[\s.-]?\(?\d{1,4}?\)?[\s.-]?\d{1,4}[\s.-]?\d{1,9}$/.test(value) ? "" : "El teléfono no es válido.",
+            pais: (value) => value ? "" : "El país es obligatorio."
+        };
 
-        if (!formData.nombre) newErrors.nombre = "El nombre es obligatorio.";
-        if (!formData.apellido) newErrors.apellido = "El apellido es obligatorio.";
-        if (!formData.email) {
-            newErrors.email = "El email es obligatorio.";
-        } else if (!emailRegex.test(formData.email)) {
-            newErrors.email = "El email no es válido.";
-        }
-        if (!formData.telefono) {
-            newErrors.telefono = "El teléfono es obligatorio.";
-        } else if (!phoneRegex.test(formData.telefono)) {
-            newErrors.telefono = "El teléfono no es válido.";
-        }
-        if (!formData.pais) newErrors.pais = "El país es obligatorio.";
+        Object.keys(formData).forEach(field => {
+            const error = validators[field] && validators[field](formData[field]);
+            if (error) newErrors[field] = error;
+        });
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -50,50 +52,25 @@ const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
             <div className="bg-white p-8 rounded-lg shadow-lg w-96 ">
                 <h2 className="text-lg font-bold mb-4">Datos Personales</h2>
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label className="block text-gray-700">Nombre</label>
-                        <input
-                            type="text"
-                            name="nombre"
-                            value={formData.nombre}
-                            onChange={handleChange}
-                            className="w-full p-2 border border-gray-300 rounded"
-                        />
-                        {errors.nombre && <p className="text-red-500 text-sm">{errors.nombre}</p>}
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700">Apellido</label>
-                        <input
-                            type="text"
-                            name="apellido"
-                            value={formData.apellido}
-                            onChange={handleChange}
-                            className="w-full p-2 border border-gray-300 rounded"
-                        />
-                        {errors.apellido && <p className="text-red-500 text-sm">{errors.apellido}</p>}
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700">Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            className="w-full p-2 border border-gray-300 rounded"
-                        />
-                        {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700">Teléfono</label>
-                        <input
-                            type="text"
-                            name="telefono"
-                            value={formData.telefono}
-                            onChange={handleChange}
-                            className="w-full p-2 border border-gray-300 rounded"
-                        />
-                        {errors.telefono && <p className="text-red-500 text-sm">{errors.telefono}</p>}
-                    </div>
+                    {[
+                        { label: "Nombre", name: "nombre", type: "text" },
+                        { label: "Apellido", name: "apellido", type: "text" },
+                        { label: "Email", name: "email", type: "email" },
+                        { label: "Teléfono", name: "telefono", type: "text" }
+                    ].map(({ label, name, type }) => (
+                        <div className="mb-4" key={name}>
+                            <label className="block text-gray-700">{label}</label>
+                            <input
+                                type={type}
+                                name={name}
+                                value={formData[name]}
+                                onChange={handleChange}
+                                className="w-full p-2 border border-gray-300 rounded"
+                            />
+                            {errors[name] && <p className="text-red-500 text-sm">{errors[name]}</p>}
+                        </div>
+                    ))}
+
                     <div className="mb-4">
                         <label className="block text-gray-700">País</label>
                         <select
@@ -103,25 +80,31 @@ const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
                             className="w-full p-2 border border-gray-300 rounded"
                         >
                             <option value="">Seleccionar país</option>
-                            <option value="Chile">Santiago de Chile</option>
+                            <option value="Chile">Chile</option>
                             <option value="Argentina">Argentina</option>
                             <option value="Peru">Perú</option>
-                            {/* Agrega otras opciones según la DB */}
+                            <option value="Venezuela">Venezuela</option>
+                            <option value="México">México</option>
+                            <option value="Bolivia">Bolivia</option>
+                            <option value="Paraguay">Paraguay</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="España">España</option>
+                            <option value="Otro">Otro</option>
                         </select>
                         {errors.pais && <p className="text-red-500 text-sm">{errors.pais}</p>}
                     </div>
+
                     <div className="flex justify-end">
                         <button
                             type="submit"
-                            className="px-4 py-2 ext-primary-500 hover:text-primary-700 font-semibold"
-                            disabled={Object.keys(errors).length > 0}
+                            className="px-4 py-2 text-primary-500 hover:text-primary-700 font-semibold"
                         >
                             Guardar
                         </button>
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-4 py-2 ext-primary-500 hover:text-primary-700 font-semibold"
+                            className="px-4 py-2 text-primary-500 hover:text-primary-700 font-semibold"
                         >
                             Cancelar
                         </button>
@@ -133,4 +116,3 @@ const PersonalDataForm = ({ initialData, onUpdate, onClose }) => {
 };
 
 export default PersonalDataForm;
-
