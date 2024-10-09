@@ -41,11 +41,11 @@ const Activities = () => {
   }
 
   return (
-    <div className='flex'>
-      <div className='w-16 sm:w-24 md:w-64 fixed left-0 top-0 h-full z-10 bg-white'>
+    <div className='flex h-screen'>
+      <div className='w-16 sm:w-24 fixed left-0 top-0 h-full z-10 bg-white'>
         <SidebarComponent />
       </div>
-      <div className='h-screen w-full flex flex-col p-8'>
+      <div className='h-screen w-full flex flex-col p-8 ml-16 sm:ml-24'>
         <h1 className='text-center font-bold italic text-3xl text-primary-500'>Actividades solo para creación de archivo</h1>
         <div className='w-full flex items-center justify-between pt-6'>
           <div className='flex items-center gap-2'>
