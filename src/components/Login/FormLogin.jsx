@@ -108,7 +108,7 @@ const Login = () => {
       <form className='flex flex-col gap-1' onSubmit={handleSubmit(onSubmit)}>
         <p className='text-sm font-roboto'>Correo electrónico</p>
         <input
-          className='w-full px-1 py-1 border-2 border-gray-300 rounded-md'
+          className='w-full px-1 py-1 border-2 border-grey rounded-md'
           type='email'
           {...register('email', { required: true })}
           placeholder='correo@mail.com'
@@ -119,7 +119,7 @@ const Login = () => {
 
         <p className='text-sm font-roboto'>Contraseña</p>
         <input
-          className='w-full px-1 py-1 border-2 border-gray-300 rounded-md'
+          className='w-full px-1 py-1 border-2 border-gray rounded-md'
           type='password'
           {...register('password', { required: true, minLength: 8 })}
           placeholder='Ingresa tu contraseña'
@@ -157,7 +157,7 @@ const Login = () => {
               <span
                 onClick={goToSignUp}
                 className='font-medium font-workSans
-                         cursor-pointer text-primary-500'
+                          cursor-pointer text-primary-500'
               >
                 Regístrate
               </span>{' '}
