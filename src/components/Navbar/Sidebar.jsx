@@ -7,6 +7,7 @@ import { BiBell as BellIcon } from 'react-icons/bi'
 import {
   HomeOutline,
   TrendingUpOutline,
+  CalendarOutline,
   LogoutOutline,
   ChartBarOutline
 } from '../../assets/icons'
@@ -80,6 +81,22 @@ const SidebarComponent = () => {
                     className='w-6 h-6 mr-2 fill-current text-white' // Aplica color blanco
                   />
                   {isMinimized && <span>Objetivos</span>}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to='/activities'
+                  className={`flex py-2 px-4 rounded hover:bg-primary-600 ${
+                    isMinimized ? '' : 'justify-center'
+                  }`}
+                >
+                  <img
+                    title='Actividades'
+                    src={CalendarOutline}
+                    alt='actividades'
+                    className='w-6 h-6 mr-2 fill-current text-white'
+                  />
+                  {isMinimized && <span>Actividades</span>}
                 </Link>
               </li>
               <li>
