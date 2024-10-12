@@ -7,13 +7,49 @@ import SidebarComponent from '../components/Navbar/Sidebar'
 
 const NotificationPage = () => {
   const [notifications, setNotifications] = useState([])
+  const [notificationsEnabled, setNotificationsEnabled] = useState(true)
 
   useEffect(() => {
-    setNotifications(notificationsData.sections)
+    setNotifications(notificationsData.sections);
   }, [])
 
+  const handleToggleNotifications = () => {
+    setNotificationsEnabled((prevEnabled) => !prevEnabled)
+    console.log(
+      notificationsEnabled
+        ? 'Notificaciones desactivadas'
+        : 'Notificaciones activadas'
+    )
+  };
+
   const handleMarkAsRead = () => {
-    console.log('Marcar todo como leído')
+    const updatedNotifications = notifications.map((section) => ({
+      ...section,
+      notifications: section.notifications.map((notification) => ({
+        ...notification,
+        read: true,
+      })),
+    }));
+    setNotifications(updatedNotifications);
+    console.log('Todas las notificaciones marcadas como leídas')
+  }
+
+  const handleDoubleClick = (sectionIndex, notificationIndex) => {
+    const updatedNotifications = notifications.map((section, secIdx) => {
+      if (secIdx === sectionIndex) {
+        return {
+          ...section,
+          notifications: section.notifications.map((notification, notiIdx) => {
+            if (notiIdx === notificationIndex) {
+              return { ...notification, read: true };
+            }
+            return notification;
+          }),
+        }
+      }
+      return section
+    })
+    setNotifications(updatedNotifications)
   }
 
   return (
@@ -29,27 +65,35 @@ const NotificationPage = () => {
           <h1 className='font-workSans italic text-3xl font-semibold text-center tablet:text-left'>
             Notificaciones
           </h1>
-          <div className='hidden tablet:block'>
-            <ToggleButton />
+
+          <div className='block'>
+            <ToggleButton
+              onClick={handleToggleNotifications}
+              isEnabled={notificationsEnabled}
+            />
           </div>
         </div>
-        <div className='flex justify-end hidden tablet:block'>
+
+        <div className='flex justify-end block'>
           <MarkAsReadButton onClick={handleMarkAsRead} />
         </div>
         <div className='space-y-4'>
-          {notifications.map((section, index) => (
-            <div key={index}>
+          {notifications.map((section, sectionIndex) => (
+            <div key={sectionIndex}>
               <h2 className='text-lg font-semibold mb-4 border-b border-gray-200 pb-2'>
                 {section.title}
               </h2>
               <div className='space-y-4'>
-                {section.notifications.map((notification, idx) => (
+                {section.notifications.map((notification, notificationIndex) => (
                   <NotificationCard
-                    key={idx}
+                    key={notificationIndex}
                     title={notification.title}
                     description={notification.description}
                     time={notification.time}
-                    isHighlighted={index < 2 && idx < 2}
+                    isHighlighted={!notification.read}
+                    onDoubleClick={() =>
+                      handleDoubleClick(sectionIndex, notificationIndex)
+                    }
                   />
                 ))}
               </div>
@@ -58,7 +102,7 @@ const NotificationPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NotificationPage;
+export default NotificationPage
