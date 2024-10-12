@@ -11,8 +11,8 @@ const AdminGoalsPage = () => {
                 <div className='flex-1 ml-16 sm:ml-20 md:ml-48 p-4 md:p-8 max-w-full'>
                     <div className='mb-6 ml-10 pb-4 border-b border-gray-200'>
                         <h1 className='font-workSans italic text-2xl sm:text-3xl font-semibold text-center truncate text-primary-500'>
-                            Objetivos
-                        </h1>
+                        Objetivos
+                    </h1>
                     </div>
                     <div className='flex'>
                         <div className='flex-auto text-left'>

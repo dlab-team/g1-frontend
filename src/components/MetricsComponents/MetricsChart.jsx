@@ -19,16 +19,16 @@ const MetricsChart = () => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 640)
     }
-    handleResize()
-    window.addEventListener('resize', handleResize)
+    handleResize();
+    window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // Definir etiquetas basadas en si es móvil o no
   const labels = isMobile
-    ? ['10 jun,24', '11 jun,24', '12 jun,24', '13 jun,24', '14 jun,24,24', '15 jun,24', '16 jun,24']
-    : ['Lunes 10 jun,24', 'Ma 11 jun,24', 'Mie 12 jun,24', 'Jue 13 jun,24', 'Vie 14 jun,24', 'Sáb 15 jun,24', 'Dom 16 jun,24']
+    ? ['10 jun', '11 jun', '12 jun', '13 jun', '14 jun', '15 jun', '16 jun']
+    : ['Lunes 10 jun,24', 'Ma 11 jun,24', 'Mie 12 jun,24', 'Jue 13 jun,24', 'Vie 14 jun,24', 'Sáb 15 jun,24', 'Dom 16 jun,24'];
 
+  // Datos del gráfico
   const data = {
     labels: labels,
     datasets: [
@@ -50,11 +50,13 @@ const MetricsChart = () => {
     ]
   }
 
+  // Opciones del gráfico
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'right',
+        position: isMobile ? 'bottom' : 'right',
         labels: {
           padding: 20,
           boxWidth: 12
@@ -77,7 +79,7 @@ const MetricsChart = () => {
   }
 
   return (
-    <div className='p-4 sm:p-6 bg-white rounded-lg shadow-md w-full max-w-full'>
+    <div className='p-4 sm:p-6 bg-white rounded-lg shadow-md'>
       <div className='flex flex-col space-y-2 mb-4'>
         <h2 className='text-base sm:text-lg font-workSans font-semibold italic'>
           Actividades por categoría
@@ -94,9 +96,11 @@ const MetricsChart = () => {
           </button>
         </div>
       </div>
-      <Bar data={data} options={options} />
+
+      <div className='relative h-64 sm:h-96'>
+        <Bar data={data} options={options} />
+      </div>
     </div>
-  )
-}
+  )}
 
 export default MetricsChart
