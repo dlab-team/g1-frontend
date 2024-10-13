@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import SidebarComponent from '../components/Navbar/Sidebar'
 import GoalCard from '../components/GoalsComponents/GoalCard'
-import AddApplication from '../components/GoalsComponents/AddApplication'
+import TaskTableForm from '../components/TaskTableComponents/TaskTableForm'
 
 const GoalsPage = () => {
   const [isSidebarMinimized, setIsSidebarMinimized] = useState(false)
   const [isAddingApplication, setIsAddingApplication] = useState(false)
 
   const handleSidebarToggle = (isMinimized) => {
-    setIsSidebarMinimized(isMinimized)
-  }
+    setIsSidebarMinimized(isMinimized);
+  };
 
   const goals = [
     {
@@ -24,7 +24,7 @@ const GoalsPage = () => {
       startDate: '01 de julio, 2024',
       endDate: '15 de julio, 2024'
     }
-  ]
+  ];
 
   return (
     <div className='flex'>
@@ -35,17 +35,23 @@ const GoalsPage = () => {
         <div className='mb-6 pb-4 border-b border-gray-200'>
           <h1 className='font-workSans italic text-2xl sm:text-3xl font-semibold text-left truncate'>Objetivos</h1>
         </div>
-        <div className='max-w-fit grid grid-cols-1 lg:grid-cols-2 gap-5'>
-          {goals.map((goal, index) => (
-            <div key={index} className='max-w-sm'>
-              <GoalCard {...goal} onAddApplication={() => setIsAddingApplication(true)} />
-            </div>
-          ))}
+        <div className='flex justify-center'>
+          <div className='max-w-fit grid grid-cols-1 lg:grid-cols-2 gap-5'>
+            {goals.map((goal, index) => (
+              <div key={index} className='max-w-sm'>
+                <GoalCard {...goal} onAddApplication={() => setIsAddingApplication(true)} />
+              </div>
+            ))}
+          </div>
         </div>
-        {isAddingApplication && <AddApplication onClose={() => setIsAddingApplication(false)} />}
+        {isAddingApplication && (
+          <div className='flex justify-center items-center fixed inset-0 bg-black bg-opacity-50'>
+            <TaskTableForm onClose={() => setIsAddingApplication(false)} onChange={() => {}} onSend={() => {}} onList={null} />
+          </div>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default GoalsPage
+export default GoalsPage;
