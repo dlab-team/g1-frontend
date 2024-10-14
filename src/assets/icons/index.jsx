@@ -14,6 +14,8 @@ import BellOutline from './BellOutline.svg'
 import Menu from './Menu.svg'
 import SearchOutline1 from './SearchOutline1.svg'
 import PlusCircleOutline from './PlusCircleOutline.svg'
+import ojoVisible from './ojo-visible.png'
+import ojoOculto from './ojo-oculto.png'
 
 export {
   HomeOutline,
@@ -31,5 +33,7 @@ export {
   BellOutline,
   Menu,
   SearchOutline1,
-  PlusCircleOutline
+  PlusCircleOutline,
+  ojoOculto,
+  ojoVisible
 }

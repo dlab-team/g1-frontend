@@ -3,7 +3,7 @@ import NotificationCard from "../components/NotificationComponents/NotificationC
 import ToggleButton from "../components/NotificationComponents/ToggleButton";
 import MarkAsReadButton from "../components/NotificationComponents/ReadButton";
 import notificationsData from "../components/NotificationComponents/NotificationsTest.json";
-import SidebarComponent from "../components/Navbar/Sidebar";
+import SidebarComponent from "../components/Navbar/Sidebar.jsx";
 
 const NotificationPage = () => {
   const [notifications, setNotifications] = useState([]);

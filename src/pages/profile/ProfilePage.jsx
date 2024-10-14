@@ -181,45 +181,7 @@ const ProfilePage = () => {
         alert("Cambios guardados.");
     };
 
-    return (
-        <div className="min-h-screen w-auto lg:pr-36 lg:pl-72 sm:pr-12 sm:pl-60 pt-12 pb-12 pr-4 pl-32">
-            <SidebarComponent />
-
-            <div className="flex justify-start pb-12 w-28 sm:w-40 md:w-52" id="perfil-title">
-                <img src={titleImage} alt="title" />
-            </div>
-
-            {/* iformación del perfil */}
-            <div className="bg-white shadow-xl rounded-lg p-4 sm:p-6 mb-6 sm:mb-8 flex md:flex-row md:justify-start flex justify-between w-full">
-                <div className="flex flex-col items-center md:flex-row w-full">
-                    <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 border-4 border-primary-500 rounded-full overflow-hidden">
-                        <img src={profileImage} alt="Foto de perfil" className="absolute inset-0 w-full h-full object-cover" />
-                        <div className="absolute bottom-0 left-0 right-0 h-7 sm:h-10 md:h-11 bg-white opacity-70"></div>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            id="profileImageInput"
-                            style={{ display: "none" }}
-                            onChange={handleImageChange}
-                        />
-                        <button
-                            className="absolute bottom-2 left-1/2 transform -translate-x-1/2 rounded-full w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 border-2 border-primary-500 bg-white text-primary-500 flex items-center justify-center font-bold"
-                            onClick={() => document.getElementById("profileImageInput").click()}
-                        >
-                            +
-                        </button>
-                    </div>
-                    <div className="mt-4 text-center md:text-left md:ml-6">
-                        <h2 className="text-lg md:text-xl font-bold text-tittle-600">{`${profileData.nombre} ${profileData.apellido}`}</h2>
-                        <p className="text-sm text-base text-gray-500 md:text-tittle-400">{profileData.pais}</p>
-                        <div className="flex flex-col md:flex-row items-center text-sm text-gray-500 mt-2">
-                            <div className="flex items-center mb-2">
-                                <img src={Email} alt="Email" className="w-4 h-4 sm:w-5 sm:h-5 opacity-50" />
-                                <p className="m-2">{profileData.email}</p>
-                            </div>
-                            <div className="flex items-center">
-                                <img src={Phone} alt="Telefono" className="w-4 h-4 sm:w-5 sm:h-5 opacity-50" />
-                                <p className="ml-2">{profileData.telefono}</p>
+   
 
     const handleAddExperience = () => {
     const lastExperience = experiences[experiences.length - 1]
@@ -247,23 +209,22 @@ const ProfilePage = () => {
     setIsEditingExperiences(!isEditingExperiences)
     };
   return (
-      <div className=' min-h-screen w-auto lg:pr-36 lg:pl-72 sm:pr-12 sm:pl-60 pt-12 pb-12 pr-4 pl-32'>
-          <SidebarComponent />
+        <div className=' min-h-screen w-auto lg:pr-36 lg:pl-72 sm:pr-12 sm:pl-60 pt-12 pb-12 pr-4 pl-32'>
+                <SidebarComponent />
 
-          <div className='flex justify-start pb-12 w-28 sm:w-40 md:w-52' id='perfil-title'>
-              <img src='src/assets/images/title.png' alt='title' />
-            </div>
+                <div className='flex justify-start pb-12 w-28 sm:w-40 md:w-52' id='perfil-title'>
+                    <img src='src/assets/images/title.png' alt='title' />
+                </div>
 
-          <div className='bg-white shadow-md rounded-lg p-6 mb-8'>
-              <div className='flex items-center'>
-                  <div className='flex items-center justify-center'>
-                      <div className='relative w-32 h-32 md:w-40 md:h-40 border-4 border-primary-500 rounded-full flex items-center justify-center overflow-hidden'>
+            <div className='bg-white shadow-md rounded-lg p-6 mb-8'>
+                    <div className='flex items-center justify-center'>
+                        <div className='relative w-32 h-32 md:w-40 md:h-40 border-4 border-primary-500 rounded-full flex items-center justify-center  overflow-hidden'>
                           <img
                               src={profileImage}
                               alt='Foto de perfil'
                               className='absolute inset-0 w-full h-full object-cover'
                             />
-                          <div className='absolute bottom-0 left-0 w-full h-11 bg-white bg-opacity-70' />
+                          <div className='absolute bottom-0 left-0 w-full h-11 bg-white bg-opacity-70'></div>
                           <input
                               type='file'
                               accept='image/*'
@@ -278,14 +239,14 @@ const ProfilePage = () => {
                               +
                             </button>
                         </div>
-                    </div>
+                    
 
-                  {/* Información del perfil */}
-                  <div className='mt-4 text-center md:text-left md:ml-6'>
+                        {/* Información del perfil */}
+                        <div className='mt-4 text-center md:text-left md:ml-6'>
                       <h2 className='text-lg md:text-xl font-bold text-tittle-600 md:pt-2 md:pb-2'>{`${profileData.nombre} ${profileData.apellido}`}</h2>
                       <p className='text-sm text-base text-gray-500 md:text-tittle-400'>{profileData.pais}</p>
-                      <div className='flex flex-col md:flex-row items-center text-sm text-gray-500 mt-2'>
-                          <div className='flex items-center mb-2'>
+                        <div className='flex flex-col md:flex-row items-center text-sm text-gray-500 mt-2'>
+                            <div className='flex items-center mb-2'>
                               <img
                                   src={Email}
                                   alt='Email'
@@ -293,7 +254,7 @@ const ProfilePage = () => {
                                 />
                               <p className='m-2'>{profileData.email}</p>
                             </div>
-                          <div className='flex items-center '>
+                            <div className='flex items-center '>
                               <img
                                   src={Phone}
                                   alt='Telefono'
@@ -304,19 +265,19 @@ const ProfilePage = () => {
                         </div>
                     </div>
                 </div>
-              <div className='md:flex md:justify-end'>
-                  <button
-                      className='flex text-gray-500 hover:text-gray-700'
-                      onClick={handleEditPersonalDataClick}
-                    >
+                    <div className='md:flex md:justify-end'>
+                    <button
+                        className='flex text-gray-500 hover:text-gray-700'
+                        onClick={handleEditPersonalDataClick}
+                        >
 
-                        <img
-                            src={PencilOutline}
-                            alt="Editar"
-                            className="w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out"
-                        />
-                    </button>
-                </div>
+                            <img
+                                src={PencilOutline}
+                                alt="Editar"
+                                className="w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out"
+                            />
+                        </button>
+                    </div>
             </div>
 
           {showPersonalDataForm && (
@@ -341,21 +302,21 @@ const ProfilePage = () => {
             </div>
 
             {/* Tarjetas de experiencia */}
-            <div className="bg-white p-6 shadow-xl rounded-lg">
-                <div className="flex flex-row justify-between">
-                    <h1 className="text-tittle-600 font-bold italic text-lg">Experiencia Profesional</h1>
-                    {/* Solo mostrar el botón del lápiz si no se está en modo de edición */}
-                    {!isEditingExperiences && (
-                        <button onClick={() => setIsEditingExperiences(!isEditingExperiences)}>
-                            <img
-                                src={PencilOutline}
-                                alt="Editar"
-                                className="w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out"
-                            />
-                        </button>
-                    )}
+                <div className="bg-white p-6 shadow-xl rounded-lg">
+                    <div className="flex flex-row justify-between">
+                        <h1 className="text-tittle-600 font-bold italic text-lg">Experiencia Profesional</h1>
+                        {/* Solo mostrar el botón del lápiz si no se está en modo de edición */}
+                        {!isEditingExperiences && (
+                            <button onClick={() => setIsEditingExperiences(!isEditingExperiences)}>
+                                <img
+                                    src={PencilOutline}
+                                    alt="Editar"
+                                    className="w-5 h-5 sm:w-6 sm:h-6 hover:opacity-50 transition-opacity duration-300 ease-in-out"
+                                />
+                            </button>
+                        )}
+                    </div>
                 </div>
-
                 {Array.isArray(experiences) && experiences.map(exp => (
                     <ExperienceCard
                         key={exp.id}
@@ -381,6 +342,7 @@ const ProfilePage = () => {
                 )}
 
                 {isEditingExperiences && (
+                <div>
                     <div className="flex justify-end mt-6">
                         <button
                             className="bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded"
@@ -389,19 +351,21 @@ const ProfilePage = () => {
                             Guardar todo
                         </button>
                     </div>
-          <div className='bg-whitep-6 mb-10  shadow-xl rounded-lg'>
-              <PresentationCard
-                  profesionalTitle='Analista de Marketing'
-                  descriptionTitle='Lorem ipsum dolor sit amet consectetur adipiscing elit diam ac torquent, nulla per
-                    purus proin a arcu blandit facilisis mi, pretium risus volutpat sapien gravida pharetra nostra 
-                    integer sociosqu. Rhoncus lacus curabitur lectus pulvinar nulla nam ornare nullam pellentesque 
-                    netus odio quam integer vitae habitant, donec aenean porttitor platea laoreet nostra sodales taciti 
-                    dignissim cras pretium velit morbi sapien. Auctor ligula luctus convallis potenti libero suscipit egestas 
-                    vel congue rhoncus, class cras mollis sagittis nulla dictum sed iaculis sodales, netus id duis metus primis
-                    fames sociosqu ultrices phasellus.'
-                />
-            </div>
-
+                )}
+                
+                    <div className='bg-whitep-6 mb-10  shadow-xl rounded-lg'>
+                    <PresentationCard
+                        profesionalTitle='Analista de Marketing'
+                        descriptionTitle='Lorem ipsum dolor sit amet consectetur adipiscing elit diam ac torquent, nulla per
+                            purus proin a arcu blandit facilisis mi, pretium risus volutpat sapien gravida pharetra nostra 
+                            integer sociosqu. Rhoncus lacus curabitur lectus pulvinar nulla nam ornare nullam pellentesque 
+                            netus odio quam integer vitae habitant, donec aenean porttitor platea laoreet nostra sodales taciti 
+                            dignissim cras pretium velit morbi sapien. Auctor ligula luctus convallis potenti libero suscipit egestas 
+                            vel congue rhoncus, class cras mollis sagittis nulla dictum sed iaculis sodales, netus id duis metus primis
+                            fames sociosqu ultrices phasellus.'
+                        />
+                    </div>
+                
           <div className='bg-white p-6 shadow-xl rounded-lg'>
               <div className='flex flex-row justify-between'>
                   <h1 className='text-tittle-600 font-bold italic text-lg'>Experiencia Profesional</h1>
@@ -415,7 +379,7 @@ const ProfilePage = () => {
                         />
                     </button>
                 </div>
-
+                
               {experiences.map(exp => (
                   <ExperienceCard
                       key={exp.id}
@@ -456,8 +420,9 @@ const ProfilePage = () => {
                     </div>
                 )}
             </div>
-        </div>
-  )
+        </div>                         
+    );
 };
 
-export default ProfilePage
+
+

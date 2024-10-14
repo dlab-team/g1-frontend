@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ExperienceCard from '../components/profileComponents/ExperienceCard.jsx';
 import PersonalDataForm from '../components/profileComponents/PersonalDataForm.jsx';
 import PresentationCard from '../components/profileComponents/PresentationCard.jsx';
 import { PencilOutline, Email, Phone } from '../assets/icons/index.jsx';
 import SidebarComponent from "../components/Navbar/Sidebar.jsx";
 import imgProfileFigma from '../assets/images/foto_perfil_figma.jpeg';
+import imgTitleFigma from '../assets/images/title.png'
+
 
 const ProfilePage = () => {
     const [showPersonalDataForm, setShowPersonalDataForm] = useState(false);
@@ -135,7 +137,7 @@ const ProfilePage = () => {
             <SidebarComponent />
     
             <div className="flex justify-start pb-12 w-28 sm:w-40 md:w-52" id="perfil-title">
-                <img src="src/assets/images/title.png" alt="title" />
+                <img src={imgTitleFigma} alt="title" />
             </div>
 
             {/* Información del perfil */}

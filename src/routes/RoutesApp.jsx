@@ -8,6 +8,7 @@ import ForgotPasswordPage from '../pages/ForgotPasswordPage.jsx'
 import GoalsPage from '../pages/GoalsPage.jsx'
 import MetricsPage from '../pages/Metrics.jsx'
 import TaskTablePage from "../pages/TaskTablePage.jsx";
+import { NewPassword } from '../components/forgotPasword/NewPassword.jsx'
 
 const RoutesApp = () => {
     return (
@@ -22,6 +23,7 @@ const RoutesApp = () => {
 			<Route path='/goals' element={<GoalsPage/>} />
 			<Route path="/analytics" element={<MetricsPage/>}></Route>
 			<Route path="/tasks" element={<TaskTablePage/>}></Route>
+			<Route path="/new-password" element={<NewPassword/>}></Route>
 		</Routes>
 	)
 }
