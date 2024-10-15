@@ -1,15 +1,26 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import {ojoOculto, ojoVisible} from '../../assets/icons/index'
+import Modal from '../forgotPasword/ModalNewPassword'
+
+
 
 export const NewPassword = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch,reset, formState: { errors } } = useForm();
   const [showPassword1, setShowPassword1] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para la modal
 
   const onSubmit = (data) => {
+    //resetea los inputs
+    reset()
+    setIsModalOpen(true);
+
     console.log('Nueva contraseña:', data.password1);
   };
+
+
+
 
   const password1 = watch("password1");
 
@@ -76,6 +87,14 @@ export const NewPassword = () => {
           Guardar
         </button>
       </form>
+
+            {/* Modal */}
+        {isModalOpen && (
+        <Modal 
+          message="¡Contraseña guardada correctamente!" 
+          onClose={() => setIsModalOpen(false)} 
+        />
+      )}
     </div>
   );
 };
